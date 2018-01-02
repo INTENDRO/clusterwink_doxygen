@@ -1,0 +1,22 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$utils_8c.html#aa025bc6e06c6a03ac41020360e0fab6a" title="Initialize the GPIOs (power LED enable and PWM pin) " alt="" coords="167,5,228,32"/>
+<area shape="rect" id="node3" href="$ringbuffer_8h.html#a20d41062e231d18e83f2ea662f92f39d" title="RingBuffer_InitBuffer" alt="" coords="128,56,267,83"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a7433311b057ef5b41de10f9343f714f0" title="Initialize the ADC for the temperature measurment (ADC6) " alt="" coords="155,107,240,133"/>
+<area shape="rect" id="node5" href="$rgbooster_8c.html#acf099652a3bc254ab5a77c8df9e1eae0" title="Initializes the RGBooster data and control pins. " alt="" coords="146,157,249,184"/>
+<area shape="rect" id="node6" href="$rgbooster_8c.html#a461a2a059af53d4fcdaafeaa453a4017" title="Initializes the external interrupt pin INT1 on falling edges. " alt="" coords="161,208,233,235"/>
+<area shape="rect" id="node7" href="$rgbooster_8c.html#a9d07e9ea2b67f8e8455e77503a3ece3e" title="Turn off multiple LEDs (polling the !done/busy pin) " alt="" coords="146,259,249,285"/>
+<area shape="rect" id="node9" href="$spi_8c.html#a41e76811ae07d6f611bafbbfdf560693" title="Initializes the SPI peripheral as slave. " alt="" coords="148,309,247,336"/>
+<area shape="rect" id="node10" href="$usart_8c.html#aba398ef6d2b9f80899b2d65ca9a0fe7d" title="Initializes the USART peripheral as a master. " alt="" coords="153,360,242,387"/>
+<area shape="rect" id="node11" href="$utils_8c.html#a063a332f90b4fe015c2c755d9b9a9d68" title="Disables the power LED by pulling the enable pin high. " alt="" coords="149,411,246,437"/>
+<area shape="rect" id="node12" href="$utils_8c.html#a134996da7a56819203c50b7da35a0027" title="Initialize the PWM pin and setup timer1. " alt="" coords="161,461,233,488"/>
+<area shape="rect" id="node14" href="$utils_8c.html#a361f504f21334e83d854f8c3a37afc3e" title="Start the PWM output. " alt="" coords="157,512,238,539"/>
+<area shape="rect" id="node15" href="$utils_8c.html#abe6c0124e624c513704bd273874f8465" title="wait 1ms*factor " alt="" coords="159,563,236,589"/>
+<area shape="rect" id="node16" href="$ringbuffer_8h.html#a5c9625a7997eccc1f2ab7b6962903981" title="RingBuffer_Insert" alt="" coords="137,613,257,640"/>
+<area shape="rect" id="node17" href="$utils_8c.html#a02b7c7e2979bbca9d33968829d4f7d27" title="Initialize the ADC for the temperature measurment (ADC6) " alt="" coords="124,664,271,691"/>
+<area shape="rect" id="node18" href="$ringbuffer_8h.html#a2d90be72a49bce397cad4aaa66c8582d" title="RingBuffer_GetCount" alt="" coords="126,715,269,741"/>
+<area shape="rect" id="node19" href="$ringbuffer_8h.html#a4396bc44ba066d2f2116c0092ee3ba30" title="RingBuffer_CountChar" alt="" coords="123,765,272,792"/>
+<area shape="rect" id="node20" href="$ringbuffer_8h.html#ab9827e53f63f3de62cbbc26602ee0b81" title="RingBuffer_RemoveUntilChar" alt="" coords="104,816,291,843"/>
+<area shape="rect" id="node8" href="$rgbooster_8c.html#aebfe625207d08e6617ebabb89d3521c7" title="Send RGB data to one LED (polling the !done/busy pin) " alt="" coords="372,259,440,285"/>
+<area shape="rect" id="node13" href="$utils_8c.html#a45cea3d3c88e31497752f2d967aadb3e" title="Map function for converting variables to a different number range. " alt="" coords="383,461,429,488"/>
+<area shape="rect" id="node21" href="$ringbuffer_8h.html#a06e57a62386e21eeb6ec155d8fbac40f" title="RingBuffer_Remove" alt="" coords="339,816,473,843"/>
+</map>

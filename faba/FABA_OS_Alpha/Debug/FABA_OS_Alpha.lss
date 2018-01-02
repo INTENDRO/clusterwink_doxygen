@@ -1,0 +1,3445 @@
+
+FABA_OS_Alpha.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000016  00800100  000016fe  00001792  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000016fe  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          000001bf  00800116  00800116  000017a8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000017a8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000017d8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000110  00000000  00000000  00001818  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000108e  00000000  00000000  00001928  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a3d  00000000  00000000  000029b6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000cc5  00000000  00000000  000033f3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000300  00000000  00000000  000040b8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005e0  00000000  00000000  000043b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000583  00000000  00000000  00004998  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000b0  00000000  00000000  00004f1b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+       4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+       8:	0c 94 e5 05 	jmp	0xbca	; 0xbca <__vector_2>
+       c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      34:	0c 94 8e 05 	jmp	0xb1c	; 0xb1c <__vector_13>
+      38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+      74:	11 e0       	ldi	r17, 0x01	; 1
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	ee ef       	ldi	r30, 0xFE	; 254
+      7c:	f6 e1       	ldi	r31, 0x16	; 22
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+      84:	a6 31       	cpi	r26, 0x16	; 22
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+      8a:	22 e0       	ldi	r18, 0x02	; 2
+      8c:	a6 e1       	ldi	r26, 0x16	; 22
+      8e:	b1 e0       	ldi	r27, 0x01	; 1
+      90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+      92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+      94:	a5 3d       	cpi	r26, 0xD5	; 213
+      96:	b2 07       	cpc	r27, r18
+      98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+      9a:	0e 94 2e 07 	call	0xe5c	; 0xe5c <main>
+      9e:	0c 94 7d 0b 	jmp	0x16fa	; 0x16fa <_exit>
+
+000000a2 <__bad_interrupt>:
+      a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <calculateColorAndFillBuffer>:
+//**************************************************************************************
+//***                  function "CalculateColorAndFillBuffer"                        ***
+//**************************************************************************************
+
+void calculateColorAndFillBuffer(void)
+{
+      a6:	cf 92       	push	r12
+      a8:	df 92       	push	r13
+      aa:	ef 92       	push	r14
+      ac:	ff 92       	push	r15
+      ae:	cf 93       	push	r28
+      b0:	df 93       	push	r29
+      b2:	cd b7       	in	r28, 0x3d	; 61
+      b4:	de b7       	in	r29, 0x3e	; 62
+      b6:	62 97       	sbiw	r28, 0x12	; 18
+      b8:	0f b6       	in	r0, 0x3f	; 63
+      ba:	f8 94       	cli
+      bc:	de bf       	out	0x3e, r29	; 62
+      be:	0f be       	out	0x3f, r0	; 63
+      c0:	cd bf       	out	0x3d, r28	; 61
+	// Declare and define local variables
+	int i = 0;
+      c2:	1a 82       	std	Y+2, r1	; 0x02
+      c4:	19 82       	std	Y+1, r1	; 0x01
+	float redStep;
+	float greenStep;
+	float blueStep;
+	float whiteStep;
+
+	switch(mode)
+      c6:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <__data_end>
+      ca:	88 2f       	mov	r24, r24
+      cc:	90 e0       	ldi	r25, 0x00	; 0
+      ce:	82 30       	cpi	r24, 0x02	; 2
+      d0:	91 05       	cpc	r25, r1
+      d2:	09 f4       	brne	.+2      	; 0xd6 <calculateColorAndFillBuffer+0x30>
+      d4:	a5 c0       	rjmp	.+330    	; 0x220 <calculateColorAndFillBuffer+0x17a>
+      d6:	83 30       	cpi	r24, 0x03	; 3
+      d8:	91 05       	cpc	r25, r1
+      da:	34 f4       	brge	.+12     	; 0xe8 <calculateColorAndFillBuffer+0x42>
+      dc:	00 97       	sbiw	r24, 0x00	; 0
+      de:	61 f0       	breq	.+24     	; 0xf8 <calculateColorAndFillBuffer+0x52>
+      e0:	01 97       	sbiw	r24, 0x01	; 1
+      e2:	09 f4       	brne	.+2      	; 0xe6 <calculateColorAndFillBuffer+0x40>
+      e4:	3f c0       	rjmp	.+126    	; 0x164 <calculateColorAndFillBuffer+0xbe>
+      e6:	fe c3       	rjmp	.+2044   	; 0x8e4 <__LOCK_REGION_LENGTH__+0x4e4>
+      e8:	83 30       	cpi	r24, 0x03	; 3
+      ea:	91 05       	cpc	r25, r1
+      ec:	09 f4       	brne	.+2      	; 0xf0 <calculateColorAndFillBuffer+0x4a>
+      ee:	d5 c0       	rjmp	.+426    	; 0x29a <calculateColorAndFillBuffer+0x1f4>
+      f0:	04 97       	sbiw	r24, 0x04	; 4
+      f2:	09 f4       	brne	.+2      	; 0xf6 <calculateColorAndFillBuffer+0x50>
+      f4:	65 c2       	rjmp	.+1226   	; 0x5c0 <__LOCK_REGION_LENGTH__+0x1c0>
+      f6:	f6 c3       	rjmp	.+2028   	; 0x8e4 <__LOCK_REGION_LENGTH__+0x4e4>
+	{
+		case MODE_OFF:
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+      f8:	1a 82       	std	Y+2, r1	; 0x02
+      fa:	19 82       	std	Y+1, r1	; 0x01
+      fc:	2d c0       	rjmp	.+90     	; 0x158 <calculateColorAndFillBuffer+0xb2>
+			{
+				//Set everything to 0
+				ringBufferColor[i].rd = 0;
+      fe:	89 81       	ldd	r24, Y+1	; 0x01
+     100:	9a 81       	ldd	r25, Y+2	; 0x02
+     102:	88 0f       	add	r24, r24
+     104:	99 1f       	adc	r25, r25
+     106:	88 0f       	add	r24, r24
+     108:	99 1f       	adc	r25, r25
+     10a:	8b 5d       	subi	r24, 0xDB	; 219
+     10c:	9e 4f       	sbci	r25, 0xFE	; 254
+     10e:	fc 01       	movw	r30, r24
+     110:	10 82       	st	Z, r1
+				ringBufferColor[i].gn = 0;
+     112:	89 81       	ldd	r24, Y+1	; 0x01
+     114:	9a 81       	ldd	r25, Y+2	; 0x02
+     116:	88 0f       	add	r24, r24
+     118:	99 1f       	adc	r25, r25
+     11a:	88 0f       	add	r24, r24
+     11c:	99 1f       	adc	r25, r25
+     11e:	8a 5d       	subi	r24, 0xDA	; 218
+     120:	9e 4f       	sbci	r25, 0xFE	; 254
+     122:	fc 01       	movw	r30, r24
+     124:	10 82       	st	Z, r1
+				ringBufferColor[i].bl = 0;
+     126:	89 81       	ldd	r24, Y+1	; 0x01
+     128:	9a 81       	ldd	r25, Y+2	; 0x02
+     12a:	88 0f       	add	r24, r24
+     12c:	99 1f       	adc	r25, r25
+     12e:	88 0f       	add	r24, r24
+     130:	99 1f       	adc	r25, r25
+     132:	89 5d       	subi	r24, 0xD9	; 217
+     134:	9e 4f       	sbci	r25, 0xFE	; 254
+     136:	fc 01       	movw	r30, r24
+     138:	10 82       	st	Z, r1
+				ringBufferColor[i].wh = 0;
+     13a:	89 81       	ldd	r24, Y+1	; 0x01
+     13c:	9a 81       	ldd	r25, Y+2	; 0x02
+     13e:	88 0f       	add	r24, r24
+     140:	99 1f       	adc	r25, r25
+     142:	88 0f       	add	r24, r24
+     144:	99 1f       	adc	r25, r25
+     146:	88 5d       	subi	r24, 0xD8	; 216
+     148:	9e 4f       	sbci	r25, 0xFE	; 254
+     14a:	fc 01       	movw	r30, r24
+     14c:	10 82       	st	Z, r1
+	float whiteStep;
+
+	switch(mode)
+	{
+		case MODE_OFF:
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+     14e:	89 81       	ldd	r24, Y+1	; 0x01
+     150:	9a 81       	ldd	r25, Y+2	; 0x02
+     152:	01 96       	adiw	r24, 0x01	; 1
+     154:	9a 83       	std	Y+2, r25	; 0x02
+     156:	89 83       	std	Y+1, r24	; 0x01
+     158:	89 81       	ldd	r24, Y+1	; 0x01
+     15a:	9a 81       	ldd	r25, Y+2	; 0x02
+     15c:	84 36       	cpi	r24, 0x64	; 100
+     15e:	91 05       	cpc	r25, r1
+     160:	74 f2       	brlt	.-100    	; 0xfe <calculateColorAndFillBuffer+0x58>
+				ringBufferColor[i].rd = 0;
+				ringBufferColor[i].gn = 0;
+				ringBufferColor[i].bl = 0;
+				ringBufferColor[i].wh = 0;
+			}
+			break;
+     162:	f8 c3       	rjmp	.+2032   	; 0x954 <__stack+0x55>
+            
+		case MODE_INDIVIDUAL_COLOR:
+			for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     164:	1a 82       	std	Y+2, r1	; 0x02
+     166:	19 82       	std	Y+1, r1	; 0x01
+     168:	55 c0       	rjmp	.+170    	; 0x214 <calculateColorAndFillBuffer+0x16e>
+            {
+                //Fill the ringBuffer with every received color --> for each module
+                ringBufferColor[i].rd = individualPanelColor[i].rd;
+     16a:	89 81       	ldd	r24, Y+1	; 0x01
+     16c:	9a 81       	ldd	r25, Y+2	; 0x02
+     16e:	88 0f       	add	r24, r24
+     170:	99 1f       	adc	r25, r25
+     172:	88 0f       	add	r24, r24
+     174:	99 1f       	adc	r25, r25
+     176:	8b 54       	subi	r24, 0x4B	; 75
+     178:	9d 4f       	sbci	r25, 0xFD	; 253
+     17a:	fc 01       	movw	r30, r24
+     17c:	20 81       	ld	r18, Z
+     17e:	89 81       	ldd	r24, Y+1	; 0x01
+     180:	9a 81       	ldd	r25, Y+2	; 0x02
+     182:	88 0f       	add	r24, r24
+     184:	99 1f       	adc	r25, r25
+     186:	88 0f       	add	r24, r24
+     188:	99 1f       	adc	r25, r25
+     18a:	8b 5d       	subi	r24, 0xDB	; 219
+     18c:	9e 4f       	sbci	r25, 0xFE	; 254
+     18e:	fc 01       	movw	r30, r24
+     190:	20 83       	st	Z, r18
+                ringBufferColor[i].gn = individualPanelColor[i].gn;
+     192:	89 81       	ldd	r24, Y+1	; 0x01
+     194:	9a 81       	ldd	r25, Y+2	; 0x02
+     196:	88 0f       	add	r24, r24
+     198:	99 1f       	adc	r25, r25
+     19a:	88 0f       	add	r24, r24
+     19c:	99 1f       	adc	r25, r25
+     19e:	8a 54       	subi	r24, 0x4A	; 74
+     1a0:	9d 4f       	sbci	r25, 0xFD	; 253
+     1a2:	fc 01       	movw	r30, r24
+     1a4:	20 81       	ld	r18, Z
+     1a6:	89 81       	ldd	r24, Y+1	; 0x01
+     1a8:	9a 81       	ldd	r25, Y+2	; 0x02
+     1aa:	88 0f       	add	r24, r24
+     1ac:	99 1f       	adc	r25, r25
+     1ae:	88 0f       	add	r24, r24
+     1b0:	99 1f       	adc	r25, r25
+     1b2:	8a 5d       	subi	r24, 0xDA	; 218
+     1b4:	9e 4f       	sbci	r25, 0xFE	; 254
+     1b6:	fc 01       	movw	r30, r24
+     1b8:	20 83       	st	Z, r18
+                ringBufferColor[i].bl = individualPanelColor[i].bl;
+     1ba:	89 81       	ldd	r24, Y+1	; 0x01
+     1bc:	9a 81       	ldd	r25, Y+2	; 0x02
+     1be:	88 0f       	add	r24, r24
+     1c0:	99 1f       	adc	r25, r25
+     1c2:	88 0f       	add	r24, r24
+     1c4:	99 1f       	adc	r25, r25
+     1c6:	89 54       	subi	r24, 0x49	; 73
+     1c8:	9d 4f       	sbci	r25, 0xFD	; 253
+     1ca:	fc 01       	movw	r30, r24
+     1cc:	20 81       	ld	r18, Z
+     1ce:	89 81       	ldd	r24, Y+1	; 0x01
+     1d0:	9a 81       	ldd	r25, Y+2	; 0x02
+     1d2:	88 0f       	add	r24, r24
+     1d4:	99 1f       	adc	r25, r25
+     1d6:	88 0f       	add	r24, r24
+     1d8:	99 1f       	adc	r25, r25
+     1da:	89 5d       	subi	r24, 0xD9	; 217
+     1dc:	9e 4f       	sbci	r25, 0xFE	; 254
+     1de:	fc 01       	movw	r30, r24
+     1e0:	20 83       	st	Z, r18
+                ringBufferColor[i].wh = individualPanelColor[i].wh;
+     1e2:	89 81       	ldd	r24, Y+1	; 0x01
+     1e4:	9a 81       	ldd	r25, Y+2	; 0x02
+     1e6:	88 0f       	add	r24, r24
+     1e8:	99 1f       	adc	r25, r25
+     1ea:	88 0f       	add	r24, r24
+     1ec:	99 1f       	adc	r25, r25
+     1ee:	88 54       	subi	r24, 0x48	; 72
+     1f0:	9d 4f       	sbci	r25, 0xFD	; 253
+     1f2:	fc 01       	movw	r30, r24
+     1f4:	20 81       	ld	r18, Z
+     1f6:	89 81       	ldd	r24, Y+1	; 0x01
+     1f8:	9a 81       	ldd	r25, Y+2	; 0x02
+     1fa:	88 0f       	add	r24, r24
+     1fc:	99 1f       	adc	r25, r25
+     1fe:	88 0f       	add	r24, r24
+     200:	99 1f       	adc	r25, r25
+     202:	88 5d       	subi	r24, 0xD8	; 216
+     204:	9e 4f       	sbci	r25, 0xFE	; 254
+     206:	fc 01       	movw	r30, r24
+     208:	20 83       	st	Z, r18
+				ringBufferColor[i].wh = 0;
+			}
+			break;
+            
+		case MODE_INDIVIDUAL_COLOR:
+			for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     20a:	89 81       	ldd	r24, Y+1	; 0x01
+     20c:	9a 81       	ldd	r25, Y+2	; 0x02
+     20e:	01 96       	adiw	r24, 0x01	; 1
+     210:	9a 83       	std	Y+2, r25	; 0x02
+     212:	89 83       	std	Y+1, r24	; 0x01
+     214:	89 81       	ldd	r24, Y+1	; 0x01
+     216:	9a 81       	ldd	r25, Y+2	; 0x02
+     218:	05 97       	sbiw	r24, 0x05	; 5
+     21a:	0c f4       	brge	.+2      	; 0x21e <calculateColorAndFillBuffer+0x178>
+     21c:	a6 cf       	rjmp	.-180    	; 0x16a <calculateColorAndFillBuffer+0xc4>
+                ringBufferColor[i].rd = individualPanelColor[i].rd;
+                ringBufferColor[i].gn = individualPanelColor[i].gn;
+                ringBufferColor[i].bl = individualPanelColor[i].bl;
+                ringBufferColor[i].wh = individualPanelColor[i].wh;
+            }
+			break;
+     21e:	9a c3       	rjmp	.+1844   	; 0x954 <__stack+0x55>
+            
+		case MODE_ONECOLOR:
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     220:	1a 82       	std	Y+2, r1	; 0x02
+     222:	19 82       	std	Y+1, r1	; 0x01
+     224:	35 c0       	rjmp	.+106    	; 0x290 <calculateColorAndFillBuffer+0x1ea>
+            {
+                //Fill the whole ringbuffer with just one color
+                ringBufferColor[i].rd = effectColorTarget[0].rd;
+     226:	20 91 c9 02 	lds	r18, 0x02C9	; 0x8002c9 <effectColorTarget>
+     22a:	89 81       	ldd	r24, Y+1	; 0x01
+     22c:	9a 81       	ldd	r25, Y+2	; 0x02
+     22e:	88 0f       	add	r24, r24
+     230:	99 1f       	adc	r25, r25
+     232:	88 0f       	add	r24, r24
+     234:	99 1f       	adc	r25, r25
+     236:	8b 5d       	subi	r24, 0xDB	; 219
+     238:	9e 4f       	sbci	r25, 0xFE	; 254
+     23a:	fc 01       	movw	r30, r24
+     23c:	20 83       	st	Z, r18
+                ringBufferColor[i].gn = effectColorTarget[0].gn;
+     23e:	20 91 ca 02 	lds	r18, 0x02CA	; 0x8002ca <effectColorTarget+0x1>
+     242:	89 81       	ldd	r24, Y+1	; 0x01
+     244:	9a 81       	ldd	r25, Y+2	; 0x02
+     246:	88 0f       	add	r24, r24
+     248:	99 1f       	adc	r25, r25
+     24a:	88 0f       	add	r24, r24
+     24c:	99 1f       	adc	r25, r25
+     24e:	8a 5d       	subi	r24, 0xDA	; 218
+     250:	9e 4f       	sbci	r25, 0xFE	; 254
+     252:	fc 01       	movw	r30, r24
+     254:	20 83       	st	Z, r18
+                ringBufferColor[i].bl = effectColorTarget[0].bl;
+     256:	20 91 cb 02 	lds	r18, 0x02CB	; 0x8002cb <effectColorTarget+0x2>
+     25a:	89 81       	ldd	r24, Y+1	; 0x01
+     25c:	9a 81       	ldd	r25, Y+2	; 0x02
+     25e:	88 0f       	add	r24, r24
+     260:	99 1f       	adc	r25, r25
+     262:	88 0f       	add	r24, r24
+     264:	99 1f       	adc	r25, r25
+     266:	89 5d       	subi	r24, 0xD9	; 217
+     268:	9e 4f       	sbci	r25, 0xFE	; 254
+     26a:	fc 01       	movw	r30, r24
+     26c:	20 83       	st	Z, r18
+                ringBufferColor[i].wh = effectColorTarget[0].wh;
+     26e:	20 91 cc 02 	lds	r18, 0x02CC	; 0x8002cc <effectColorTarget+0x3>
+     272:	89 81       	ldd	r24, Y+1	; 0x01
+     274:	9a 81       	ldd	r25, Y+2	; 0x02
+     276:	88 0f       	add	r24, r24
+     278:	99 1f       	adc	r25, r25
+     27a:	88 0f       	add	r24, r24
+     27c:	99 1f       	adc	r25, r25
+     27e:	88 5d       	subi	r24, 0xD8	; 216
+     280:	9e 4f       	sbci	r25, 0xFE	; 254
+     282:	fc 01       	movw	r30, r24
+     284:	20 83       	st	Z, r18
+                ringBufferColor[i].wh = individualPanelColor[i].wh;
+            }
+			break;
+            
+		case MODE_ONECOLOR:
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     286:	89 81       	ldd	r24, Y+1	; 0x01
+     288:	9a 81       	ldd	r25, Y+2	; 0x02
+     28a:	01 96       	adiw	r24, 0x01	; 1
+     28c:	9a 83       	std	Y+2, r25	; 0x02
+     28e:	89 83       	std	Y+1, r24	; 0x01
+     290:	89 81       	ldd	r24, Y+1	; 0x01
+     292:	9a 81       	ldd	r25, Y+2	; 0x02
+     294:	05 97       	sbiw	r24, 0x05	; 5
+     296:	3c f2       	brlt	.-114    	; 0x226 <calculateColorAndFillBuffer+0x180>
+                ringBufferColor[i].rd = effectColorTarget[0].rd;
+                ringBufferColor[i].gn = effectColorTarget[0].gn;
+                ringBufferColor[i].bl = effectColorTarget[0].bl;
+                ringBufferColor[i].wh = effectColorTarget[0].wh;
+            }
+			break;
+     298:	5d c3       	rjmp	.+1722   	; 0x954 <__stack+0x55>
+            
+		case MODE_TWOCOLOR_FADER:
+            redStep   = (float)(effectColorTarget[2].rd - effectColorTarget[1].rd) / (float)(NUM_COLOR_GRADIENTS);
+     29a:	80 91 d1 02 	lds	r24, 0x02D1	; 0x8002d1 <effectColorTarget+0x8>
+     29e:	28 2f       	mov	r18, r24
+     2a0:	30 e0       	ldi	r19, 0x00	; 0
+     2a2:	80 91 cd 02 	lds	r24, 0x02CD	; 0x8002cd <effectColorTarget+0x4>
+     2a6:	88 2f       	mov	r24, r24
+     2a8:	90 e0       	ldi	r25, 0x00	; 0
+     2aa:	a9 01       	movw	r20, r18
+     2ac:	48 1b       	sub	r20, r24
+     2ae:	59 0b       	sbc	r21, r25
+     2b0:	ca 01       	movw	r24, r20
+     2b2:	09 2e       	mov	r0, r25
+     2b4:	00 0c       	add	r0, r0
+     2b6:	aa 0b       	sbc	r26, r26
+     2b8:	bb 0b       	sbc	r27, r27
+     2ba:	bc 01       	movw	r22, r24
+     2bc:	cd 01       	movw	r24, r26
+     2be:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     2c2:	dc 01       	movw	r26, r24
+     2c4:	cb 01       	movw	r24, r22
+     2c6:	20 e0       	ldi	r18, 0x00	; 0
+     2c8:	30 e0       	ldi	r19, 0x00	; 0
+     2ca:	48 ec       	ldi	r20, 0xC8	; 200
+     2cc:	52 e4       	ldi	r21, 0x42	; 66
+     2ce:	bc 01       	movw	r22, r24
+     2d0:	cd 01       	movw	r24, r26
+     2d2:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     2d6:	dc 01       	movw	r26, r24
+     2d8:	cb 01       	movw	r24, r22
+     2da:	8b 83       	std	Y+3, r24	; 0x03
+     2dc:	9c 83       	std	Y+4, r25	; 0x04
+     2de:	ad 83       	std	Y+5, r26	; 0x05
+     2e0:	be 83       	std	Y+6, r27	; 0x06
+            greenStep = (float)(effectColorTarget[2].gn - effectColorTarget[1].gn) / (float)(NUM_COLOR_GRADIENTS);
+     2e2:	80 91 d2 02 	lds	r24, 0x02D2	; 0x8002d2 <effectColorTarget+0x9>
+     2e6:	28 2f       	mov	r18, r24
+     2e8:	30 e0       	ldi	r19, 0x00	; 0
+     2ea:	80 91 ce 02 	lds	r24, 0x02CE	; 0x8002ce <effectColorTarget+0x5>
+     2ee:	88 2f       	mov	r24, r24
+     2f0:	90 e0       	ldi	r25, 0x00	; 0
+     2f2:	f9 01       	movw	r30, r18
+     2f4:	e8 1b       	sub	r30, r24
+     2f6:	f9 0b       	sbc	r31, r25
+     2f8:	cf 01       	movw	r24, r30
+     2fa:	09 2e       	mov	r0, r25
+     2fc:	00 0c       	add	r0, r0
+     2fe:	aa 0b       	sbc	r26, r26
+     300:	bb 0b       	sbc	r27, r27
+     302:	bc 01       	movw	r22, r24
+     304:	cd 01       	movw	r24, r26
+     306:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     30a:	dc 01       	movw	r26, r24
+     30c:	cb 01       	movw	r24, r22
+     30e:	20 e0       	ldi	r18, 0x00	; 0
+     310:	30 e0       	ldi	r19, 0x00	; 0
+     312:	48 ec       	ldi	r20, 0xC8	; 200
+     314:	52 e4       	ldi	r21, 0x42	; 66
+     316:	bc 01       	movw	r22, r24
+     318:	cd 01       	movw	r24, r26
+     31a:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     31e:	dc 01       	movw	r26, r24
+     320:	cb 01       	movw	r24, r22
+     322:	8f 83       	std	Y+7, r24	; 0x07
+     324:	98 87       	std	Y+8, r25	; 0x08
+     326:	a9 87       	std	Y+9, r26	; 0x09
+     328:	ba 87       	std	Y+10, r27	; 0x0a
+            blueStep  = (float)(effectColorTarget[2].bl - effectColorTarget[1].bl) / (float)(NUM_COLOR_GRADIENTS);
+     32a:	80 91 d3 02 	lds	r24, 0x02D3	; 0x8002d3 <effectColorTarget+0xa>
+     32e:	28 2f       	mov	r18, r24
+     330:	30 e0       	ldi	r19, 0x00	; 0
+     332:	80 91 cf 02 	lds	r24, 0x02CF	; 0x8002cf <effectColorTarget+0x6>
+     336:	88 2f       	mov	r24, r24
+     338:	90 e0       	ldi	r25, 0x00	; 0
+     33a:	a9 01       	movw	r20, r18
+     33c:	48 1b       	sub	r20, r24
+     33e:	59 0b       	sbc	r21, r25
+     340:	ca 01       	movw	r24, r20
+     342:	09 2e       	mov	r0, r25
+     344:	00 0c       	add	r0, r0
+     346:	aa 0b       	sbc	r26, r26
+     348:	bb 0b       	sbc	r27, r27
+     34a:	bc 01       	movw	r22, r24
+     34c:	cd 01       	movw	r24, r26
+     34e:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     352:	dc 01       	movw	r26, r24
+     354:	cb 01       	movw	r24, r22
+     356:	20 e0       	ldi	r18, 0x00	; 0
+     358:	30 e0       	ldi	r19, 0x00	; 0
+     35a:	48 ec       	ldi	r20, 0xC8	; 200
+     35c:	52 e4       	ldi	r21, 0x42	; 66
+     35e:	bc 01       	movw	r22, r24
+     360:	cd 01       	movw	r24, r26
+     362:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     366:	dc 01       	movw	r26, r24
+     368:	cb 01       	movw	r24, r22
+     36a:	8b 87       	std	Y+11, r24	; 0x0b
+     36c:	9c 87       	std	Y+12, r25	; 0x0c
+     36e:	ad 87       	std	Y+13, r26	; 0x0d
+     370:	be 87       	std	Y+14, r27	; 0x0e
+            whiteStep = (float)(effectColorTarget[2].wh - effectColorTarget[1].wh) / (float)(NUM_COLOR_GRADIENTS);
+     372:	80 91 d4 02 	lds	r24, 0x02D4	; 0x8002d4 <effectColorTarget+0xb>
+     376:	28 2f       	mov	r18, r24
+     378:	30 e0       	ldi	r19, 0x00	; 0
+     37a:	80 91 d0 02 	lds	r24, 0x02D0	; 0x8002d0 <effectColorTarget+0x7>
+     37e:	88 2f       	mov	r24, r24
+     380:	90 e0       	ldi	r25, 0x00	; 0
+     382:	f9 01       	movw	r30, r18
+     384:	e8 1b       	sub	r30, r24
+     386:	f9 0b       	sbc	r31, r25
+     388:	cf 01       	movw	r24, r30
+     38a:	09 2e       	mov	r0, r25
+     38c:	00 0c       	add	r0, r0
+     38e:	aa 0b       	sbc	r26, r26
+     390:	bb 0b       	sbc	r27, r27
+     392:	bc 01       	movw	r22, r24
+     394:	cd 01       	movw	r24, r26
+     396:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     39a:	dc 01       	movw	r26, r24
+     39c:	cb 01       	movw	r24, r22
+     39e:	20 e0       	ldi	r18, 0x00	; 0
+     3a0:	30 e0       	ldi	r19, 0x00	; 0
+     3a2:	48 ec       	ldi	r20, 0xC8	; 200
+     3a4:	52 e4       	ldi	r21, 0x42	; 66
+     3a6:	bc 01       	movw	r22, r24
+     3a8:	cd 01       	movw	r24, r26
+     3aa:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     3ae:	dc 01       	movw	r26, r24
+     3b0:	cb 01       	movw	r24, r22
+     3b2:	8f 87       	std	Y+15, r24	; 0x0f
+     3b4:	98 8b       	std	Y+16, r25	; 0x10
+     3b6:	a9 8b       	std	Y+17, r26	; 0x11
+     3b8:	ba 8b       	std	Y+18, r27	; 0x12
+            
+            for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+     3ba:	1a 82       	std	Y+2, r1	; 0x02
+     3bc:	19 82       	std	Y+1, r1	; 0x01
+     3be:	f9 c0       	rjmp	.+498    	; 0x5b2 <__LOCK_REGION_LENGTH__+0x1b2>
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(effectColorTarget[1].rd + i * redStep);
+     3c0:	80 91 cd 02 	lds	r24, 0x02CD	; 0x8002cd <effectColorTarget+0x4>
+     3c4:	88 2f       	mov	r24, r24
+     3c6:	90 e0       	ldi	r25, 0x00	; 0
+     3c8:	09 2e       	mov	r0, r25
+     3ca:	00 0c       	add	r0, r0
+     3cc:	aa 0b       	sbc	r26, r26
+     3ce:	bb 0b       	sbc	r27, r27
+     3d0:	bc 01       	movw	r22, r24
+     3d2:	cd 01       	movw	r24, r26
+     3d4:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     3d8:	6b 01       	movw	r12, r22
+     3da:	7c 01       	movw	r14, r24
+     3dc:	89 81       	ldd	r24, Y+1	; 0x01
+     3de:	9a 81       	ldd	r25, Y+2	; 0x02
+     3e0:	09 2e       	mov	r0, r25
+     3e2:	00 0c       	add	r0, r0
+     3e4:	aa 0b       	sbc	r26, r26
+     3e6:	bb 0b       	sbc	r27, r27
+     3e8:	bc 01       	movw	r22, r24
+     3ea:	cd 01       	movw	r24, r26
+     3ec:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     3f0:	dc 01       	movw	r26, r24
+     3f2:	cb 01       	movw	r24, r22
+     3f4:	2b 81       	ldd	r18, Y+3	; 0x03
+     3f6:	3c 81       	ldd	r19, Y+4	; 0x04
+     3f8:	4d 81       	ldd	r20, Y+5	; 0x05
+     3fa:	5e 81       	ldd	r21, Y+6	; 0x06
+     3fc:	bc 01       	movw	r22, r24
+     3fe:	cd 01       	movw	r24, r26
+     400:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     404:	dc 01       	movw	r26, r24
+     406:	cb 01       	movw	r24, r22
+     408:	9c 01       	movw	r18, r24
+     40a:	ad 01       	movw	r20, r26
+     40c:	c7 01       	movw	r24, r14
+     40e:	b6 01       	movw	r22, r12
+     410:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     414:	dc 01       	movw	r26, r24
+     416:	cb 01       	movw	r24, r22
+     418:	bc 01       	movw	r22, r24
+     41a:	cd 01       	movw	r24, r26
+     41c:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     420:	dc 01       	movw	r26, r24
+     422:	cb 01       	movw	r24, r22
+     424:	28 2f       	mov	r18, r24
+     426:	89 81       	ldd	r24, Y+1	; 0x01
+     428:	9a 81       	ldd	r25, Y+2	; 0x02
+     42a:	88 0f       	add	r24, r24
+     42c:	99 1f       	adc	r25, r25
+     42e:	88 0f       	add	r24, r24
+     430:	99 1f       	adc	r25, r25
+     432:	8b 5d       	subi	r24, 0xDB	; 219
+     434:	9e 4f       	sbci	r25, 0xFE	; 254
+     436:	fc 01       	movw	r30, r24
+     438:	20 83       	st	Z, r18
+                ringBufferColor[i].gn = (int)(effectColorTarget[1].gn + i * greenStep);
+     43a:	80 91 ce 02 	lds	r24, 0x02CE	; 0x8002ce <effectColorTarget+0x5>
+     43e:	88 2f       	mov	r24, r24
+     440:	90 e0       	ldi	r25, 0x00	; 0
+     442:	09 2e       	mov	r0, r25
+     444:	00 0c       	add	r0, r0
+     446:	aa 0b       	sbc	r26, r26
+     448:	bb 0b       	sbc	r27, r27
+     44a:	bc 01       	movw	r22, r24
+     44c:	cd 01       	movw	r24, r26
+     44e:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     452:	6b 01       	movw	r12, r22
+     454:	7c 01       	movw	r14, r24
+     456:	89 81       	ldd	r24, Y+1	; 0x01
+     458:	9a 81       	ldd	r25, Y+2	; 0x02
+     45a:	09 2e       	mov	r0, r25
+     45c:	00 0c       	add	r0, r0
+     45e:	aa 0b       	sbc	r26, r26
+     460:	bb 0b       	sbc	r27, r27
+     462:	bc 01       	movw	r22, r24
+     464:	cd 01       	movw	r24, r26
+     466:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     46a:	dc 01       	movw	r26, r24
+     46c:	cb 01       	movw	r24, r22
+     46e:	2f 81       	ldd	r18, Y+7	; 0x07
+     470:	38 85       	ldd	r19, Y+8	; 0x08
+     472:	49 85       	ldd	r20, Y+9	; 0x09
+     474:	5a 85       	ldd	r21, Y+10	; 0x0a
+     476:	bc 01       	movw	r22, r24
+     478:	cd 01       	movw	r24, r26
+     47a:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     47e:	dc 01       	movw	r26, r24
+     480:	cb 01       	movw	r24, r22
+     482:	9c 01       	movw	r18, r24
+     484:	ad 01       	movw	r20, r26
+     486:	c7 01       	movw	r24, r14
+     488:	b6 01       	movw	r22, r12
+     48a:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     48e:	dc 01       	movw	r26, r24
+     490:	cb 01       	movw	r24, r22
+     492:	bc 01       	movw	r22, r24
+     494:	cd 01       	movw	r24, r26
+     496:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     49a:	dc 01       	movw	r26, r24
+     49c:	cb 01       	movw	r24, r22
+     49e:	28 2f       	mov	r18, r24
+     4a0:	89 81       	ldd	r24, Y+1	; 0x01
+     4a2:	9a 81       	ldd	r25, Y+2	; 0x02
+     4a4:	88 0f       	add	r24, r24
+     4a6:	99 1f       	adc	r25, r25
+     4a8:	88 0f       	add	r24, r24
+     4aa:	99 1f       	adc	r25, r25
+     4ac:	8a 5d       	subi	r24, 0xDA	; 218
+     4ae:	9e 4f       	sbci	r25, 0xFE	; 254
+     4b0:	fc 01       	movw	r30, r24
+     4b2:	20 83       	st	Z, r18
+                ringBufferColor[i].bl = (int)(effectColorTarget[1].bl + i * blueStep);
+     4b4:	80 91 cf 02 	lds	r24, 0x02CF	; 0x8002cf <effectColorTarget+0x6>
+     4b8:	88 2f       	mov	r24, r24
+     4ba:	90 e0       	ldi	r25, 0x00	; 0
+     4bc:	09 2e       	mov	r0, r25
+     4be:	00 0c       	add	r0, r0
+     4c0:	aa 0b       	sbc	r26, r26
+     4c2:	bb 0b       	sbc	r27, r27
+     4c4:	bc 01       	movw	r22, r24
+     4c6:	cd 01       	movw	r24, r26
+     4c8:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     4cc:	6b 01       	movw	r12, r22
+     4ce:	7c 01       	movw	r14, r24
+     4d0:	89 81       	ldd	r24, Y+1	; 0x01
+     4d2:	9a 81       	ldd	r25, Y+2	; 0x02
+     4d4:	09 2e       	mov	r0, r25
+     4d6:	00 0c       	add	r0, r0
+     4d8:	aa 0b       	sbc	r26, r26
+     4da:	bb 0b       	sbc	r27, r27
+     4dc:	bc 01       	movw	r22, r24
+     4de:	cd 01       	movw	r24, r26
+     4e0:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     4e4:	dc 01       	movw	r26, r24
+     4e6:	cb 01       	movw	r24, r22
+     4e8:	2b 85       	ldd	r18, Y+11	; 0x0b
+     4ea:	3c 85       	ldd	r19, Y+12	; 0x0c
+     4ec:	4d 85       	ldd	r20, Y+13	; 0x0d
+     4ee:	5e 85       	ldd	r21, Y+14	; 0x0e
+     4f0:	bc 01       	movw	r22, r24
+     4f2:	cd 01       	movw	r24, r26
+     4f4:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     4f8:	dc 01       	movw	r26, r24
+     4fa:	cb 01       	movw	r24, r22
+     4fc:	9c 01       	movw	r18, r24
+     4fe:	ad 01       	movw	r20, r26
+     500:	c7 01       	movw	r24, r14
+     502:	b6 01       	movw	r22, r12
+     504:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     508:	dc 01       	movw	r26, r24
+     50a:	cb 01       	movw	r24, r22
+     50c:	bc 01       	movw	r22, r24
+     50e:	cd 01       	movw	r24, r26
+     510:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     514:	dc 01       	movw	r26, r24
+     516:	cb 01       	movw	r24, r22
+     518:	28 2f       	mov	r18, r24
+     51a:	89 81       	ldd	r24, Y+1	; 0x01
+     51c:	9a 81       	ldd	r25, Y+2	; 0x02
+     51e:	88 0f       	add	r24, r24
+     520:	99 1f       	adc	r25, r25
+     522:	88 0f       	add	r24, r24
+     524:	99 1f       	adc	r25, r25
+     526:	89 5d       	subi	r24, 0xD9	; 217
+     528:	9e 4f       	sbci	r25, 0xFE	; 254
+     52a:	fc 01       	movw	r30, r24
+     52c:	20 83       	st	Z, r18
+                ringBufferColor[i].wh = (int)(effectColorTarget[1].wh + i * whiteStep);
+     52e:	80 91 d0 02 	lds	r24, 0x02D0	; 0x8002d0 <effectColorTarget+0x7>
+     532:	88 2f       	mov	r24, r24
+     534:	90 e0       	ldi	r25, 0x00	; 0
+     536:	09 2e       	mov	r0, r25
+     538:	00 0c       	add	r0, r0
+     53a:	aa 0b       	sbc	r26, r26
+     53c:	bb 0b       	sbc	r27, r27
+     53e:	bc 01       	movw	r22, r24
+     540:	cd 01       	movw	r24, r26
+     542:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     546:	6b 01       	movw	r12, r22
+     548:	7c 01       	movw	r14, r24
+     54a:	89 81       	ldd	r24, Y+1	; 0x01
+     54c:	9a 81       	ldd	r25, Y+2	; 0x02
+     54e:	09 2e       	mov	r0, r25
+     550:	00 0c       	add	r0, r0
+     552:	aa 0b       	sbc	r26, r26
+     554:	bb 0b       	sbc	r27, r27
+     556:	bc 01       	movw	r22, r24
+     558:	cd 01       	movw	r24, r26
+     55a:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     55e:	dc 01       	movw	r26, r24
+     560:	cb 01       	movw	r24, r22
+     562:	2f 85       	ldd	r18, Y+15	; 0x0f
+     564:	38 89       	ldd	r19, Y+16	; 0x10
+     566:	49 89       	ldd	r20, Y+17	; 0x11
+     568:	5a 89       	ldd	r21, Y+18	; 0x12
+     56a:	bc 01       	movw	r22, r24
+     56c:	cd 01       	movw	r24, r26
+     56e:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     572:	dc 01       	movw	r26, r24
+     574:	cb 01       	movw	r24, r22
+     576:	9c 01       	movw	r18, r24
+     578:	ad 01       	movw	r20, r26
+     57a:	c7 01       	movw	r24, r14
+     57c:	b6 01       	movw	r22, r12
+     57e:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     582:	dc 01       	movw	r26, r24
+     584:	cb 01       	movw	r24, r22
+     586:	bc 01       	movw	r22, r24
+     588:	cd 01       	movw	r24, r26
+     58a:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     58e:	dc 01       	movw	r26, r24
+     590:	cb 01       	movw	r24, r22
+     592:	28 2f       	mov	r18, r24
+     594:	89 81       	ldd	r24, Y+1	; 0x01
+     596:	9a 81       	ldd	r25, Y+2	; 0x02
+     598:	88 0f       	add	r24, r24
+     59a:	99 1f       	adc	r25, r25
+     59c:	88 0f       	add	r24, r24
+     59e:	99 1f       	adc	r25, r25
+     5a0:	88 5d       	subi	r24, 0xD8	; 216
+     5a2:	9e 4f       	sbci	r25, 0xFE	; 254
+     5a4:	fc 01       	movw	r30, r24
+     5a6:	20 83       	st	Z, r18
+            redStep   = (float)(effectColorTarget[2].rd - effectColorTarget[1].rd) / (float)(NUM_COLOR_GRADIENTS);
+            greenStep = (float)(effectColorTarget[2].gn - effectColorTarget[1].gn) / (float)(NUM_COLOR_GRADIENTS);
+            blueStep  = (float)(effectColorTarget[2].bl - effectColorTarget[1].bl) / (float)(NUM_COLOR_GRADIENTS);
+            whiteStep = (float)(effectColorTarget[2].wh - effectColorTarget[1].wh) / (float)(NUM_COLOR_GRADIENTS);
+            
+            for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+     5a8:	89 81       	ldd	r24, Y+1	; 0x01
+     5aa:	9a 81       	ldd	r25, Y+2	; 0x02
+     5ac:	01 96       	adiw	r24, 0x01	; 1
+     5ae:	9a 83       	std	Y+2, r25	; 0x02
+     5b0:	89 83       	std	Y+1, r24	; 0x01
+     5b2:	89 81       	ldd	r24, Y+1	; 0x01
+     5b4:	9a 81       	ldd	r25, Y+2	; 0x02
+     5b6:	84 36       	cpi	r24, 0x64	; 100
+     5b8:	91 05       	cpc	r25, r1
+     5ba:	0c f4       	brge	.+2      	; 0x5be <__LOCK_REGION_LENGTH__+0x1be>
+     5bc:	01 cf       	rjmp	.-510    	; 0x3c0 <calculateColorAndFillBuffer+0x31a>
+                ringBufferColor[i].rd = (int)(effectColorTarget[1].rd + i * redStep);
+                ringBufferColor[i].gn = (int)(effectColorTarget[1].gn + i * greenStep);
+                ringBufferColor[i].bl = (int)(effectColorTarget[1].bl + i * blueStep);
+                ringBufferColor[i].wh = (int)(effectColorTarget[1].wh + i * whiteStep);
+            }
+            break;
+     5be:	ca c1       	rjmp	.+916    	; 0x954 <__stack+0x55>
+            
+        case MODE_TWOCOLOR_GRADIENT:
+            redStep   = (float)(effectColorTarget[2].rd - effectColorTarget[1].rd) / (float)(NUM_ATTACHED_MODULES - 1);
+     5c0:	80 91 d1 02 	lds	r24, 0x02D1	; 0x8002d1 <effectColorTarget+0x8>
+     5c4:	28 2f       	mov	r18, r24
+     5c6:	30 e0       	ldi	r19, 0x00	; 0
+     5c8:	80 91 cd 02 	lds	r24, 0x02CD	; 0x8002cd <effectColorTarget+0x4>
+     5cc:	88 2f       	mov	r24, r24
+     5ce:	90 e0       	ldi	r25, 0x00	; 0
+     5d0:	a9 01       	movw	r20, r18
+     5d2:	48 1b       	sub	r20, r24
+     5d4:	59 0b       	sbc	r21, r25
+     5d6:	ca 01       	movw	r24, r20
+     5d8:	09 2e       	mov	r0, r25
+     5da:	00 0c       	add	r0, r0
+     5dc:	aa 0b       	sbc	r26, r26
+     5de:	bb 0b       	sbc	r27, r27
+     5e0:	bc 01       	movw	r22, r24
+     5e2:	cd 01       	movw	r24, r26
+     5e4:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     5e8:	dc 01       	movw	r26, r24
+     5ea:	cb 01       	movw	r24, r22
+     5ec:	20 e0       	ldi	r18, 0x00	; 0
+     5ee:	30 e0       	ldi	r19, 0x00	; 0
+     5f0:	40 e8       	ldi	r20, 0x80	; 128
+     5f2:	50 e4       	ldi	r21, 0x40	; 64
+     5f4:	bc 01       	movw	r22, r24
+     5f6:	cd 01       	movw	r24, r26
+     5f8:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     5fc:	dc 01       	movw	r26, r24
+     5fe:	cb 01       	movw	r24, r22
+     600:	8b 83       	std	Y+3, r24	; 0x03
+     602:	9c 83       	std	Y+4, r25	; 0x04
+     604:	ad 83       	std	Y+5, r26	; 0x05
+     606:	be 83       	std	Y+6, r27	; 0x06
+            greenStep = (float)(effectColorTarget[2].gn - effectColorTarget[1].gn) / (float)(NUM_ATTACHED_MODULES - 1);
+     608:	80 91 d2 02 	lds	r24, 0x02D2	; 0x8002d2 <effectColorTarget+0x9>
+     60c:	28 2f       	mov	r18, r24
+     60e:	30 e0       	ldi	r19, 0x00	; 0
+     610:	80 91 ce 02 	lds	r24, 0x02CE	; 0x8002ce <effectColorTarget+0x5>
+     614:	88 2f       	mov	r24, r24
+     616:	90 e0       	ldi	r25, 0x00	; 0
+     618:	f9 01       	movw	r30, r18
+     61a:	e8 1b       	sub	r30, r24
+     61c:	f9 0b       	sbc	r31, r25
+     61e:	cf 01       	movw	r24, r30
+     620:	09 2e       	mov	r0, r25
+     622:	00 0c       	add	r0, r0
+     624:	aa 0b       	sbc	r26, r26
+     626:	bb 0b       	sbc	r27, r27
+     628:	bc 01       	movw	r22, r24
+     62a:	cd 01       	movw	r24, r26
+     62c:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     630:	dc 01       	movw	r26, r24
+     632:	cb 01       	movw	r24, r22
+     634:	20 e0       	ldi	r18, 0x00	; 0
+     636:	30 e0       	ldi	r19, 0x00	; 0
+     638:	40 e8       	ldi	r20, 0x80	; 128
+     63a:	50 e4       	ldi	r21, 0x40	; 64
+     63c:	bc 01       	movw	r22, r24
+     63e:	cd 01       	movw	r24, r26
+     640:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     644:	dc 01       	movw	r26, r24
+     646:	cb 01       	movw	r24, r22
+     648:	8f 83       	std	Y+7, r24	; 0x07
+     64a:	98 87       	std	Y+8, r25	; 0x08
+     64c:	a9 87       	std	Y+9, r26	; 0x09
+     64e:	ba 87       	std	Y+10, r27	; 0x0a
+            blueStep  = (float)(effectColorTarget[2].bl - effectColorTarget[1].bl) / (float)(NUM_ATTACHED_MODULES - 1);
+     650:	80 91 d3 02 	lds	r24, 0x02D3	; 0x8002d3 <effectColorTarget+0xa>
+     654:	28 2f       	mov	r18, r24
+     656:	30 e0       	ldi	r19, 0x00	; 0
+     658:	80 91 cf 02 	lds	r24, 0x02CF	; 0x8002cf <effectColorTarget+0x6>
+     65c:	88 2f       	mov	r24, r24
+     65e:	90 e0       	ldi	r25, 0x00	; 0
+     660:	a9 01       	movw	r20, r18
+     662:	48 1b       	sub	r20, r24
+     664:	59 0b       	sbc	r21, r25
+     666:	ca 01       	movw	r24, r20
+     668:	09 2e       	mov	r0, r25
+     66a:	00 0c       	add	r0, r0
+     66c:	aa 0b       	sbc	r26, r26
+     66e:	bb 0b       	sbc	r27, r27
+     670:	bc 01       	movw	r22, r24
+     672:	cd 01       	movw	r24, r26
+     674:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     678:	dc 01       	movw	r26, r24
+     67a:	cb 01       	movw	r24, r22
+     67c:	20 e0       	ldi	r18, 0x00	; 0
+     67e:	30 e0       	ldi	r19, 0x00	; 0
+     680:	40 e8       	ldi	r20, 0x80	; 128
+     682:	50 e4       	ldi	r21, 0x40	; 64
+     684:	bc 01       	movw	r22, r24
+     686:	cd 01       	movw	r24, r26
+     688:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     68c:	dc 01       	movw	r26, r24
+     68e:	cb 01       	movw	r24, r22
+     690:	8b 87       	std	Y+11, r24	; 0x0b
+     692:	9c 87       	std	Y+12, r25	; 0x0c
+     694:	ad 87       	std	Y+13, r26	; 0x0d
+     696:	be 87       	std	Y+14, r27	; 0x0e
+            whiteStep = (float)(effectColorTarget[2].wh - effectColorTarget[1].wh) / (float)(NUM_ATTACHED_MODULES - 1);
+     698:	80 91 d4 02 	lds	r24, 0x02D4	; 0x8002d4 <effectColorTarget+0xb>
+     69c:	28 2f       	mov	r18, r24
+     69e:	30 e0       	ldi	r19, 0x00	; 0
+     6a0:	80 91 d0 02 	lds	r24, 0x02D0	; 0x8002d0 <effectColorTarget+0x7>
+     6a4:	88 2f       	mov	r24, r24
+     6a6:	90 e0       	ldi	r25, 0x00	; 0
+     6a8:	f9 01       	movw	r30, r18
+     6aa:	e8 1b       	sub	r30, r24
+     6ac:	f9 0b       	sbc	r31, r25
+     6ae:	cf 01       	movw	r24, r30
+     6b0:	09 2e       	mov	r0, r25
+     6b2:	00 0c       	add	r0, r0
+     6b4:	aa 0b       	sbc	r26, r26
+     6b6:	bb 0b       	sbc	r27, r27
+     6b8:	bc 01       	movw	r22, r24
+     6ba:	cd 01       	movw	r24, r26
+     6bc:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     6c0:	dc 01       	movw	r26, r24
+     6c2:	cb 01       	movw	r24, r22
+     6c4:	20 e0       	ldi	r18, 0x00	; 0
+     6c6:	30 e0       	ldi	r19, 0x00	; 0
+     6c8:	40 e8       	ldi	r20, 0x80	; 128
+     6ca:	50 e4       	ldi	r21, 0x40	; 64
+     6cc:	bc 01       	movw	r22, r24
+     6ce:	cd 01       	movw	r24, r26
+     6d0:	0e 94 da 09 	call	0x13b4	; 0x13b4 <__divsf3>
+     6d4:	dc 01       	movw	r26, r24
+     6d6:	cb 01       	movw	r24, r22
+     6d8:	8f 87       	std	Y+15, r24	; 0x0f
+     6da:	98 8b       	std	Y+16, r25	; 0x10
+     6dc:	a9 8b       	std	Y+17, r26	; 0x11
+     6de:	ba 8b       	std	Y+18, r27	; 0x12
+            
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     6e0:	1a 82       	std	Y+2, r1	; 0x02
+     6e2:	19 82       	std	Y+1, r1	; 0x01
+     6e4:	f9 c0       	rjmp	.+498    	; 0x8d8 <__LOCK_REGION_LENGTH__+0x4d8>
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(effectColorTarget[1].rd + i * redStep);
+     6e6:	80 91 cd 02 	lds	r24, 0x02CD	; 0x8002cd <effectColorTarget+0x4>
+     6ea:	88 2f       	mov	r24, r24
+     6ec:	90 e0       	ldi	r25, 0x00	; 0
+     6ee:	09 2e       	mov	r0, r25
+     6f0:	00 0c       	add	r0, r0
+     6f2:	aa 0b       	sbc	r26, r26
+     6f4:	bb 0b       	sbc	r27, r27
+     6f6:	bc 01       	movw	r22, r24
+     6f8:	cd 01       	movw	r24, r26
+     6fa:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     6fe:	6b 01       	movw	r12, r22
+     700:	7c 01       	movw	r14, r24
+     702:	89 81       	ldd	r24, Y+1	; 0x01
+     704:	9a 81       	ldd	r25, Y+2	; 0x02
+     706:	09 2e       	mov	r0, r25
+     708:	00 0c       	add	r0, r0
+     70a:	aa 0b       	sbc	r26, r26
+     70c:	bb 0b       	sbc	r27, r27
+     70e:	bc 01       	movw	r22, r24
+     710:	cd 01       	movw	r24, r26
+     712:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     716:	dc 01       	movw	r26, r24
+     718:	cb 01       	movw	r24, r22
+     71a:	2b 81       	ldd	r18, Y+3	; 0x03
+     71c:	3c 81       	ldd	r19, Y+4	; 0x04
+     71e:	4d 81       	ldd	r20, Y+5	; 0x05
+     720:	5e 81       	ldd	r21, Y+6	; 0x06
+     722:	bc 01       	movw	r22, r24
+     724:	cd 01       	movw	r24, r26
+     726:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     72a:	dc 01       	movw	r26, r24
+     72c:	cb 01       	movw	r24, r22
+     72e:	9c 01       	movw	r18, r24
+     730:	ad 01       	movw	r20, r26
+     732:	c7 01       	movw	r24, r14
+     734:	b6 01       	movw	r22, r12
+     736:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     73a:	dc 01       	movw	r26, r24
+     73c:	cb 01       	movw	r24, r22
+     73e:	bc 01       	movw	r22, r24
+     740:	cd 01       	movw	r24, r26
+     742:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     746:	dc 01       	movw	r26, r24
+     748:	cb 01       	movw	r24, r22
+     74a:	28 2f       	mov	r18, r24
+     74c:	89 81       	ldd	r24, Y+1	; 0x01
+     74e:	9a 81       	ldd	r25, Y+2	; 0x02
+     750:	88 0f       	add	r24, r24
+     752:	99 1f       	adc	r25, r25
+     754:	88 0f       	add	r24, r24
+     756:	99 1f       	adc	r25, r25
+     758:	8b 5d       	subi	r24, 0xDB	; 219
+     75a:	9e 4f       	sbci	r25, 0xFE	; 254
+     75c:	fc 01       	movw	r30, r24
+     75e:	20 83       	st	Z, r18
+                ringBufferColor[i].gn = (int)(effectColorTarget[1].gn + i * greenStep);
+     760:	80 91 ce 02 	lds	r24, 0x02CE	; 0x8002ce <effectColorTarget+0x5>
+     764:	88 2f       	mov	r24, r24
+     766:	90 e0       	ldi	r25, 0x00	; 0
+     768:	09 2e       	mov	r0, r25
+     76a:	00 0c       	add	r0, r0
+     76c:	aa 0b       	sbc	r26, r26
+     76e:	bb 0b       	sbc	r27, r27
+     770:	bc 01       	movw	r22, r24
+     772:	cd 01       	movw	r24, r26
+     774:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     778:	6b 01       	movw	r12, r22
+     77a:	7c 01       	movw	r14, r24
+     77c:	89 81       	ldd	r24, Y+1	; 0x01
+     77e:	9a 81       	ldd	r25, Y+2	; 0x02
+     780:	09 2e       	mov	r0, r25
+     782:	00 0c       	add	r0, r0
+     784:	aa 0b       	sbc	r26, r26
+     786:	bb 0b       	sbc	r27, r27
+     788:	bc 01       	movw	r22, r24
+     78a:	cd 01       	movw	r24, r26
+     78c:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     790:	dc 01       	movw	r26, r24
+     792:	cb 01       	movw	r24, r22
+     794:	2f 81       	ldd	r18, Y+7	; 0x07
+     796:	38 85       	ldd	r19, Y+8	; 0x08
+     798:	49 85       	ldd	r20, Y+9	; 0x09
+     79a:	5a 85       	ldd	r21, Y+10	; 0x0a
+     79c:	bc 01       	movw	r22, r24
+     79e:	cd 01       	movw	r24, r26
+     7a0:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     7a4:	dc 01       	movw	r26, r24
+     7a6:	cb 01       	movw	r24, r22
+     7a8:	9c 01       	movw	r18, r24
+     7aa:	ad 01       	movw	r20, r26
+     7ac:	c7 01       	movw	r24, r14
+     7ae:	b6 01       	movw	r22, r12
+     7b0:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     7b4:	dc 01       	movw	r26, r24
+     7b6:	cb 01       	movw	r24, r22
+     7b8:	bc 01       	movw	r22, r24
+     7ba:	cd 01       	movw	r24, r26
+     7bc:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     7c0:	dc 01       	movw	r26, r24
+     7c2:	cb 01       	movw	r24, r22
+     7c4:	28 2f       	mov	r18, r24
+     7c6:	89 81       	ldd	r24, Y+1	; 0x01
+     7c8:	9a 81       	ldd	r25, Y+2	; 0x02
+     7ca:	88 0f       	add	r24, r24
+     7cc:	99 1f       	adc	r25, r25
+     7ce:	88 0f       	add	r24, r24
+     7d0:	99 1f       	adc	r25, r25
+     7d2:	8a 5d       	subi	r24, 0xDA	; 218
+     7d4:	9e 4f       	sbci	r25, 0xFE	; 254
+     7d6:	fc 01       	movw	r30, r24
+     7d8:	20 83       	st	Z, r18
+                ringBufferColor[i].bl = (int)(effectColorTarget[1].bl + i * blueStep);
+     7da:	80 91 cf 02 	lds	r24, 0x02CF	; 0x8002cf <effectColorTarget+0x6>
+     7de:	88 2f       	mov	r24, r24
+     7e0:	90 e0       	ldi	r25, 0x00	; 0
+     7e2:	09 2e       	mov	r0, r25
+     7e4:	00 0c       	add	r0, r0
+     7e6:	aa 0b       	sbc	r26, r26
+     7e8:	bb 0b       	sbc	r27, r27
+     7ea:	bc 01       	movw	r22, r24
+     7ec:	cd 01       	movw	r24, r26
+     7ee:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     7f2:	6b 01       	movw	r12, r22
+     7f4:	7c 01       	movw	r14, r24
+     7f6:	89 81       	ldd	r24, Y+1	; 0x01
+     7f8:	9a 81       	ldd	r25, Y+2	; 0x02
+     7fa:	09 2e       	mov	r0, r25
+     7fc:	00 0c       	add	r0, r0
+     7fe:	aa 0b       	sbc	r26, r26
+     800:	bb 0b       	sbc	r27, r27
+     802:	bc 01       	movw	r22, r24
+     804:	cd 01       	movw	r24, r26
+     806:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     80a:	dc 01       	movw	r26, r24
+     80c:	cb 01       	movw	r24, r22
+     80e:	2b 85       	ldd	r18, Y+11	; 0x0b
+     810:	3c 85       	ldd	r19, Y+12	; 0x0c
+     812:	4d 85       	ldd	r20, Y+13	; 0x0d
+     814:	5e 85       	ldd	r21, Y+14	; 0x0e
+     816:	bc 01       	movw	r22, r24
+     818:	cd 01       	movw	r24, r26
+     81a:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     81e:	dc 01       	movw	r26, r24
+     820:	cb 01       	movw	r24, r22
+     822:	9c 01       	movw	r18, r24
+     824:	ad 01       	movw	r20, r26
+     826:	c7 01       	movw	r24, r14
+     828:	b6 01       	movw	r22, r12
+     82a:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     82e:	dc 01       	movw	r26, r24
+     830:	cb 01       	movw	r24, r22
+     832:	bc 01       	movw	r22, r24
+     834:	cd 01       	movw	r24, r26
+     836:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     83a:	dc 01       	movw	r26, r24
+     83c:	cb 01       	movw	r24, r22
+     83e:	28 2f       	mov	r18, r24
+     840:	89 81       	ldd	r24, Y+1	; 0x01
+     842:	9a 81       	ldd	r25, Y+2	; 0x02
+     844:	88 0f       	add	r24, r24
+     846:	99 1f       	adc	r25, r25
+     848:	88 0f       	add	r24, r24
+     84a:	99 1f       	adc	r25, r25
+     84c:	89 5d       	subi	r24, 0xD9	; 217
+     84e:	9e 4f       	sbci	r25, 0xFE	; 254
+     850:	fc 01       	movw	r30, r24
+     852:	20 83       	st	Z, r18
+                ringBufferColor[i].wh = (int)(effectColorTarget[1].wh + i * whiteStep);
+     854:	80 91 d0 02 	lds	r24, 0x02D0	; 0x8002d0 <effectColorTarget+0x7>
+     858:	88 2f       	mov	r24, r24
+     85a:	90 e0       	ldi	r25, 0x00	; 0
+     85c:	09 2e       	mov	r0, r25
+     85e:	00 0c       	add	r0, r0
+     860:	aa 0b       	sbc	r26, r26
+     862:	bb 0b       	sbc	r27, r27
+     864:	bc 01       	movw	r22, r24
+     866:	cd 01       	movw	r24, r26
+     868:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     86c:	6b 01       	movw	r12, r22
+     86e:	7c 01       	movw	r14, r24
+     870:	89 81       	ldd	r24, Y+1	; 0x01
+     872:	9a 81       	ldd	r25, Y+2	; 0x02
+     874:	09 2e       	mov	r0, r25
+     876:	00 0c       	add	r0, r0
+     878:	aa 0b       	sbc	r26, r26
+     87a:	bb 0b       	sbc	r27, r27
+     87c:	bc 01       	movw	r22, r24
+     87e:	cd 01       	movw	r24, r26
+     880:	0e 94 84 0a 	call	0x1508	; 0x1508 <__floatsisf>
+     884:	dc 01       	movw	r26, r24
+     886:	cb 01       	movw	r24, r22
+     888:	2f 85       	ldd	r18, Y+15	; 0x0f
+     88a:	38 89       	ldd	r19, Y+16	; 0x10
+     88c:	49 89       	ldd	r20, Y+17	; 0x11
+     88e:	5a 89       	ldd	r21, Y+18	; 0x12
+     890:	bc 01       	movw	r22, r24
+     892:	cd 01       	movw	r24, r26
+     894:	0e 94 10 0b 	call	0x1620	; 0x1620 <__mulsf3>
+     898:	dc 01       	movw	r26, r24
+     89a:	cb 01       	movw	r24, r22
+     89c:	9c 01       	movw	r18, r24
+     89e:	ad 01       	movw	r20, r26
+     8a0:	c7 01       	movw	r24, r14
+     8a2:	b6 01       	movw	r22, r12
+     8a4:	0e 94 6e 09 	call	0x12dc	; 0x12dc <__addsf3>
+     8a8:	dc 01       	movw	r26, r24
+     8aa:	cb 01       	movw	r24, r22
+     8ac:	bc 01       	movw	r22, r24
+     8ae:	cd 01       	movw	r24, r26
+     8b0:	0e 94 4c 0a 	call	0x1498	; 0x1498 <__fixsfsi>
+     8b4:	dc 01       	movw	r26, r24
+     8b6:	cb 01       	movw	r24, r22
+     8b8:	28 2f       	mov	r18, r24
+     8ba:	89 81       	ldd	r24, Y+1	; 0x01
+     8bc:	9a 81       	ldd	r25, Y+2	; 0x02
+     8be:	88 0f       	add	r24, r24
+     8c0:	99 1f       	adc	r25, r25
+     8c2:	88 0f       	add	r24, r24
+     8c4:	99 1f       	adc	r25, r25
+     8c6:	88 5d       	subi	r24, 0xD8	; 216
+     8c8:	9e 4f       	sbci	r25, 0xFE	; 254
+     8ca:	fc 01       	movw	r30, r24
+     8cc:	20 83       	st	Z, r18
+            redStep   = (float)(effectColorTarget[2].rd - effectColorTarget[1].rd) / (float)(NUM_ATTACHED_MODULES - 1);
+            greenStep = (float)(effectColorTarget[2].gn - effectColorTarget[1].gn) / (float)(NUM_ATTACHED_MODULES - 1);
+            blueStep  = (float)(effectColorTarget[2].bl - effectColorTarget[1].bl) / (float)(NUM_ATTACHED_MODULES - 1);
+            whiteStep = (float)(effectColorTarget[2].wh - effectColorTarget[1].wh) / (float)(NUM_ATTACHED_MODULES - 1);
+            
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+     8ce:	89 81       	ldd	r24, Y+1	; 0x01
+     8d0:	9a 81       	ldd	r25, Y+2	; 0x02
+     8d2:	01 96       	adiw	r24, 0x01	; 1
+     8d4:	9a 83       	std	Y+2, r25	; 0x02
+     8d6:	89 83       	std	Y+1, r24	; 0x01
+     8d8:	89 81       	ldd	r24, Y+1	; 0x01
+     8da:	9a 81       	ldd	r25, Y+2	; 0x02
+     8dc:	05 97       	sbiw	r24, 0x05	; 5
+     8de:	0c f4       	brge	.+2      	; 0x8e2 <__LOCK_REGION_LENGTH__+0x4e2>
+     8e0:	02 cf       	rjmp	.-508    	; 0x6e6 <__LOCK_REGION_LENGTH__+0x2e6>
+                ringBufferColor[i].rd = (int)(effectColorTarget[1].rd + i * redStep);
+                ringBufferColor[i].gn = (int)(effectColorTarget[1].gn + i * greenStep);
+                ringBufferColor[i].bl = (int)(effectColorTarget[1].bl + i * blueStep);
+                ringBufferColor[i].wh = (int)(effectColorTarget[1].wh + i * whiteStep);
+            }
+			break;
+     8e2:	38 c0       	rjmp	.+112    	; 0x954 <__stack+0x55>
+            
+		default:
+			//default: --> "Mode off"
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+     8e4:	1a 82       	std	Y+2, r1	; 0x02
+     8e6:	19 82       	std	Y+1, r1	; 0x01
+     8e8:	2d c0       	rjmp	.+90     	; 0x944 <__stack+0x45>
+			{
+				//Set everything to 0
+				ringBufferColor[i].rd = 0;
+     8ea:	89 81       	ldd	r24, Y+1	; 0x01
+     8ec:	9a 81       	ldd	r25, Y+2	; 0x02
+     8ee:	88 0f       	add	r24, r24
+     8f0:	99 1f       	adc	r25, r25
+     8f2:	88 0f       	add	r24, r24
+     8f4:	99 1f       	adc	r25, r25
+     8f6:	8b 5d       	subi	r24, 0xDB	; 219
+     8f8:	9e 4f       	sbci	r25, 0xFE	; 254
+     8fa:	fc 01       	movw	r30, r24
+     8fc:	10 82       	st	Z, r1
+				ringBufferColor[i].gn = 0;
+     8fe:	89 81       	ldd	r24, Y+1	; 0x01
+     900:	9a 81       	ldd	r25, Y+2	; 0x02
+     902:	88 0f       	add	r24, r24
+     904:	99 1f       	adc	r25, r25
+     906:	88 0f       	add	r24, r24
+     908:	99 1f       	adc	r25, r25
+     90a:	8a 5d       	subi	r24, 0xDA	; 218
+     90c:	9e 4f       	sbci	r25, 0xFE	; 254
+     90e:	fc 01       	movw	r30, r24
+     910:	10 82       	st	Z, r1
+				ringBufferColor[i].bl = 0;
+     912:	89 81       	ldd	r24, Y+1	; 0x01
+     914:	9a 81       	ldd	r25, Y+2	; 0x02
+     916:	88 0f       	add	r24, r24
+     918:	99 1f       	adc	r25, r25
+     91a:	88 0f       	add	r24, r24
+     91c:	99 1f       	adc	r25, r25
+     91e:	89 5d       	subi	r24, 0xD9	; 217
+     920:	9e 4f       	sbci	r25, 0xFE	; 254
+     922:	fc 01       	movw	r30, r24
+     924:	10 82       	st	Z, r1
+				ringBufferColor[i].wh = 0;
+     926:	89 81       	ldd	r24, Y+1	; 0x01
+     928:	9a 81       	ldd	r25, Y+2	; 0x02
+     92a:	88 0f       	add	r24, r24
+     92c:	99 1f       	adc	r25, r25
+     92e:	88 0f       	add	r24, r24
+     930:	99 1f       	adc	r25, r25
+     932:	88 5d       	subi	r24, 0xD8	; 216
+     934:	9e 4f       	sbci	r25, 0xFE	; 254
+     936:	fc 01       	movw	r30, r24
+     938:	10 82       	st	Z, r1
+            }
+			break;
+            
+		default:
+			//default: --> "Mode off"
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+     93a:	89 81       	ldd	r24, Y+1	; 0x01
+     93c:	9a 81       	ldd	r25, Y+2	; 0x02
+     93e:	01 96       	adiw	r24, 0x01	; 1
+     940:	9a 83       	std	Y+2, r25	; 0x02
+     942:	89 83       	std	Y+1, r24	; 0x01
+     944:	89 81       	ldd	r24, Y+1	; 0x01
+     946:	9a 81       	ldd	r25, Y+2	; 0x02
+     948:	84 36       	cpi	r24, 0x64	; 100
+     94a:	91 05       	cpc	r25, r1
+     94c:	74 f2       	brlt	.-100    	; 0x8ea <__LOCK_REGION_LENGTH__+0x4ea>
+				ringBufferColor[i].rd = 0;
+				ringBufferColor[i].gn = 0;
+				ringBufferColor[i].bl = 0;
+				ringBufferColor[i].wh = 0;
+			}
+			mode = MODE_OFF;
+     94e:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <__data_end>
+			break;
+     952:	00 00       	nop
+	}
+     954:	00 00       	nop
+     956:	62 96       	adiw	r28, 0x12	; 18
+     958:	0f b6       	in	r0, 0x3f	; 63
+     95a:	f8 94       	cli
+     95c:	de bf       	out	0x3e, r29	; 62
+     95e:	0f be       	out	0x3f, r0	; 63
+     960:	cd bf       	out	0x3d, r28	; 61
+     962:	df 91       	pop	r29
+     964:	cf 91       	pop	r28
+     966:	ff 90       	pop	r15
+     968:	ef 90       	pop	r14
+     96a:	df 90       	pop	r13
+     96c:	cf 90       	pop	r12
+     96e:	08 95       	ret
+
+00000970 <PortInit>:
+//**************************************************************************************
+//***                              function "PortInit"                               ***
+//**************************************************************************************
+
+void PortInit(void)
+{
+     970:	cf 93       	push	r28
+     972:	df 93       	push	r29
+     974:	cd b7       	in	r28, 0x3d	; 61
+     976:	de b7       	in	r29, 0x3e	; 62
+	// 0 = Input   1 = Output
+	// Default: all inputs
+	DDRB = 0x03;			// PB0 +  PB1 is used for DEGUGGING PURPOSE 
+     978:	84 e2       	ldi	r24, 0x24	; 36
+     97a:	90 e0       	ldi	r25, 0x00	; 0
+     97c:	23 e0       	ldi	r18, 0x03	; 3
+     97e:	fc 01       	movw	r30, r24
+     980:	20 83       	st	Z, r18
+	DDRC = 0x0F;
+     982:	87 e2       	ldi	r24, 0x27	; 39
+     984:	90 e0       	ldi	r25, 0x00	; 0
+     986:	2f e0       	ldi	r18, 0x0F	; 15
+     988:	fc 01       	movw	r30, r24
+     98a:	20 83       	st	Z, r18
+	DDRD = 0xF4;			
+     98c:	8a e2       	ldi	r24, 0x2A	; 42
+     98e:	90 e0       	ldi	r25, 0x00	; 0
+     990:	24 ef       	ldi	r18, 0xF4	; 244
+     992:	fc 01       	movw	r30, r24
+     994:	20 83       	st	Z, r18
+	
+	// DDRB |= (1<<PIN_MISO);			//MISO as OUTPUT
+} 
+     996:	00 00       	nop
+     998:	df 91       	pop	r29
+     99a:	cf 91       	pop	r28
+     99c:	08 95       	ret
+
+0000099e <SPI_SlaveInit>:
+//**************************************************************************************
+//***                            function "SPI_SlaveInit"                            ***
+//**************************************************************************************
+
+void SPI_SlaveInit(void)
+{
+     99e:	cf 93       	push	r28
+     9a0:	df 93       	push	r29
+     9a2:	cd b7       	in	r28, 0x3d	; 61
+     9a4:	de b7       	in	r29, 0x3e	; 62
+	//SPCR – SPI Control Register
+	SPCR = 0x40;		
+     9a6:	8c e4       	ldi	r24, 0x4C	; 76
+     9a8:	90 e0       	ldi	r25, 0x00	; 0
+     9aa:	20 e4       	ldi	r18, 0x40	; 64
+     9ac:	fc 01       	movw	r30, r24
+     9ae:	20 83       	st	Z, r18
+		// Bit 4 Master/Slave Select        "0"=Slave
+		// Bit 3 Clock Polarity             "0"=LOW when idle
+		// Bit 2 Clock Phase         	    "1"=Sample data at the leading (first) edge of SCK
+		// Bit 1 SPI Clock Rate Select      Irrelevant
+		// Bit 0 SPI Clock Rate Select      Irrelevant	
+}
+     9b0:	00 00       	nop
+     9b2:	df 91       	pop	r29
+     9b4:	cf 91       	pop	r28
+     9b6:	08 95       	ret
+
+000009b8 <InterruptInit>:
+
+//**************************************************************************************
+//***                            function "InterruptInit"                            ***
+//**************************************************************************************
+void InterruptInit(void)
+{
+     9b8:	cf 93       	push	r28
+     9ba:	df 93       	push	r29
+     9bc:	cd b7       	in	r28, 0x3d	; 61
+     9be:	de b7       	in	r29, 0x3e	; 62
+	EICRA = 0x08;					// Trigger INT1 on falling edge
+     9c0:	89 e6       	ldi	r24, 0x69	; 105
+     9c2:	90 e0       	ldi	r25, 0x00	; 0
+     9c4:	28 e0       	ldi	r18, 0x08	; 8
+     9c6:	fc 01       	movw	r30, r24
+     9c8:	20 83       	st	Z, r18
+	EIMSK |= (1 << INT1);			// Enable  INT1
+     9ca:	8d e3       	ldi	r24, 0x3D	; 61
+     9cc:	90 e0       	ldi	r25, 0x00	; 0
+     9ce:	2d e3       	ldi	r18, 0x3D	; 61
+     9d0:	30 e0       	ldi	r19, 0x00	; 0
+     9d2:	f9 01       	movw	r30, r18
+     9d4:	20 81       	ld	r18, Z
+     9d6:	22 60       	ori	r18, 0x02	; 2
+     9d8:	fc 01       	movw	r30, r24
+     9da:	20 83       	st	Z, r18
+}
+     9dc:	00 00       	nop
+     9de:	df 91       	pop	r29
+     9e0:	cf 91       	pop	r28
+     9e2:	08 95       	ret
+
+000009e4 <TimerInit>:
+
+//**************************************************************************************
+//***                              function "TimerInit"                              ***
+//**************************************************************************************
+void TimerInit(void)
+{
+     9e4:	cf 93       	push	r28
+     9e6:	df 93       	push	r29
+     9e8:	cd b7       	in	r28, 0x3d	; 61
+     9ea:	de b7       	in	r29, 0x3e	; 62
+	// set up timer1 with a prescaler (CS12)=256 --> @16MHz = 1.04856 sec //cs11 = PRESCALER 8
+	TCCR1B |= (1 << CS11);
+     9ec:	81 e8       	ldi	r24, 0x81	; 129
+     9ee:	90 e0       	ldi	r25, 0x00	; 0
+     9f0:	21 e8       	ldi	r18, 0x81	; 129
+     9f2:	30 e0       	ldi	r19, 0x00	; 0
+     9f4:	f9 01       	movw	r30, r18
+     9f6:	20 81       	ld	r18, Z
+     9f8:	22 60       	ori	r18, 0x02	; 2
+     9fa:	fc 01       	movw	r30, r24
+     9fc:	20 83       	st	Z, r18
+	
+	// initialize counter
+	TCNT1 = 0;
+     9fe:	84 e8       	ldi	r24, 0x84	; 132
+     a00:	90 e0       	ldi	r25, 0x00	; 0
+     a02:	fc 01       	movw	r30, r24
+     a04:	11 82       	std	Z+1, r1	; 0x01
+     a06:	10 82       	st	Z, r1
+	
+	// enable overflow interrupt //TIMSK1 (1) hinzugefügt, da er TIMSK nicht kennt
+	TIMSK1 |= (1 << TOIE1);
+     a08:	8f e6       	ldi	r24, 0x6F	; 111
+     a0a:	90 e0       	ldi	r25, 0x00	; 0
+     a0c:	2f e6       	ldi	r18, 0x6F	; 111
+     a0e:	30 e0       	ldi	r19, 0x00	; 0
+     a10:	f9 01       	movw	r30, r18
+     a12:	20 81       	ld	r18, Z
+     a14:	21 60       	ori	r18, 0x01	; 1
+     a16:	fc 01       	movw	r30, r24
+     a18:	20 83       	st	Z, r18
+}
+     a1a:	00 00       	nop
+     a1c:	df 91       	pop	r29
+     a1e:	cf 91       	pop	r28
+     a20:	08 95       	ret
+
+00000a22 <UsartInit>:
+
+
+//**************************************************************************************
+//***                              function "UsartInit"                              ***
+//**************************************************************************************
+void UsartInit(void){
+     a22:	cf 93       	push	r28
+     a24:	df 93       	push	r29
+     a26:	cd b7       	in	r28, 0x3d	; 61
+     a28:	de b7       	in	r29, 0x3e	; 62
+	UBRR0 = UBRR_VALUE;		//Set baudrate
+     a2a:	84 ec       	ldi	r24, 0xC4	; 196
+     a2c:	90 e0       	ldi	r25, 0x00	; 0
+     a2e:	23 e3       	ldi	r18, 0x33	; 51
+     a30:	30 e0       	ldi	r19, 0x00	; 0
+     a32:	fc 01       	movw	r30, r24
+     a34:	31 83       	std	Z+1, r19	; 0x01
+     a36:	20 83       	st	Z, r18
+	//UCSR0B |= (1<<TXCIE0);
+	UCSR0B |= (1<<TXEN0);
+     a38:	81 ec       	ldi	r24, 0xC1	; 193
+     a3a:	90 e0       	ldi	r25, 0x00	; 0
+     a3c:	21 ec       	ldi	r18, 0xC1	; 193
+     a3e:	30 e0       	ldi	r19, 0x00	; 0
+     a40:	f9 01       	movw	r30, r18
+     a42:	20 81       	ld	r18, Z
+     a44:	28 60       	ori	r18, 0x08	; 8
+     a46:	fc 01       	movw	r30, r24
+     a48:	20 83       	st	Z, r18
+	UCSR0C |= (1<<UCSZ01)|(1<<UCSZ00);	//dataform: 8bit, no parity, 1 stop
+     a4a:	82 ec       	ldi	r24, 0xC2	; 194
+     a4c:	90 e0       	ldi	r25, 0x00	; 0
+     a4e:	22 ec       	ldi	r18, 0xC2	; 194
+     a50:	30 e0       	ldi	r19, 0x00	; 0
+     a52:	f9 01       	movw	r30, r18
+     a54:	20 81       	ld	r18, Z
+     a56:	26 60       	ori	r18, 0x06	; 6
+     a58:	fc 01       	movw	r30, r24
+     a5a:	20 83       	st	Z, r18
+	//UCSR0B |= (1<<RXEN0)|(1<<RXCIE0);	//RX enable und RX interrupts enables
+}
+     a5c:	00 00       	nop
+     a5e:	df 91       	pop	r29
+     a60:	cf 91       	pop	r28
+     a62:	08 95       	ret
+
+00000a64 <BufferInit>:
+
+
+//**************************************************************************************
+//***                              function "BufferInit                              ***
+//**************************************************************************************
+void BufferInit(void){
+     a64:	cf 93       	push	r28
+     a66:	df 93       	push	r29
+     a68:	00 d0       	rcall	.+0      	; 0xa6a <BufferInit+0x6>
+     a6a:	cd b7       	in	r28, 0x3d	; 61
+     a6c:	de b7       	in	r29, 0x3e	; 62
+	
+	int i=0;
+     a6e:	1a 82       	std	Y+2, r1	; 0x02
+     a70:	19 82       	std	Y+1, r1	; 0x01
+	while(i<(NUM_ATTACHED_MODULES))
+     a72:	2e c0       	rjmp	.+92     	; 0xad0 <BufferInit+0x6c>
+	{
+		individualPanelColor[i].rd = 0;
+     a74:	89 81       	ldd	r24, Y+1	; 0x01
+     a76:	9a 81       	ldd	r25, Y+2	; 0x02
+     a78:	88 0f       	add	r24, r24
+     a7a:	99 1f       	adc	r25, r25
+     a7c:	88 0f       	add	r24, r24
+     a7e:	99 1f       	adc	r25, r25
+     a80:	8b 54       	subi	r24, 0x4B	; 75
+     a82:	9d 4f       	sbci	r25, 0xFD	; 253
+     a84:	fc 01       	movw	r30, r24
+     a86:	10 82       	st	Z, r1
+		individualPanelColor[i].gn = 0;
+     a88:	89 81       	ldd	r24, Y+1	; 0x01
+     a8a:	9a 81       	ldd	r25, Y+2	; 0x02
+     a8c:	88 0f       	add	r24, r24
+     a8e:	99 1f       	adc	r25, r25
+     a90:	88 0f       	add	r24, r24
+     a92:	99 1f       	adc	r25, r25
+     a94:	8a 54       	subi	r24, 0x4A	; 74
+     a96:	9d 4f       	sbci	r25, 0xFD	; 253
+     a98:	fc 01       	movw	r30, r24
+     a9a:	10 82       	st	Z, r1
+		individualPanelColor[i].bl = 0;
+     a9c:	89 81       	ldd	r24, Y+1	; 0x01
+     a9e:	9a 81       	ldd	r25, Y+2	; 0x02
+     aa0:	88 0f       	add	r24, r24
+     aa2:	99 1f       	adc	r25, r25
+     aa4:	88 0f       	add	r24, r24
+     aa6:	99 1f       	adc	r25, r25
+     aa8:	89 54       	subi	r24, 0x49	; 73
+     aaa:	9d 4f       	sbci	r25, 0xFD	; 253
+     aac:	fc 01       	movw	r30, r24
+     aae:	10 82       	st	Z, r1
+		individualPanelColor[i].wh = 50;
+     ab0:	89 81       	ldd	r24, Y+1	; 0x01
+     ab2:	9a 81       	ldd	r25, Y+2	; 0x02
+     ab4:	88 0f       	add	r24, r24
+     ab6:	99 1f       	adc	r25, r25
+     ab8:	88 0f       	add	r24, r24
+     aba:	99 1f       	adc	r25, r25
+     abc:	88 54       	subi	r24, 0x48	; 72
+     abe:	9d 4f       	sbci	r25, 0xFD	; 253
+     ac0:	22 e3       	ldi	r18, 0x32	; 50
+     ac2:	fc 01       	movw	r30, r24
+     ac4:	20 83       	st	Z, r18
+		i++;
+     ac6:	89 81       	ldd	r24, Y+1	; 0x01
+     ac8:	9a 81       	ldd	r25, Y+2	; 0x02
+     aca:	01 96       	adiw	r24, 0x01	; 1
+     acc:	9a 83       	std	Y+2, r25	; 0x02
+     ace:	89 83       	std	Y+1, r24	; 0x01
+//***                              function "BufferInit                              ***
+//**************************************************************************************
+void BufferInit(void){
+	
+	int i=0;
+	while(i<(NUM_ATTACHED_MODULES))
+     ad0:	89 81       	ldd	r24, Y+1	; 0x01
+     ad2:	9a 81       	ldd	r25, Y+2	; 0x02
+     ad4:	05 97       	sbiw	r24, 0x05	; 5
+     ad6:	74 f2       	brlt	.-100    	; 0xa74 <BufferInit+0x10>
+		individualPanelColor[i].bl = 0;
+		individualPanelColor[i].wh = 50;
+		i++;
+	}
+	
+	effectColorTarget[0].rd = 10;
+     ad8:	8a e0       	ldi	r24, 0x0A	; 10
+     ada:	80 93 c9 02 	sts	0x02C9, r24	; 0x8002c9 <effectColorTarget>
+	effectColorTarget[0].gn = 0;
+     ade:	10 92 ca 02 	sts	0x02CA, r1	; 0x8002ca <effectColorTarget+0x1>
+	effectColorTarget[0].bl = 10;
+     ae2:	8a e0       	ldi	r24, 0x0A	; 10
+     ae4:	80 93 cb 02 	sts	0x02CB, r24	; 0x8002cb <effectColorTarget+0x2>
+	effectColorTarget[0].wh = 0;
+     ae8:	10 92 cc 02 	sts	0x02CC, r1	; 0x8002cc <effectColorTarget+0x3>
+	
+	effectColorTarget[1].rd = 0;
+     aec:	10 92 cd 02 	sts	0x02CD, r1	; 0x8002cd <effectColorTarget+0x4>
+	effectColorTarget[1].gn = 0;
+     af0:	10 92 ce 02 	sts	0x02CE, r1	; 0x8002ce <effectColorTarget+0x5>
+	effectColorTarget[1].bl = 10;
+     af4:	8a e0       	ldi	r24, 0x0A	; 10
+     af6:	80 93 cf 02 	sts	0x02CF, r24	; 0x8002cf <effectColorTarget+0x6>
+	effectColorTarget[1].wh = 0;
+     afa:	10 92 d0 02 	sts	0x02D0, r1	; 0x8002d0 <effectColorTarget+0x7>
+	
+	effectColorTarget[2].rd = 0;
+     afe:	10 92 d1 02 	sts	0x02D1, r1	; 0x8002d1 <effectColorTarget+0x8>
+	effectColorTarget[2].gn = 10;
+     b02:	8a e0       	ldi	r24, 0x0A	; 10
+     b04:	80 93 d2 02 	sts	0x02D2, r24	; 0x8002d2 <effectColorTarget+0x9>
+	effectColorTarget[2].bl = 0;
+     b08:	10 92 d3 02 	sts	0x02D3, r1	; 0x8002d3 <effectColorTarget+0xa>
+	effectColorTarget[2].wh = 0;
+     b0c:	10 92 d4 02 	sts	0x02D4, r1	; 0x8002d4 <effectColorTarget+0xb>
+     b10:	00 00       	nop
+     b12:	0f 90       	pop	r0
+     b14:	0f 90       	pop	r0
+     b16:	df 91       	pop	r29
+     b18:	cf 91       	pop	r28
+     b1a:	08 95       	ret
+
+00000b1c <__vector_13>:
+//**************************************************************************************
+//***                               interrupt timer 1                                ***
+//**************************************************************************************
+
+ISR(TIMER1_OVF_vect)
+{
+     b1c:	1f 92       	push	r1
+     b1e:	0f 92       	push	r0
+     b20:	00 90 5f 00 	lds	r0, 0x005F	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+     b24:	0f 92       	push	r0
+     b26:	11 24       	eor	r1, r1
+     b28:	2f 93       	push	r18
+     b2a:	3f 93       	push	r19
+     b2c:	4f 93       	push	r20
+     b2e:	5f 93       	push	r21
+     b30:	6f 93       	push	r22
+     b32:	7f 93       	push	r23
+     b34:	8f 93       	push	r24
+     b36:	9f 93       	push	r25
+     b38:	af 93       	push	r26
+     b3a:	bf 93       	push	r27
+     b3c:	ef 93       	push	r30
+     b3e:	ff 93       	push	r31
+     b40:	cf 93       	push	r28
+     b42:	df 93       	push	r29
+     b44:	cd b7       	in	r28, 0x3d	; 61
+     b46:	de b7       	in	r29, 0x3e	; 62
+	PORTB ^= (1<<PORTB1);
+     b48:	85 e2       	ldi	r24, 0x25	; 37
+     b4a:	90 e0       	ldi	r25, 0x00	; 0
+     b4c:	25 e2       	ldi	r18, 0x25	; 37
+     b4e:	30 e0       	ldi	r19, 0x00	; 0
+     b50:	f9 01       	movw	r30, r18
+     b52:	30 81       	ld	r19, Z
+     b54:	22 e0       	ldi	r18, 0x02	; 2
+     b56:	23 27       	eor	r18, r19
+     b58:	fc 01       	movw	r30, r24
+     b5a:	20 83       	st	Z, r18
+	if (flag_sending_in_progress == FALSE)
+     b5c:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <flag_sending_in_progress>
+     b60:	88 23       	and	r24, r24
+     b62:	f1 f4       	brne	.+60     	; 0xba0 <__vector_13+0x84>
+	{
+		if(increase_BufferOffset)
+     b64:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+     b68:	88 23       	and	r24, r24
+     b6a:	61 f0       	breq	.+24     	; 0xb84 <__vector_13+0x68>
+		{
+			//Increase Buffer offset (for fading effect)
+			bufferOffset += 1;
+     b6c:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <bufferOffset>
+     b70:	8f 5f       	subi	r24, 0xFF	; 255
+     b72:	80 93 17 01 	sts	0x0117, r24	; 0x800117 <bufferOffset>
+			
+			//if buffer offset at the end (for example (100 color gradients; 20 attached modules --> max offset = 80) --> state to dectrease
+			if (bufferOffset >= (NUM_COLOR_GRADIENTS - NUM_ATTACHED_MODULES))
+     b76:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <bufferOffset>
+     b7a:	8f 35       	cpi	r24, 0x5F	; 95
+     b7c:	78 f0       	brcs	.+30     	; 0xb9c <__vector_13+0x80>
+			{
+				increase_BufferOffset = FALSE;
+     b7e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__data_start>
+     b82:	0c c0       	rjmp	.+24     	; 0xb9c <__vector_13+0x80>
+			}
+		}
+		else
+		{
+			//Decrease Buffer offset (for fading effect)
+			bufferOffset -= 1;
+     b84:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <bufferOffset>
+     b88:	81 50       	subi	r24, 0x01	; 1
+     b8a:	80 93 17 01 	sts	0x0117, r24	; 0x800117 <bufferOffset>
+			
+			//if buffer offset = 0 --> state = increase
+			if (bufferOffset == 0)
+     b8e:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <bufferOffset>
+     b92:	88 23       	and	r24, r24
+     b94:	19 f4       	brne	.+6      	; 0xb9c <__vector_13+0x80>
+			{
+				increase_BufferOffset = TRUE;
+     b96:	81 e0       	ldi	r24, 0x01	; 1
+     b98:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+			}
+		}
+		INT1_vect();
+     b9c:	0e 94 e5 05 	call	0xbca	; 0xbca <__vector_2>
+	}
+}
+     ba0:	00 00       	nop
+     ba2:	df 91       	pop	r29
+     ba4:	cf 91       	pop	r28
+     ba6:	ff 91       	pop	r31
+     ba8:	ef 91       	pop	r30
+     baa:	bf 91       	pop	r27
+     bac:	af 91       	pop	r26
+     bae:	9f 91       	pop	r25
+     bb0:	8f 91       	pop	r24
+     bb2:	7f 91       	pop	r23
+     bb4:	6f 91       	pop	r22
+     bb6:	5f 91       	pop	r21
+     bb8:	4f 91       	pop	r20
+     bba:	3f 91       	pop	r19
+     bbc:	2f 91       	pop	r18
+     bbe:	0f 90       	pop	r0
+     bc0:	00 92 5f 00 	sts	0x005F, r0	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+     bc4:	0f 90       	pop	r0
+     bc6:	1f 90       	pop	r1
+     bc8:	18 95       	reti
+
+00000bca <__vector_2>:
+//**************************************************************************************
+
+
+
+ISR(INT1_vect) // External Interrupt 1
+{
+     bca:	1f 92       	push	r1
+     bcc:	0f 92       	push	r0
+     bce:	00 90 5f 00 	lds	r0, 0x005F	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+     bd2:	0f 92       	push	r0
+     bd4:	11 24       	eor	r1, r1
+     bd6:	2f 93       	push	r18
+     bd8:	3f 93       	push	r19
+     bda:	4f 93       	push	r20
+     bdc:	5f 93       	push	r21
+     bde:	8f 93       	push	r24
+     be0:	9f 93       	push	r25
+     be2:	ef 93       	push	r30
+     be4:	ff 93       	push	r31
+     be6:	cf 93       	push	r28
+     be8:	df 93       	push	r29
+     bea:	cd b7       	in	r28, 0x3d	; 61
+     bec:	de b7       	in	r29, 0x3e	; 62
+	flag_sending_in_progress = TRUE;
+     bee:	81 e0       	ldi	r24, 0x01	; 1
+     bf0:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <flag_sending_in_progress>
+	if(flag_last_led_written == FALSE)
+     bf4:	80 91 1b 01 	lds	r24, 0x011B	; 0x80011b <flag_last_led_written>
+     bf8:	88 23       	and	r24, r24
+     bfa:	09 f0       	breq	.+2      	; 0xbfe <__vector_2+0x34>
+     bfc:	1a c1       	rjmp	.+564    	; 0xe32 <__vector_2+0x268>
+	{
+		// Load Color Data To Outputs
+		switch(color_index)
+     bfe:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <color_index>
+     c02:	88 2f       	mov	r24, r24
+     c04:	90 e0       	ldi	r25, 0x00	; 0
+     c06:	81 30       	cpi	r24, 0x01	; 1
+     c08:	91 05       	cpc	r25, r1
+     c0a:	09 f4       	brne	.+2      	; 0xc0e <__vector_2+0x44>
+     c0c:	40 c0       	rjmp	.+128    	; 0xc8e <__vector_2+0xc4>
+     c0e:	82 30       	cpi	r24, 0x02	; 2
+     c10:	91 05       	cpc	r25, r1
+     c12:	1c f4       	brge	.+6      	; 0xc1a <__vector_2+0x50>
+     c14:	89 2b       	or	r24, r25
+     c16:	49 f0       	breq	.+18     	; 0xc2a <__vector_2+0x60>
+     c18:	cf c0       	rjmp	.+414    	; 0xdb8 <__vector_2+0x1ee>
+     c1a:	82 30       	cpi	r24, 0x02	; 2
+     c1c:	91 05       	cpc	r25, r1
+     c1e:	09 f4       	brne	.+2      	; 0xc22 <__vector_2+0x58>
+     c20:	68 c0       	rjmp	.+208    	; 0xcf2 <__vector_2+0x128>
+     c22:	03 97       	sbiw	r24, 0x03	; 3
+     c24:	09 f4       	brne	.+2      	; 0xc28 <__vector_2+0x5e>
+     c26:	97 c0       	rjmp	.+302    	; 0xd56 <__vector_2+0x18c>
+     c28:	c7 c0       	rjmp	.+398    	; 0xdb8 <__vector_2+0x1ee>
+		{
+			case GREEN:
+				PORTD = ringBufferColor[panel_index + bufferOffset].gn&0xF0;
+     c2a:	8b e2       	ldi	r24, 0x2B	; 43
+     c2c:	90 e0       	ldi	r25, 0x00	; 0
+     c2e:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     c32:	42 2f       	mov	r20, r18
+     c34:	50 e0       	ldi	r21, 0x00	; 0
+     c36:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     c3a:	22 2f       	mov	r18, r18
+     c3c:	30 e0       	ldi	r19, 0x00	; 0
+     c3e:	24 0f       	add	r18, r20
+     c40:	35 1f       	adc	r19, r21
+     c42:	22 0f       	add	r18, r18
+     c44:	33 1f       	adc	r19, r19
+     c46:	22 0f       	add	r18, r18
+     c48:	33 1f       	adc	r19, r19
+     c4a:	2a 5d       	subi	r18, 0xDA	; 218
+     c4c:	3e 4f       	sbci	r19, 0xFE	; 254
+     c4e:	f9 01       	movw	r30, r18
+     c50:	20 81       	ld	r18, Z
+     c52:	20 7f       	andi	r18, 0xF0	; 240
+     c54:	fc 01       	movw	r30, r24
+     c56:	20 83       	st	Z, r18
+				PORTC = ringBufferColor[panel_index + bufferOffset].gn&0x0F;
+     c58:	88 e2       	ldi	r24, 0x28	; 40
+     c5a:	90 e0       	ldi	r25, 0x00	; 0
+     c5c:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     c60:	42 2f       	mov	r20, r18
+     c62:	50 e0       	ldi	r21, 0x00	; 0
+     c64:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     c68:	22 2f       	mov	r18, r18
+     c6a:	30 e0       	ldi	r19, 0x00	; 0
+     c6c:	24 0f       	add	r18, r20
+     c6e:	35 1f       	adc	r19, r21
+     c70:	22 0f       	add	r18, r18
+     c72:	33 1f       	adc	r19, r19
+     c74:	22 0f       	add	r18, r18
+     c76:	33 1f       	adc	r19, r19
+     c78:	2a 5d       	subi	r18, 0xDA	; 218
+     c7a:	3e 4f       	sbci	r19, 0xFE	; 254
+     c7c:	f9 01       	movw	r30, r18
+     c7e:	20 81       	ld	r18, Z
+     c80:	2f 70       	andi	r18, 0x0F	; 15
+     c82:	fc 01       	movw	r30, r24
+     c84:	20 83       	st	Z, r18
+				color_index = RED;		// Set next color
+     c86:	81 e0       	ldi	r24, 0x01	; 1
+     c88:	80 93 18 01 	sts	0x0118, r24	; 0x800118 <color_index>
+				break;
+     c8c:	a0 c0       	rjmp	.+320    	; 0xdce <__vector_2+0x204>
+			case RED:
+				PORTD = ringBufferColor[panel_index + bufferOffset].rd&0xF0;
+     c8e:	8b e2       	ldi	r24, 0x2B	; 43
+     c90:	90 e0       	ldi	r25, 0x00	; 0
+     c92:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     c96:	42 2f       	mov	r20, r18
+     c98:	50 e0       	ldi	r21, 0x00	; 0
+     c9a:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     c9e:	22 2f       	mov	r18, r18
+     ca0:	30 e0       	ldi	r19, 0x00	; 0
+     ca2:	24 0f       	add	r18, r20
+     ca4:	35 1f       	adc	r19, r21
+     ca6:	22 0f       	add	r18, r18
+     ca8:	33 1f       	adc	r19, r19
+     caa:	22 0f       	add	r18, r18
+     cac:	33 1f       	adc	r19, r19
+     cae:	2b 5d       	subi	r18, 0xDB	; 219
+     cb0:	3e 4f       	sbci	r19, 0xFE	; 254
+     cb2:	f9 01       	movw	r30, r18
+     cb4:	20 81       	ld	r18, Z
+     cb6:	20 7f       	andi	r18, 0xF0	; 240
+     cb8:	fc 01       	movw	r30, r24
+     cba:	20 83       	st	Z, r18
+				PORTC = ringBufferColor[panel_index + bufferOffset].rd&0x0F;
+     cbc:	88 e2       	ldi	r24, 0x28	; 40
+     cbe:	90 e0       	ldi	r25, 0x00	; 0
+     cc0:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     cc4:	42 2f       	mov	r20, r18
+     cc6:	50 e0       	ldi	r21, 0x00	; 0
+     cc8:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     ccc:	22 2f       	mov	r18, r18
+     cce:	30 e0       	ldi	r19, 0x00	; 0
+     cd0:	24 0f       	add	r18, r20
+     cd2:	35 1f       	adc	r19, r21
+     cd4:	22 0f       	add	r18, r18
+     cd6:	33 1f       	adc	r19, r19
+     cd8:	22 0f       	add	r18, r18
+     cda:	33 1f       	adc	r19, r19
+     cdc:	2b 5d       	subi	r18, 0xDB	; 219
+     cde:	3e 4f       	sbci	r19, 0xFE	; 254
+     ce0:	f9 01       	movw	r30, r18
+     ce2:	20 81       	ld	r18, Z
+     ce4:	2f 70       	andi	r18, 0x0F	; 15
+     ce6:	fc 01       	movw	r30, r24
+     ce8:	20 83       	st	Z, r18
+				color_index = BLUE;		// Set next color
+     cea:	82 e0       	ldi	r24, 0x02	; 2
+     cec:	80 93 18 01 	sts	0x0118, r24	; 0x800118 <color_index>
+				break;
+     cf0:	6e c0       	rjmp	.+220    	; 0xdce <__vector_2+0x204>
+			case BLUE:
+				PORTD = ringBufferColor[panel_index + bufferOffset].bl&0xF0;
+     cf2:	8b e2       	ldi	r24, 0x2B	; 43
+     cf4:	90 e0       	ldi	r25, 0x00	; 0
+     cf6:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     cfa:	42 2f       	mov	r20, r18
+     cfc:	50 e0       	ldi	r21, 0x00	; 0
+     cfe:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     d02:	22 2f       	mov	r18, r18
+     d04:	30 e0       	ldi	r19, 0x00	; 0
+     d06:	24 0f       	add	r18, r20
+     d08:	35 1f       	adc	r19, r21
+     d0a:	22 0f       	add	r18, r18
+     d0c:	33 1f       	adc	r19, r19
+     d0e:	22 0f       	add	r18, r18
+     d10:	33 1f       	adc	r19, r19
+     d12:	29 5d       	subi	r18, 0xD9	; 217
+     d14:	3e 4f       	sbci	r19, 0xFE	; 254
+     d16:	f9 01       	movw	r30, r18
+     d18:	20 81       	ld	r18, Z
+     d1a:	20 7f       	andi	r18, 0xF0	; 240
+     d1c:	fc 01       	movw	r30, r24
+     d1e:	20 83       	st	Z, r18
+				PORTC = ringBufferColor[panel_index + bufferOffset].bl&0x0F;
+     d20:	88 e2       	ldi	r24, 0x28	; 40
+     d22:	90 e0       	ldi	r25, 0x00	; 0
+     d24:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     d28:	42 2f       	mov	r20, r18
+     d2a:	50 e0       	ldi	r21, 0x00	; 0
+     d2c:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     d30:	22 2f       	mov	r18, r18
+     d32:	30 e0       	ldi	r19, 0x00	; 0
+     d34:	24 0f       	add	r18, r20
+     d36:	35 1f       	adc	r19, r21
+     d38:	22 0f       	add	r18, r18
+     d3a:	33 1f       	adc	r19, r19
+     d3c:	22 0f       	add	r18, r18
+     d3e:	33 1f       	adc	r19, r19
+     d40:	29 5d       	subi	r18, 0xD9	; 217
+     d42:	3e 4f       	sbci	r19, 0xFE	; 254
+     d44:	f9 01       	movw	r30, r18
+     d46:	20 81       	ld	r18, Z
+     d48:	2f 70       	andi	r18, 0x0F	; 15
+     d4a:	fc 01       	movw	r30, r24
+     d4c:	20 83       	st	Z, r18
+				color_index = WHITE;	// Set next color
+     d4e:	83 e0       	ldi	r24, 0x03	; 3
+     d50:	80 93 18 01 	sts	0x0118, r24	; 0x800118 <color_index>
+				break;
+     d54:	3c c0       	rjmp	.+120    	; 0xdce <__vector_2+0x204>
+			case WHITE:
+				PORTD = ringBufferColor[panel_index + bufferOffset].wh&0xF0;
+     d56:	8b e2       	ldi	r24, 0x2B	; 43
+     d58:	90 e0       	ldi	r25, 0x00	; 0
+     d5a:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     d5e:	42 2f       	mov	r20, r18
+     d60:	50 e0       	ldi	r21, 0x00	; 0
+     d62:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     d66:	22 2f       	mov	r18, r18
+     d68:	30 e0       	ldi	r19, 0x00	; 0
+     d6a:	24 0f       	add	r18, r20
+     d6c:	35 1f       	adc	r19, r21
+     d6e:	22 0f       	add	r18, r18
+     d70:	33 1f       	adc	r19, r19
+     d72:	22 0f       	add	r18, r18
+     d74:	33 1f       	adc	r19, r19
+     d76:	28 5d       	subi	r18, 0xD8	; 216
+     d78:	3e 4f       	sbci	r19, 0xFE	; 254
+     d7a:	f9 01       	movw	r30, r18
+     d7c:	20 81       	ld	r18, Z
+     d7e:	20 7f       	andi	r18, 0xF0	; 240
+     d80:	fc 01       	movw	r30, r24
+     d82:	20 83       	st	Z, r18
+				PORTC = ringBufferColor[panel_index + bufferOffset].wh&0x0F;
+     d84:	88 e2       	ldi	r24, 0x28	; 40
+     d86:	90 e0       	ldi	r25, 0x00	; 0
+     d88:	20 91 1a 01 	lds	r18, 0x011A	; 0x80011a <panel_index>
+     d8c:	42 2f       	mov	r20, r18
+     d8e:	50 e0       	ldi	r21, 0x00	; 0
+     d90:	20 91 17 01 	lds	r18, 0x0117	; 0x800117 <bufferOffset>
+     d94:	22 2f       	mov	r18, r18
+     d96:	30 e0       	ldi	r19, 0x00	; 0
+     d98:	24 0f       	add	r18, r20
+     d9a:	35 1f       	adc	r19, r21
+     d9c:	22 0f       	add	r18, r18
+     d9e:	33 1f       	adc	r19, r19
+     da0:	22 0f       	add	r18, r18
+     da2:	33 1f       	adc	r19, r19
+     da4:	28 5d       	subi	r18, 0xD8	; 216
+     da6:	3e 4f       	sbci	r19, 0xFE	; 254
+     da8:	f9 01       	movw	r30, r18
+     daa:	20 81       	ld	r18, Z
+     dac:	2f 70       	andi	r18, 0x0F	; 15
+     dae:	fc 01       	movw	r30, r24
+     db0:	20 83       	st	Z, r18
+				color_index = GREEN;	// Set next color
+     db2:	10 92 18 01 	sts	0x0118, r1	; 0x800118 <color_index>
+				break;
+     db6:	0b c0       	rjmp	.+22     	; 0xdce <__vector_2+0x204>
+			default:
+				PORTD = 0;
+     db8:	8b e2       	ldi	r24, 0x2B	; 43
+     dba:	90 e0       	ldi	r25, 0x00	; 0
+     dbc:	fc 01       	movw	r30, r24
+     dbe:	10 82       	st	Z, r1
+				PORTC = 0;
+     dc0:	88 e2       	ldi	r24, 0x28	; 40
+     dc2:	90 e0       	ldi	r25, 0x00	; 0
+     dc4:	fc 01       	movw	r30, r24
+     dc6:	10 82       	st	Z, r1
+				color_index = GREEN;	// Set next color
+     dc8:	10 92 18 01 	sts	0x0118, r1	; 0x800118 <color_index>
+				break;
+     dcc:	00 00       	nop
+		}
+		
+		// Start LED-Protocol sending process
+		PORTD |= (1<<PORTD2);	// Set Send-Pulse
+     dce:	8b e2       	ldi	r24, 0x2B	; 43
+     dd0:	90 e0       	ldi	r25, 0x00	; 0
+     dd2:	2b e2       	ldi	r18, 0x2B	; 43
+     dd4:	30 e0       	ldi	r19, 0x00	; 0
+     dd6:	f9 01       	movw	r30, r18
+     dd8:	20 81       	ld	r18, Z
+     dda:	24 60       	ori	r18, 0x04	; 4
+     ddc:	fc 01       	movw	r30, r24
+     dde:	20 83       	st	Z, r18
+		PORTD &= ~(1<<PORTD2);	// Clear Send-Pulse
+     de0:	8b e2       	ldi	r24, 0x2B	; 43
+     de2:	90 e0       	ldi	r25, 0x00	; 0
+     de4:	2b e2       	ldi	r18, 0x2B	; 43
+     de6:	30 e0       	ldi	r19, 0x00	; 0
+     de8:	f9 01       	movw	r30, r18
+     dea:	20 81       	ld	r18, Z
+     dec:	2b 7f       	andi	r18, 0xFB	; 251
+     dee:	fc 01       	movw	r30, r24
+     df0:	20 83       	st	Z, r18
+
+		if (color_index == GREEN)
+     df2:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <color_index>
+     df6:	88 23       	and	r24, r24
+     df8:	01 f5       	brne	.+64     	; 0xe3a <__vector_2+0x270>
+		{
+			//increase led index by 1 unless it already is at number of leds per panel (-> reset)
+			if (led_index >= (NUM_LEDS_PER_MODULE-1))
+     dfa:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <led_index>
+     dfe:	8e 30       	cpi	r24, 0x0E	; 14
+     e00:	90 f0       	brcs	.+36     	; 0xe26 <__vector_2+0x25c>
+			{
+				led_index = 0;
+     e02:	10 92 19 01 	sts	0x0119, r1	; 0x800119 <led_index>
+				//increase panel_index by 1 unless it is already at the num of attached modules
+				if(panel_index < (NUM_ATTACHED_MODULES-1))
+     e06:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <panel_index>
+     e0a:	84 30       	cpi	r24, 0x04	; 4
+     e0c:	30 f4       	brcc	.+12     	; 0xe1a <__vector_2+0x250>
+				{
+					panel_index += 1;
+     e0e:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <panel_index>
+     e12:	8f 5f       	subi	r24, 0xFF	; 255
+     e14:	80 93 1a 01 	sts	0x011A, r24	; 0x80011a <panel_index>
+	else
+	{
+		flag_last_led_written = FALSE; // Reset Flag
+		flag_sending_in_progress = FALSE;
+	}
+}
+     e18:	10 c0       	rjmp	.+32     	; 0xe3a <__vector_2+0x270>
+				{
+					panel_index += 1;
+				}
+				else
+				{
+					panel_index = 0;
+     e1a:	10 92 1a 01 	sts	0x011A, r1	; 0x80011a <panel_index>
+					flag_last_led_written = TRUE;		
+     e1e:	81 e0       	ldi	r24, 0x01	; 1
+     e20:	80 93 1b 01 	sts	0x011B, r24	; 0x80011b <flag_last_led_written>
+	else
+	{
+		flag_last_led_written = FALSE; // Reset Flag
+		flag_sending_in_progress = FALSE;
+	}
+}
+     e24:	0a c0       	rjmp	.+20     	; 0xe3a <__vector_2+0x270>
+					flag_last_led_written = TRUE;		
+				}
+			}
+			else
+			{
+				led_index += 1;
+     e26:	80 91 19 01 	lds	r24, 0x0119	; 0x800119 <led_index>
+     e2a:	8f 5f       	subi	r24, 0xFF	; 255
+     e2c:	80 93 19 01 	sts	0x0119, r24	; 0x800119 <led_index>
+	else
+	{
+		flag_last_led_written = FALSE; // Reset Flag
+		flag_sending_in_progress = FALSE;
+	}
+}
+     e30:	04 c0       	rjmp	.+8      	; 0xe3a <__vector_2+0x270>
+			}
+		}
+	}
+	else
+	{
+		flag_last_led_written = FALSE; // Reset Flag
+     e32:	10 92 1b 01 	sts	0x011B, r1	; 0x80011b <flag_last_led_written>
+		flag_sending_in_progress = FALSE;
+     e36:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <flag_sending_in_progress>
+	}
+}
+     e3a:	00 00       	nop
+     e3c:	df 91       	pop	r29
+     e3e:	cf 91       	pop	r28
+     e40:	ff 91       	pop	r31
+     e42:	ef 91       	pop	r30
+     e44:	9f 91       	pop	r25
+     e46:	8f 91       	pop	r24
+     e48:	5f 91       	pop	r21
+     e4a:	4f 91       	pop	r20
+     e4c:	3f 91       	pop	r19
+     e4e:	2f 91       	pop	r18
+     e50:	0f 90       	pop	r0
+     e52:	00 92 5f 00 	sts	0x005F, r0	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+     e56:	0f 90       	pop	r0
+     e58:	1f 90       	pop	r1
+     e5a:	18 95       	reti
+
+00000e5c <main>:
+//**************************************************************************************
+//***                                function "main"                                 ***
+//**************************************************************************************
+
+int main(void)
+{
+     e5c:	cf 93       	push	r28
+     e5e:	df 93       	push	r29
+     e60:	cd b7       	in	r28, 0x3d	; 61
+     e62:	de b7       	in	r29, 0x3e	; 62
+	// Do initialization stuff
+	PortInit();
+     e64:	0e 94 b8 04 	call	0x970	; 0x970 <PortInit>
+	SPI_SlaveInit();
+     e68:	0e 94 cf 04 	call	0x99e	; 0x99e <SPI_SlaveInit>
+	InterruptInit();
+     e6c:	0e 94 dc 04 	call	0x9b8	; 0x9b8 <InterruptInit>
+	TimerInit();
+     e70:	0e 94 f2 04 	call	0x9e4	; 0x9e4 <TimerInit>
+	UsartInit();
+     e74:	0e 94 11 05 	call	0xa22	; 0xa22 <UsartInit>
+	BufferInit();
+     e78:	0e 94 32 05 	call	0xa64	; 0xa64 <BufferInit>
+	
+	
+	// General interrupt enable
+	sei();
+     e7c:	78 94       	sei
+	
+	mode = MODE_OFF;
+     e7e:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <__data_end>
+	
+	//counter deaktivieren --> prescaler alle auf 0
+	TCCR1B  &= 0xF8;
+     e82:	81 e8       	ldi	r24, 0x81	; 129
+     e84:	90 e0       	ldi	r25, 0x00	; 0
+     e86:	21 e8       	ldi	r18, 0x81	; 129
+     e88:	30 e0       	ldi	r19, 0x00	; 0
+     e8a:	f9 01       	movw	r30, r18
+     e8c:	20 81       	ld	r18, Z
+     e8e:	28 7f       	andi	r18, 0xF8	; 248
+     e90:	fc 01       	movw	r30, r24
+     e92:	20 83       	st	Z, r18
+	
+	flagColorChanged = TRUE;
+     e94:	81 e0       	ldi	r24, 0x01	; 1
+     e96:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <flagColorChanged>
+	
+	while (1)
+    {
+		// This function fetches data from SPI and saves it
+		FetchSpi();
+     e9a:	0e 94 7d 07 	call	0xefa	; 0xefa <FetchSpi>
+		
+		// Calculate colors
+		if(flagColorChanged||flagModeChanged)
+     e9e:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <flagColorChanged>
+     ea2:	88 23       	and	r24, r24
+     ea4:	21 f4       	brne	.+8      	; 0xeae <main+0x52>
+     ea6:	80 91 1f 01 	lds	r24, 0x011F	; 0x80011f <flagModeChanged>
+     eaa:	88 23       	and	r24, r24
+     eac:	b1 f3       	breq	.-20     	; 0xe9a <main+0x3e>
+		{
+			calculateColorAndFillBuffer();
+     eae:	0e 94 53 00 	call	0xa6	; 0xa6 <calculateColorAndFillBuffer>
+			
+			//if mode == static
+			if (mode != MODE_TWOCOLOR_FADER)
+     eb2:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <__data_end>
+     eb6:	83 30       	cpi	r24, 0x03	; 3
+     eb8:	91 f0       	breq	.+36     	; 0xede <main+0x82>
+			{
+				uart_puts("counter deaktiviert\n");
+     eba:	81 e0       	ldi	r24, 0x01	; 1
+     ebc:	91 e0       	ldi	r25, 0x01	; 1
+     ebe:	0e 94 4e 09 	call	0x129c	; 0x129c <uart_puts>
+				//counter deaktivieren --> prescaler alle auf 0
+				TCCR1B  &= 0xF8;
+     ec2:	81 e8       	ldi	r24, 0x81	; 129
+     ec4:	90 e0       	ldi	r25, 0x00	; 0
+     ec6:	21 e8       	ldi	r18, 0x81	; 129
+     ec8:	30 e0       	ldi	r19, 0x00	; 0
+     eca:	f9 01       	movw	r30, r18
+     ecc:	20 81       	ld	r18, Z
+     ece:	28 7f       	andi	r18, 0xF8	; 248
+     ed0:	fc 01       	movw	r30, r24
+     ed2:	20 83       	st	Z, r18
+				// reset buffer offset
+				bufferOffset = 0;	
+     ed4:	10 92 17 01 	sts	0x0117, r1	; 0x800117 <bufferOffset>
+				// Call ISR for sending led Protocol
+				INT1_vect();
+     ed8:	0e 94 e5 05 	call	0xbca	; 0xbca <__vector_2>
+     edc:	09 c0       	rjmp	.+18     	; 0xef0 <main+0x94>
+			}
+			else
+			{
+				// counter aktivieren --> prescaler auf 8 (CS11)
+				TCCR1B  |= (1 << CS11);
+     ede:	81 e8       	ldi	r24, 0x81	; 129
+     ee0:	90 e0       	ldi	r25, 0x00	; 0
+     ee2:	21 e8       	ldi	r18, 0x81	; 129
+     ee4:	30 e0       	ldi	r19, 0x00	; 0
+     ee6:	f9 01       	movw	r30, r18
+     ee8:	20 81       	ld	r18, Z
+     eea:	22 60       	ori	r18, 0x02	; 2
+     eec:	fc 01       	movw	r30, r24
+     eee:	20 83       	st	Z, r18
+			}
+			
+			//Reset Flags
+			flagColorChanged = FALSE;
+     ef0:	10 92 1e 01 	sts	0x011E, r1	; 0x80011e <flagColorChanged>
+			flagModeChanged	 = FALSE;
+     ef4:	10 92 1f 01 	sts	0x011F, r1	; 0x80011f <flagModeChanged>
+		}
+	}
+     ef8:	d0 cf       	rjmp	.-96     	; 0xe9a <main+0x3e>
+
+00000efa <FetchSpi>:
+//**************************************************************************************
+//***                              function "FetchSpi"                               ***
+//**************************************************************************************
+
+void FetchSpi(void)
+{
+     efa:	cf 93       	push	r28
+     efc:	df 93       	push	r29
+     efe:	1f 92       	push	r1
+     f00:	cd b7       	in	r28, 0x3d	; 61
+     f02:	de b7       	in	r29, 0x3e	; 62
+	static uint8_t	cacheGn;
+	static uint8_t	cacheBl;
+	static uint8_t	cacheWh;
+	
+	// If available read data from SPI (Check interrupt flag)
+	if(SPSR & 0x80)
+     f04:	8d e4       	ldi	r24, 0x4D	; 77
+     f06:	90 e0       	ldi	r25, 0x00	; 0
+     f08:	fc 01       	movw	r30, r24
+     f0a:	80 81       	ld	r24, Z
+     f0c:	88 23       	and	r24, r24
+     f0e:	0c f0       	brlt	.+2      	; 0xf12 <FetchSpi+0x18>
+     f10:	a4 c1       	rjmp	.+840    	; 0x125a <FetchSpi+0x360>
+	{
+		// reset interrupt flag
+		SPSR = SPSR & 0x7F;
+     f12:	8d e4       	ldi	r24, 0x4D	; 77
+     f14:	90 e0       	ldi	r25, 0x00	; 0
+     f16:	2d e4       	ldi	r18, 0x4D	; 77
+     f18:	30 e0       	ldi	r19, 0x00	; 0
+     f1a:	f9 01       	movw	r30, r18
+     f1c:	20 81       	ld	r18, Z
+     f1e:	2f 77       	andi	r18, 0x7F	; 127
+     f20:	fc 01       	movw	r30, r24
+     f22:	20 83       	st	Z, r18
+		
+		// Fetch received data byte 
+		dataByte = SPDR;
+     f24:	8e e4       	ldi	r24, 0x4E	; 78
+     f26:	90 e0       	ldi	r25, 0x00	; 0
+     f28:	fc 01       	movw	r30, r24
+     f2a:	80 81       	ld	r24, Z
+     f2c:	89 83       	std	Y+1, r24	; 0x01
+		
+		// FSM
+		switch (fsmState)
+     f2e:	80 91 1d 01 	lds	r24, 0x011D	; 0x80011d <fsmState>
+     f32:	88 2f       	mov	r24, r24
+     f34:	90 e0       	ldi	r25, 0x00	; 0
+     f36:	82 30       	cpi	r24, 0x02	; 2
+     f38:	91 05       	cpc	r25, r1
+     f3a:	89 f1       	breq	.+98     	; 0xf9e <FetchSpi+0xa4>
+     f3c:	83 30       	cpi	r24, 0x03	; 3
+     f3e:	91 05       	cpc	r25, r1
+     f40:	2c f4       	brge	.+10     	; 0xf4c <FetchSpi+0x52>
+     f42:	00 97       	sbiw	r24, 0x00	; 0
+     f44:	71 f0       	breq	.+28     	; 0xf62 <FetchSpi+0x68>
+     f46:	01 97       	sbiw	r24, 0x01	; 1
+     f48:	c1 f0       	breq	.+48     	; 0xf7a <FetchSpi+0x80>
+     f4a:	83 c1       	rjmp	.+774    	; 0x1252 <FetchSpi+0x358>
+     f4c:	84 30       	cpi	r24, 0x04	; 4
+     f4e:	91 05       	cpc	r25, r1
+     f50:	09 f4       	brne	.+2      	; 0xf54 <FetchSpi+0x5a>
+     f52:	49 c0       	rjmp	.+146    	; 0xfe6 <FetchSpi+0xec>
+     f54:	84 30       	cpi	r24, 0x04	; 4
+     f56:	91 05       	cpc	r25, r1
+     f58:	a4 f1       	brlt	.+104    	; 0xfc2 <FetchSpi+0xc8>
+     f5a:	05 97       	sbiw	r24, 0x05	; 5
+     f5c:	09 f4       	brne	.+2      	; 0xf60 <FetchSpi+0x66>
+     f5e:	55 c0       	rjmp	.+170    	; 0x100a <FetchSpi+0x110>
+     f60:	78 c1       	rjmp	.+752    	; 0x1252 <FetchSpi+0x358>
+		{
+			case STATE_IDLE:	
+				//Check if MSB is HIGH
+				if(dataByte & 0x80)
+     f62:	89 81       	ldd	r24, Y+1	; 0x01
+     f64:	88 23       	and	r24, r24
+     f66:	0c f0       	brlt	.+2      	; 0xf6a <FetchSpi+0x70>
+     f68:	77 c1       	rjmp	.+750    	; 0x1258 <FetchSpi+0x35e>
+				{
+					cacheAddr = (dataByte & 0x7F);
+     f6a:	89 81       	ldd	r24, Y+1	; 0x01
+     f6c:	8f 77       	andi	r24, 0x7F	; 127
+     f6e:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+     f72:	81 e0       	ldi	r24, 0x01	; 1
+     f74:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				break;
+     f78:	6f c1       	rjmp	.+734    	; 0x1258 <FetchSpi+0x35e>
+			case STATE_ADDR_RECEIVED:	
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+     f7a:	89 81       	ldd	r24, Y+1	; 0x01
+     f7c:	88 23       	and	r24, r24
+     f7e:	3c f0       	brlt	.+14     	; 0xf8e <FetchSpi+0x94>
+				{
+					cacheRd = dataByte;
+     f80:	89 81       	ldd	r24, Y+1	; 0x01
+     f82:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <cacheRd.1625>
+					fsmState = STATE_RD_RECEIVED;
+     f86:	82 e0       	ldi	r24, 0x02	; 2
+     f88:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				break;	
+     f8c:	66 c1       	rjmp	.+716    	; 0x125a <FetchSpi+0x360>
+					cacheRd = dataByte;
+					fsmState = STATE_RD_RECEIVED;
+				}
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+     f8e:	89 81       	ldd	r24, Y+1	; 0x01
+     f90:	8f 77       	andi	r24, 0x7F	; 127
+     f92:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+     f96:	81 e0       	ldi	r24, 0x01	; 1
+     f98:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				break;	
+     f9c:	5e c1       	rjmp	.+700    	; 0x125a <FetchSpi+0x360>
+			case STATE_RD_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+     f9e:	89 81       	ldd	r24, Y+1	; 0x01
+     fa0:	88 23       	and	r24, r24
+     fa2:	3c f0       	brlt	.+14     	; 0xfb2 <FetchSpi+0xb8>
+				{
+					cacheGn = dataByte;
+     fa4:	89 81       	ldd	r24, Y+1	; 0x01
+     fa6:	80 93 22 01 	sts	0x0122, r24	; 0x800122 <cacheGn.1626>
+					fsmState = STATE_GN_RECEIVED;
+     faa:	83 e0       	ldi	r24, 0x03	; 3
+     fac:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				break;
+     fb0:	54 c1       	rjmp	.+680    	; 0x125a <FetchSpi+0x360>
+					cacheGn = dataByte;
+					fsmState = STATE_GN_RECEIVED;
+				}
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+     fb2:	89 81       	ldd	r24, Y+1	; 0x01
+     fb4:	8f 77       	andi	r24, 0x7F	; 127
+     fb6:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+     fba:	81 e0       	ldi	r24, 0x01	; 1
+     fbc:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				break;
+     fc0:	4c c1       	rjmp	.+664    	; 0x125a <FetchSpi+0x360>
+			case STATE_GN_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+     fc2:	89 81       	ldd	r24, Y+1	; 0x01
+     fc4:	88 23       	and	r24, r24
+     fc6:	3c f0       	brlt	.+14     	; 0xfd6 <FetchSpi+0xdc>
+				{
+					cacheBl = dataByte;
+     fc8:	89 81       	ldd	r24, Y+1	; 0x01
+     fca:	80 93 23 01 	sts	0x0123, r24	; 0x800123 <cacheBl.1627>
+					fsmState = STATE_BL_RECEIVED;
+     fce:	84 e0       	ldi	r24, 0x04	; 4
+     fd0:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				break;
+     fd4:	42 c1       	rjmp	.+644    	; 0x125a <FetchSpi+0x360>
+					cacheBl = dataByte;
+					fsmState = STATE_BL_RECEIVED;
+				}
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+     fd6:	89 81       	ldd	r24, Y+1	; 0x01
+     fd8:	8f 77       	andi	r24, 0x7F	; 127
+     fda:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+     fde:	81 e0       	ldi	r24, 0x01	; 1
+     fe0:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				break;
+     fe4:	3a c1       	rjmp	.+628    	; 0x125a <FetchSpi+0x360>
+			case STATE_BL_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+     fe6:	89 81       	ldd	r24, Y+1	; 0x01
+     fe8:	88 23       	and	r24, r24
+     fea:	3c f0       	brlt	.+14     	; 0xffa <FetchSpi+0x100>
+				{
+					cacheWh = dataByte;
+     fec:	89 81       	ldd	r24, Y+1	; 0x01
+     fee:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <cacheWh.1628>
+					fsmState = STATE_WH_RECEIVED;
+     ff2:	85 e0       	ldi	r24, 0x05	; 5
+     ff4:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				break;
+     ff8:	30 c1       	rjmp	.+608    	; 0x125a <FetchSpi+0x360>
+					cacheWh = dataByte;
+					fsmState = STATE_WH_RECEIVED;
+				}
+				else
+				{
+					cacheAddr = (dataByte & 0x7F);
+     ffa:	89 81       	ldd	r24, Y+1	; 0x01
+     ffc:	8f 77       	andi	r24, 0x7F	; 127
+     ffe:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+    1002:	81 e0       	ldi	r24, 0x01	; 1
+    1004:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				break;
+    1008:	28 c1       	rjmp	.+592    	; 0x125a <FetchSpi+0x360>
+			case STATE_WH_RECEIVED:		
+				//Check if the four MSB are LOW
+				if((dataByte & 0xF0) == 0)
+    100a:	89 81       	ldd	r24, Y+1	; 0x01
+    100c:	88 2f       	mov	r24, r24
+    100e:	90 e0       	ldi	r25, 0x00	; 0
+    1010:	80 7f       	andi	r24, 0xF0	; 240
+    1012:	99 27       	eor	r25, r25
+    1014:	89 2b       	or	r24, r25
+    1016:	09 f0       	breq	.+2      	; 0x101a <FetchSpi+0x120>
+    1018:	0e c1       	rjmp	.+540    	; 0x1236 <FetchSpi+0x33c>
+				{
+					// Save data according to address
+					// Is data for individualPanelColor?
+					if(cacheAddr < NUM_ATTACHED_MODULES)
+    101a:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    101e:	85 30       	cpi	r24, 0x05	; 5
+    1020:	08 f0       	brcs	.+2      	; 0x1024 <FetchSpi+0x12a>
+    1022:	72 c0       	rjmp	.+228    	; 0x1108 <FetchSpi+0x20e>
+					{
+						individualPanelColor[cacheAddr].rd = cacheRd | ((dataByte & 0x01) << 7);
+    1024:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1028:	88 2f       	mov	r24, r24
+    102a:	90 e0       	ldi	r25, 0x00	; 0
+    102c:	29 81       	ldd	r18, Y+1	; 0x01
+    102e:	22 2f       	mov	r18, r18
+    1030:	30 e0       	ldi	r19, 0x00	; 0
+    1032:	36 95       	lsr	r19
+    1034:	32 2f       	mov	r19, r18
+    1036:	22 27       	eor	r18, r18
+    1038:	37 95       	ror	r19
+    103a:	27 95       	ror	r18
+    103c:	32 2f       	mov	r19, r18
+    103e:	20 91 21 01 	lds	r18, 0x0121	; 0x800121 <cacheRd.1625>
+    1042:	23 2b       	or	r18, r19
+    1044:	88 0f       	add	r24, r24
+    1046:	99 1f       	adc	r25, r25
+    1048:	88 0f       	add	r24, r24
+    104a:	99 1f       	adc	r25, r25
+    104c:	8b 54       	subi	r24, 0x4B	; 75
+    104e:	9d 4f       	sbci	r25, 0xFD	; 253
+    1050:	fc 01       	movw	r30, r24
+    1052:	20 83       	st	Z, r18
+						individualPanelColor[cacheAddr].gn = cacheGn | ((dataByte & 0x02) << 6);
+    1054:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1058:	88 2f       	mov	r24, r24
+    105a:	90 e0       	ldi	r25, 0x00	; 0
+    105c:	29 81       	ldd	r18, Y+1	; 0x01
+    105e:	22 2f       	mov	r18, r18
+    1060:	30 e0       	ldi	r19, 0x00	; 0
+    1062:	22 70       	andi	r18, 0x02	; 2
+    1064:	33 27       	eor	r19, r19
+    1066:	00 24       	eor	r0, r0
+    1068:	36 95       	lsr	r19
+    106a:	27 95       	ror	r18
+    106c:	07 94       	ror	r0
+    106e:	36 95       	lsr	r19
+    1070:	27 95       	ror	r18
+    1072:	07 94       	ror	r0
+    1074:	32 2f       	mov	r19, r18
+    1076:	20 2d       	mov	r18, r0
+    1078:	32 2f       	mov	r19, r18
+    107a:	20 91 22 01 	lds	r18, 0x0122	; 0x800122 <cacheGn.1626>
+    107e:	23 2b       	or	r18, r19
+    1080:	88 0f       	add	r24, r24
+    1082:	99 1f       	adc	r25, r25
+    1084:	88 0f       	add	r24, r24
+    1086:	99 1f       	adc	r25, r25
+    1088:	8a 54       	subi	r24, 0x4A	; 74
+    108a:	9d 4f       	sbci	r25, 0xFD	; 253
+    108c:	fc 01       	movw	r30, r24
+    108e:	20 83       	st	Z, r18
+						individualPanelColor[cacheAddr].bl = cacheBl | ((dataByte & 0x04) << 5);
+    1090:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1094:	88 2f       	mov	r24, r24
+    1096:	90 e0       	ldi	r25, 0x00	; 0
+    1098:	29 81       	ldd	r18, Y+1	; 0x01
+    109a:	22 2f       	mov	r18, r18
+    109c:	30 e0       	ldi	r19, 0x00	; 0
+    109e:	24 70       	andi	r18, 0x04	; 4
+    10a0:	33 27       	eor	r19, r19
+    10a2:	22 0f       	add	r18, r18
+    10a4:	33 1f       	adc	r19, r19
+    10a6:	22 95       	swap	r18
+    10a8:	32 95       	swap	r19
+    10aa:	30 7f       	andi	r19, 0xF0	; 240
+    10ac:	32 27       	eor	r19, r18
+    10ae:	20 7f       	andi	r18, 0xF0	; 240
+    10b0:	32 27       	eor	r19, r18
+    10b2:	32 2f       	mov	r19, r18
+    10b4:	20 91 23 01 	lds	r18, 0x0123	; 0x800123 <cacheBl.1627>
+    10b8:	23 2b       	or	r18, r19
+    10ba:	88 0f       	add	r24, r24
+    10bc:	99 1f       	adc	r25, r25
+    10be:	88 0f       	add	r24, r24
+    10c0:	99 1f       	adc	r25, r25
+    10c2:	89 54       	subi	r24, 0x49	; 73
+    10c4:	9d 4f       	sbci	r25, 0xFD	; 253
+    10c6:	fc 01       	movw	r30, r24
+    10c8:	20 83       	st	Z, r18
+						individualPanelColor[cacheAddr].wh = cacheWh | ((dataByte & 0x08) << 4);
+    10ca:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    10ce:	88 2f       	mov	r24, r24
+    10d0:	90 e0       	ldi	r25, 0x00	; 0
+    10d2:	29 81       	ldd	r18, Y+1	; 0x01
+    10d4:	22 2f       	mov	r18, r18
+    10d6:	30 e0       	ldi	r19, 0x00	; 0
+    10d8:	28 70       	andi	r18, 0x08	; 8
+    10da:	33 27       	eor	r19, r19
+    10dc:	22 95       	swap	r18
+    10de:	32 95       	swap	r19
+    10e0:	30 7f       	andi	r19, 0xF0	; 240
+    10e2:	32 27       	eor	r19, r18
+    10e4:	20 7f       	andi	r18, 0xF0	; 240
+    10e6:	32 27       	eor	r19, r18
+    10e8:	32 2f       	mov	r19, r18
+    10ea:	20 91 24 01 	lds	r18, 0x0124	; 0x800124 <cacheWh.1628>
+    10ee:	23 2b       	or	r18, r19
+    10f0:	88 0f       	add	r24, r24
+    10f2:	99 1f       	adc	r25, r25
+    10f4:	88 0f       	add	r24, r24
+    10f6:	99 1f       	adc	r25, r25
+    10f8:	88 54       	subi	r24, 0x48	; 72
+    10fa:	9d 4f       	sbci	r25, 0xFD	; 253
+    10fc:	fc 01       	movw	r30, r24
+    10fe:	20 83       	st	Z, r18
+						flagColorChanged = TRUE;
+    1100:	81 e0       	ldi	r24, 0x01	; 1
+    1102:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <flagColorChanged>
+    1106:	94 c0       	rjmp	.+296    	; 0x1230 <FetchSpi+0x336>
+					}
+					// Is data for effectColorTarget?
+					else if((99 < cacheAddr) && (cacheAddr < (100 + NUM_EFFECT_COLORS)))
+    1108:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    110c:	84 36       	cpi	r24, 0x64	; 100
+    110e:	08 f4       	brcc	.+2      	; 0x1112 <FetchSpi+0x218>
+    1110:	7f c0       	rjmp	.+254    	; 0x1210 <FetchSpi+0x316>
+    1112:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1116:	87 36       	cpi	r24, 0x67	; 103
+    1118:	08 f0       	brcs	.+2      	; 0x111c <FetchSpi+0x222>
+    111a:	7a c0       	rjmp	.+244    	; 0x1210 <FetchSpi+0x316>
+					{
+						effectColorTarget[cacheAddr-100].rd = cacheRd | ((dataByte & 0x01) << 7);
+    111c:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1120:	88 2f       	mov	r24, r24
+    1122:	90 e0       	ldi	r25, 0x00	; 0
+    1124:	84 56       	subi	r24, 0x64	; 100
+    1126:	91 09       	sbc	r25, r1
+    1128:	29 81       	ldd	r18, Y+1	; 0x01
+    112a:	22 2f       	mov	r18, r18
+    112c:	30 e0       	ldi	r19, 0x00	; 0
+    112e:	36 95       	lsr	r19
+    1130:	32 2f       	mov	r19, r18
+    1132:	22 27       	eor	r18, r18
+    1134:	37 95       	ror	r19
+    1136:	27 95       	ror	r18
+    1138:	32 2f       	mov	r19, r18
+    113a:	20 91 21 01 	lds	r18, 0x0121	; 0x800121 <cacheRd.1625>
+    113e:	23 2b       	or	r18, r19
+    1140:	88 0f       	add	r24, r24
+    1142:	99 1f       	adc	r25, r25
+    1144:	88 0f       	add	r24, r24
+    1146:	99 1f       	adc	r25, r25
+    1148:	87 53       	subi	r24, 0x37	; 55
+    114a:	9d 4f       	sbci	r25, 0xFD	; 253
+    114c:	fc 01       	movw	r30, r24
+    114e:	20 83       	st	Z, r18
+						effectColorTarget[cacheAddr-100].gn = cacheGn | ((dataByte & 0x02) << 6);
+    1150:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1154:	88 2f       	mov	r24, r24
+    1156:	90 e0       	ldi	r25, 0x00	; 0
+    1158:	84 56       	subi	r24, 0x64	; 100
+    115a:	91 09       	sbc	r25, r1
+    115c:	29 81       	ldd	r18, Y+1	; 0x01
+    115e:	22 2f       	mov	r18, r18
+    1160:	30 e0       	ldi	r19, 0x00	; 0
+    1162:	22 70       	andi	r18, 0x02	; 2
+    1164:	33 27       	eor	r19, r19
+    1166:	00 24       	eor	r0, r0
+    1168:	36 95       	lsr	r19
+    116a:	27 95       	ror	r18
+    116c:	07 94       	ror	r0
+    116e:	36 95       	lsr	r19
+    1170:	27 95       	ror	r18
+    1172:	07 94       	ror	r0
+    1174:	32 2f       	mov	r19, r18
+    1176:	20 2d       	mov	r18, r0
+    1178:	32 2f       	mov	r19, r18
+    117a:	20 91 22 01 	lds	r18, 0x0122	; 0x800122 <cacheGn.1626>
+    117e:	23 2b       	or	r18, r19
+    1180:	88 0f       	add	r24, r24
+    1182:	99 1f       	adc	r25, r25
+    1184:	88 0f       	add	r24, r24
+    1186:	99 1f       	adc	r25, r25
+    1188:	86 53       	subi	r24, 0x36	; 54
+    118a:	9d 4f       	sbci	r25, 0xFD	; 253
+    118c:	fc 01       	movw	r30, r24
+    118e:	20 83       	st	Z, r18
+						effectColorTarget[cacheAddr-100].bl = cacheBl | ((dataByte & 0x04) << 5);
+    1190:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1194:	88 2f       	mov	r24, r24
+    1196:	90 e0       	ldi	r25, 0x00	; 0
+    1198:	84 56       	subi	r24, 0x64	; 100
+    119a:	91 09       	sbc	r25, r1
+    119c:	29 81       	ldd	r18, Y+1	; 0x01
+    119e:	22 2f       	mov	r18, r18
+    11a0:	30 e0       	ldi	r19, 0x00	; 0
+    11a2:	24 70       	andi	r18, 0x04	; 4
+    11a4:	33 27       	eor	r19, r19
+    11a6:	22 0f       	add	r18, r18
+    11a8:	33 1f       	adc	r19, r19
+    11aa:	22 95       	swap	r18
+    11ac:	32 95       	swap	r19
+    11ae:	30 7f       	andi	r19, 0xF0	; 240
+    11b0:	32 27       	eor	r19, r18
+    11b2:	20 7f       	andi	r18, 0xF0	; 240
+    11b4:	32 27       	eor	r19, r18
+    11b6:	32 2f       	mov	r19, r18
+    11b8:	20 91 23 01 	lds	r18, 0x0123	; 0x800123 <cacheBl.1627>
+    11bc:	23 2b       	or	r18, r19
+    11be:	88 0f       	add	r24, r24
+    11c0:	99 1f       	adc	r25, r25
+    11c2:	88 0f       	add	r24, r24
+    11c4:	99 1f       	adc	r25, r25
+    11c6:	85 53       	subi	r24, 0x35	; 53
+    11c8:	9d 4f       	sbci	r25, 0xFD	; 253
+    11ca:	fc 01       	movw	r30, r24
+    11cc:	20 83       	st	Z, r18
+						effectColorTarget[cacheAddr-100].wh = cacheWh | ((dataByte & 0x08) << 4);
+    11ce:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    11d2:	88 2f       	mov	r24, r24
+    11d4:	90 e0       	ldi	r25, 0x00	; 0
+    11d6:	84 56       	subi	r24, 0x64	; 100
+    11d8:	91 09       	sbc	r25, r1
+    11da:	29 81       	ldd	r18, Y+1	; 0x01
+    11dc:	22 2f       	mov	r18, r18
+    11de:	30 e0       	ldi	r19, 0x00	; 0
+    11e0:	28 70       	andi	r18, 0x08	; 8
+    11e2:	33 27       	eor	r19, r19
+    11e4:	22 95       	swap	r18
+    11e6:	32 95       	swap	r19
+    11e8:	30 7f       	andi	r19, 0xF0	; 240
+    11ea:	32 27       	eor	r19, r18
+    11ec:	20 7f       	andi	r18, 0xF0	; 240
+    11ee:	32 27       	eor	r19, r18
+    11f0:	32 2f       	mov	r19, r18
+    11f2:	20 91 24 01 	lds	r18, 0x0124	; 0x800124 <cacheWh.1628>
+    11f6:	23 2b       	or	r18, r19
+    11f8:	88 0f       	add	r24, r24
+    11fa:	99 1f       	adc	r25, r25
+    11fc:	88 0f       	add	r24, r24
+    11fe:	99 1f       	adc	r25, r25
+    1200:	84 53       	subi	r24, 0x34	; 52
+    1202:	9d 4f       	sbci	r25, 0xFD	; 253
+    1204:	fc 01       	movw	r30, r24
+    1206:	20 83       	st	Z, r18
+						flagColorChanged = TRUE;
+    1208:	81 e0       	ldi	r24, 0x01	; 1
+    120a:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <flagColorChanged>
+    120e:	10 c0       	rjmp	.+32     	; 0x1230 <FetchSpi+0x336>
+					}
+					// Is data for mode?
+					else if((119 < cacheAddr) && (cacheAddr < (120 + NUM_MODES)))
+    1210:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1214:	88 37       	cpi	r24, 0x78	; 120
+    1216:	60 f0       	brcs	.+24     	; 0x1230 <FetchSpi+0x336>
+    1218:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    121c:	8d 37       	cpi	r24, 0x7D	; 125
+    121e:	40 f4       	brcc	.+16     	; 0x1230 <FetchSpi+0x336>
+					{
+						mode = cacheAddr - 120;
+    1220:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <cacheAddr.1624>
+    1224:	88 57       	subi	r24, 0x78	; 120
+    1226:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <__data_end>
+						flagModeChanged = TRUE;
+    122a:	81 e0       	ldi	r24, 0x01	; 1
+    122c:	80 93 1f 01 	sts	0x011F, r24	; 0x80011f <flagModeChanged>
+					}
+					// If no case is true, an invalid address was sent	
+					fsmState = STATE_IDLE;				
+    1230:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <fsmState>
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+				}
+				break;
+    1234:	12 c0       	rjmp	.+36     	; 0x125a <FetchSpi+0x360>
+						flagModeChanged = TRUE;
+					}
+					// If no case is true, an invalid address was sent	
+					fsmState = STATE_IDLE;				
+				}
+				else if ((dataByte & 0x80) == 0x80)
+    1236:	89 81       	ldd	r24, Y+1	; 0x01
+    1238:	88 23       	and	r24, r24
+    123a:	44 f4       	brge	.+16     	; 0x124c <FetchSpi+0x352>
+				{
+					cacheAddr = (dataByte & 0x7F);
+    123c:	89 81       	ldd	r24, Y+1	; 0x01
+    123e:	8f 77       	andi	r24, 0x7F	; 127
+    1240:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+    1244:	81 e0       	ldi	r24, 0x01	; 1
+    1246:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <fsmState>
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+				}
+				break;
+    124a:	07 c0       	rjmp	.+14     	; 0x125a <FetchSpi+0x360>
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+    124c:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <fsmState>
+				}
+				break;
+    1250:	04 c0       	rjmp	.+8      	; 0x125a <FetchSpi+0x360>
+			default:
+				fsmState = STATE_IDLE;
+    1252:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <fsmState>
+				break;
+    1256:	01 c0       	rjmp	.+2      	; 0x125a <FetchSpi+0x360>
+				if(dataByte & 0x80)
+				{
+					cacheAddr = (dataByte & 0x7F);
+					fsmState = STATE_ADDR_RECEIVED;
+				}
+				break;
+    1258:	00 00       	nop
+			default:
+				fsmState = STATE_IDLE;
+				break;
+		}		
+	}
+    125a:	00 00       	nop
+    125c:	0f 90       	pop	r0
+    125e:	df 91       	pop	r29
+    1260:	cf 91       	pop	r28
+    1262:	08 95       	ret
+
+00001264 <uart_putc>:
+
+
+
+
+int uart_putc(unsigned char c)
+{
+    1264:	cf 93       	push	r28
+    1266:	df 93       	push	r29
+    1268:	1f 92       	push	r1
+    126a:	cd b7       	in	r28, 0x3d	; 61
+    126c:	de b7       	in	r29, 0x3e	; 62
+    126e:	89 83       	std	Y+1, r24	; 0x01
+	while (!(UCSR0A & (1<<UDRE0)))  /* warten bis Senden moeglich */
+    1270:	00 00       	nop
+    1272:	80 ec       	ldi	r24, 0xC0	; 192
+    1274:	90 e0       	ldi	r25, 0x00	; 0
+    1276:	fc 01       	movw	r30, r24
+    1278:	80 81       	ld	r24, Z
+    127a:	88 2f       	mov	r24, r24
+    127c:	90 e0       	ldi	r25, 0x00	; 0
+    127e:	80 72       	andi	r24, 0x20	; 32
+    1280:	99 27       	eor	r25, r25
+    1282:	89 2b       	or	r24, r25
+    1284:	b1 f3       	breq	.-20     	; 0x1272 <uart_putc+0xe>
+	{
+	}
+
+	UDR0 = c;                      /* sende Zeichen */
+    1286:	86 ec       	ldi	r24, 0xC6	; 198
+    1288:	90 e0       	ldi	r25, 0x00	; 0
+    128a:	29 81       	ldd	r18, Y+1	; 0x01
+    128c:	fc 01       	movw	r30, r24
+    128e:	20 83       	st	Z, r18
+	return 0;
+    1290:	80 e0       	ldi	r24, 0x00	; 0
+    1292:	90 e0       	ldi	r25, 0x00	; 0
+}
+    1294:	0f 90       	pop	r0
+    1296:	df 91       	pop	r29
+    1298:	cf 91       	pop	r28
+    129a:	08 95       	ret
+
+0000129c <uart_puts>:
+
+
+
+void uart_puts (char *s)
+{
+    129c:	cf 93       	push	r28
+    129e:	df 93       	push	r29
+    12a0:	00 d0       	rcall	.+0      	; 0x12a2 <uart_puts+0x6>
+    12a2:	cd b7       	in	r28, 0x3d	; 61
+    12a4:	de b7       	in	r29, 0x3e	; 62
+    12a6:	9a 83       	std	Y+2, r25	; 0x02
+    12a8:	89 83       	std	Y+1, r24	; 0x01
+	while (*s)
+    12aa:	0b c0       	rjmp	.+22     	; 0x12c2 <uart_puts+0x26>
+	{   /* so lange *s != '\0' also ungleich dem "String-Endezeichen(Terminator)" */
+		uart_putc(*s);
+    12ac:	89 81       	ldd	r24, Y+1	; 0x01
+    12ae:	9a 81       	ldd	r25, Y+2	; 0x02
+    12b0:	fc 01       	movw	r30, r24
+    12b2:	80 81       	ld	r24, Z
+    12b4:	0e 94 32 09 	call	0x1264	; 0x1264 <uart_putc>
+		s++;
+    12b8:	89 81       	ldd	r24, Y+1	; 0x01
+    12ba:	9a 81       	ldd	r25, Y+2	; 0x02
+    12bc:	01 96       	adiw	r24, 0x01	; 1
+    12be:	9a 83       	std	Y+2, r25	; 0x02
+    12c0:	89 83       	std	Y+1, r24	; 0x01
+
+
+
+void uart_puts (char *s)
+{
+	while (*s)
+    12c2:	89 81       	ldd	r24, Y+1	; 0x01
+    12c4:	9a 81       	ldd	r25, Y+2	; 0x02
+    12c6:	fc 01       	movw	r30, r24
+    12c8:	80 81       	ld	r24, Z
+    12ca:	88 23       	and	r24, r24
+    12cc:	79 f7       	brne	.-34     	; 0x12ac <uart_puts+0x10>
+	{   /* so lange *s != '\0' also ungleich dem "String-Endezeichen(Terminator)" */
+		uart_putc(*s);
+		s++;
+	}
+    12ce:	00 00       	nop
+    12d0:	0f 90       	pop	r0
+    12d2:	0f 90       	pop	r0
+    12d4:	df 91       	pop	r29
+    12d6:	cf 91       	pop	r28
+    12d8:	08 95       	ret
+
+000012da <__subsf3>:
+    12da:	50 58       	subi	r21, 0x80	; 128
+
+000012dc <__addsf3>:
+    12dc:	bb 27       	eor	r27, r27
+    12de:	aa 27       	eor	r26, r26
+    12e0:	0e 94 85 09 	call	0x130a	; 0x130a <__addsf3x>
+    12e4:	0c 94 d6 0a 	jmp	0x15ac	; 0x15ac <__fp_round>
+    12e8:	0e 94 c8 0a 	call	0x1590	; 0x1590 <__fp_pscA>
+    12ec:	38 f0       	brcs	.+14     	; 0x12fc <__addsf3+0x20>
+    12ee:	0e 94 cf 0a 	call	0x159e	; 0x159e <__fp_pscB>
+    12f2:	20 f0       	brcs	.+8      	; 0x12fc <__addsf3+0x20>
+    12f4:	39 f4       	brne	.+14     	; 0x1304 <__addsf3+0x28>
+    12f6:	9f 3f       	cpi	r25, 0xFF	; 255
+    12f8:	19 f4       	brne	.+6      	; 0x1300 <__addsf3+0x24>
+    12fa:	26 f4       	brtc	.+8      	; 0x1304 <__addsf3+0x28>
+    12fc:	0c 94 c5 0a 	jmp	0x158a	; 0x158a <__fp_nan>
+    1300:	0e f4       	brtc	.+2      	; 0x1304 <__addsf3+0x28>
+    1302:	e0 95       	com	r30
+    1304:	e7 fb       	bst	r30, 7
+    1306:	0c 94 bf 0a 	jmp	0x157e	; 0x157e <__fp_inf>
+
+0000130a <__addsf3x>:
+    130a:	e9 2f       	mov	r30, r25
+    130c:	0e 94 e7 0a 	call	0x15ce	; 0x15ce <__fp_split3>
+    1310:	58 f3       	brcs	.-42     	; 0x12e8 <__addsf3+0xc>
+    1312:	ba 17       	cp	r27, r26
+    1314:	62 07       	cpc	r22, r18
+    1316:	73 07       	cpc	r23, r19
+    1318:	84 07       	cpc	r24, r20
+    131a:	95 07       	cpc	r25, r21
+    131c:	20 f0       	brcs	.+8      	; 0x1326 <__addsf3x+0x1c>
+    131e:	79 f4       	brne	.+30     	; 0x133e <__addsf3x+0x34>
+    1320:	a6 f5       	brtc	.+104    	; 0x138a <__addsf3x+0x80>
+    1322:	0c 94 09 0b 	jmp	0x1612	; 0x1612 <__fp_zero>
+    1326:	0e f4       	brtc	.+2      	; 0x132a <__addsf3x+0x20>
+    1328:	e0 95       	com	r30
+    132a:	0b 2e       	mov	r0, r27
+    132c:	ba 2f       	mov	r27, r26
+    132e:	a0 2d       	mov	r26, r0
+    1330:	0b 01       	movw	r0, r22
+    1332:	b9 01       	movw	r22, r18
+    1334:	90 01       	movw	r18, r0
+    1336:	0c 01       	movw	r0, r24
+    1338:	ca 01       	movw	r24, r20
+    133a:	a0 01       	movw	r20, r0
+    133c:	11 24       	eor	r1, r1
+    133e:	ff 27       	eor	r31, r31
+    1340:	59 1b       	sub	r21, r25
+    1342:	99 f0       	breq	.+38     	; 0x136a <__addsf3x+0x60>
+    1344:	59 3f       	cpi	r21, 0xF9	; 249
+    1346:	50 f4       	brcc	.+20     	; 0x135c <__addsf3x+0x52>
+    1348:	50 3e       	cpi	r21, 0xE0	; 224
+    134a:	68 f1       	brcs	.+90     	; 0x13a6 <__addsf3x+0x9c>
+    134c:	1a 16       	cp	r1, r26
+    134e:	f0 40       	sbci	r31, 0x00	; 0
+    1350:	a2 2f       	mov	r26, r18
+    1352:	23 2f       	mov	r18, r19
+    1354:	34 2f       	mov	r19, r20
+    1356:	44 27       	eor	r20, r20
+    1358:	58 5f       	subi	r21, 0xF8	; 248
+    135a:	f3 cf       	rjmp	.-26     	; 0x1342 <__addsf3x+0x38>
+    135c:	46 95       	lsr	r20
+    135e:	37 95       	ror	r19
+    1360:	27 95       	ror	r18
+    1362:	a7 95       	ror	r26
+    1364:	f0 40       	sbci	r31, 0x00	; 0
+    1366:	53 95       	inc	r21
+    1368:	c9 f7       	brne	.-14     	; 0x135c <__addsf3x+0x52>
+    136a:	7e f4       	brtc	.+30     	; 0x138a <__addsf3x+0x80>
+    136c:	1f 16       	cp	r1, r31
+    136e:	ba 0b       	sbc	r27, r26
+    1370:	62 0b       	sbc	r22, r18
+    1372:	73 0b       	sbc	r23, r19
+    1374:	84 0b       	sbc	r24, r20
+    1376:	ba f0       	brmi	.+46     	; 0x13a6 <__addsf3x+0x9c>
+    1378:	91 50       	subi	r25, 0x01	; 1
+    137a:	a1 f0       	breq	.+40     	; 0x13a4 <__addsf3x+0x9a>
+    137c:	ff 0f       	add	r31, r31
+    137e:	bb 1f       	adc	r27, r27
+    1380:	66 1f       	adc	r22, r22
+    1382:	77 1f       	adc	r23, r23
+    1384:	88 1f       	adc	r24, r24
+    1386:	c2 f7       	brpl	.-16     	; 0x1378 <__addsf3x+0x6e>
+    1388:	0e c0       	rjmp	.+28     	; 0x13a6 <__addsf3x+0x9c>
+    138a:	ba 0f       	add	r27, r26
+    138c:	62 1f       	adc	r22, r18
+    138e:	73 1f       	adc	r23, r19
+    1390:	84 1f       	adc	r24, r20
+    1392:	48 f4       	brcc	.+18     	; 0x13a6 <__addsf3x+0x9c>
+    1394:	87 95       	ror	r24
+    1396:	77 95       	ror	r23
+    1398:	67 95       	ror	r22
+    139a:	b7 95       	ror	r27
+    139c:	f7 95       	ror	r31
+    139e:	9e 3f       	cpi	r25, 0xFE	; 254
+    13a0:	08 f0       	brcs	.+2      	; 0x13a4 <__addsf3x+0x9a>
+    13a2:	b0 cf       	rjmp	.-160    	; 0x1304 <__addsf3+0x28>
+    13a4:	93 95       	inc	r25
+    13a6:	88 0f       	add	r24, r24
+    13a8:	08 f0       	brcs	.+2      	; 0x13ac <__addsf3x+0xa2>
+    13aa:	99 27       	eor	r25, r25
+    13ac:	ee 0f       	add	r30, r30
+    13ae:	97 95       	ror	r25
+    13b0:	87 95       	ror	r24
+    13b2:	08 95       	ret
+
+000013b4 <__divsf3>:
+    13b4:	0e 94 ee 09 	call	0x13dc	; 0x13dc <__divsf3x>
+    13b8:	0c 94 d6 0a 	jmp	0x15ac	; 0x15ac <__fp_round>
+    13bc:	0e 94 cf 0a 	call	0x159e	; 0x159e <__fp_pscB>
+    13c0:	58 f0       	brcs	.+22     	; 0x13d8 <__divsf3+0x24>
+    13c2:	0e 94 c8 0a 	call	0x1590	; 0x1590 <__fp_pscA>
+    13c6:	40 f0       	brcs	.+16     	; 0x13d8 <__divsf3+0x24>
+    13c8:	29 f4       	brne	.+10     	; 0x13d4 <__divsf3+0x20>
+    13ca:	5f 3f       	cpi	r21, 0xFF	; 255
+    13cc:	29 f0       	breq	.+10     	; 0x13d8 <__divsf3+0x24>
+    13ce:	0c 94 bf 0a 	jmp	0x157e	; 0x157e <__fp_inf>
+    13d2:	51 11       	cpse	r21, r1
+    13d4:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <__fp_szero>
+    13d8:	0c 94 c5 0a 	jmp	0x158a	; 0x158a <__fp_nan>
+
+000013dc <__divsf3x>:
+    13dc:	0e 94 e7 0a 	call	0x15ce	; 0x15ce <__fp_split3>
+    13e0:	68 f3       	brcs	.-38     	; 0x13bc <__divsf3+0x8>
+
+000013e2 <__divsf3_pse>:
+    13e2:	99 23       	and	r25, r25
+    13e4:	b1 f3       	breq	.-20     	; 0x13d2 <__divsf3+0x1e>
+    13e6:	55 23       	and	r21, r21
+    13e8:	91 f3       	breq	.-28     	; 0x13ce <__divsf3+0x1a>
+    13ea:	95 1b       	sub	r25, r21
+    13ec:	55 0b       	sbc	r21, r21
+    13ee:	bb 27       	eor	r27, r27
+    13f0:	aa 27       	eor	r26, r26
+    13f2:	62 17       	cp	r22, r18
+    13f4:	73 07       	cpc	r23, r19
+    13f6:	84 07       	cpc	r24, r20
+    13f8:	38 f0       	brcs	.+14     	; 0x1408 <__divsf3_pse+0x26>
+    13fa:	9f 5f       	subi	r25, 0xFF	; 255
+    13fc:	5f 4f       	sbci	r21, 0xFF	; 255
+    13fe:	22 0f       	add	r18, r18
+    1400:	33 1f       	adc	r19, r19
+    1402:	44 1f       	adc	r20, r20
+    1404:	aa 1f       	adc	r26, r26
+    1406:	a9 f3       	breq	.-22     	; 0x13f2 <__divsf3_pse+0x10>
+    1408:	35 d0       	rcall	.+106    	; 0x1474 <__divsf3_pse+0x92>
+    140a:	0e 2e       	mov	r0, r30
+    140c:	3a f0       	brmi	.+14     	; 0x141c <__divsf3_pse+0x3a>
+    140e:	e0 e8       	ldi	r30, 0x80	; 128
+    1410:	32 d0       	rcall	.+100    	; 0x1476 <__divsf3_pse+0x94>
+    1412:	91 50       	subi	r25, 0x01	; 1
+    1414:	50 40       	sbci	r21, 0x00	; 0
+    1416:	e6 95       	lsr	r30
+    1418:	00 1c       	adc	r0, r0
+    141a:	ca f7       	brpl	.-14     	; 0x140e <__divsf3_pse+0x2c>
+    141c:	2b d0       	rcall	.+86     	; 0x1474 <__divsf3_pse+0x92>
+    141e:	fe 2f       	mov	r31, r30
+    1420:	29 d0       	rcall	.+82     	; 0x1474 <__divsf3_pse+0x92>
+    1422:	66 0f       	add	r22, r22
+    1424:	77 1f       	adc	r23, r23
+    1426:	88 1f       	adc	r24, r24
+    1428:	bb 1f       	adc	r27, r27
+    142a:	26 17       	cp	r18, r22
+    142c:	37 07       	cpc	r19, r23
+    142e:	48 07       	cpc	r20, r24
+    1430:	ab 07       	cpc	r26, r27
+    1432:	b0 e8       	ldi	r27, 0x80	; 128
+    1434:	09 f0       	breq	.+2      	; 0x1438 <__divsf3_pse+0x56>
+    1436:	bb 0b       	sbc	r27, r27
+    1438:	80 2d       	mov	r24, r0
+    143a:	bf 01       	movw	r22, r30
+    143c:	ff 27       	eor	r31, r31
+    143e:	93 58       	subi	r25, 0x83	; 131
+    1440:	5f 4f       	sbci	r21, 0xFF	; 255
+    1442:	3a f0       	brmi	.+14     	; 0x1452 <__divsf3_pse+0x70>
+    1444:	9e 3f       	cpi	r25, 0xFE	; 254
+    1446:	51 05       	cpc	r21, r1
+    1448:	78 f0       	brcs	.+30     	; 0x1468 <__divsf3_pse+0x86>
+    144a:	0c 94 bf 0a 	jmp	0x157e	; 0x157e <__fp_inf>
+    144e:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <__fp_szero>
+    1452:	5f 3f       	cpi	r21, 0xFF	; 255
+    1454:	e4 f3       	brlt	.-8      	; 0x144e <__divsf3_pse+0x6c>
+    1456:	98 3e       	cpi	r25, 0xE8	; 232
+    1458:	d4 f3       	brlt	.-12     	; 0x144e <__divsf3_pse+0x6c>
+    145a:	86 95       	lsr	r24
+    145c:	77 95       	ror	r23
+    145e:	67 95       	ror	r22
+    1460:	b7 95       	ror	r27
+    1462:	f7 95       	ror	r31
+    1464:	9f 5f       	subi	r25, 0xFF	; 255
+    1466:	c9 f7       	brne	.-14     	; 0x145a <__divsf3_pse+0x78>
+    1468:	88 0f       	add	r24, r24
+    146a:	91 1d       	adc	r25, r1
+    146c:	96 95       	lsr	r25
+    146e:	87 95       	ror	r24
+    1470:	97 f9       	bld	r25, 7
+    1472:	08 95       	ret
+    1474:	e1 e0       	ldi	r30, 0x01	; 1
+    1476:	66 0f       	add	r22, r22
+    1478:	77 1f       	adc	r23, r23
+    147a:	88 1f       	adc	r24, r24
+    147c:	bb 1f       	adc	r27, r27
+    147e:	62 17       	cp	r22, r18
+    1480:	73 07       	cpc	r23, r19
+    1482:	84 07       	cpc	r24, r20
+    1484:	ba 07       	cpc	r27, r26
+    1486:	20 f0       	brcs	.+8      	; 0x1490 <__divsf3_pse+0xae>
+    1488:	62 1b       	sub	r22, r18
+    148a:	73 0b       	sbc	r23, r19
+    148c:	84 0b       	sbc	r24, r20
+    148e:	ba 0b       	sbc	r27, r26
+    1490:	ee 1f       	adc	r30, r30
+    1492:	88 f7       	brcc	.-30     	; 0x1476 <__divsf3_pse+0x94>
+    1494:	e0 95       	com	r30
+    1496:	08 95       	ret
+
+00001498 <__fixsfsi>:
+    1498:	0e 94 53 0a 	call	0x14a6	; 0x14a6 <__fixunssfsi>
+    149c:	68 94       	set
+    149e:	b1 11       	cpse	r27, r1
+    14a0:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <__fp_szero>
+    14a4:	08 95       	ret
+
+000014a6 <__fixunssfsi>:
+    14a6:	0e 94 ef 0a 	call	0x15de	; 0x15de <__fp_splitA>
+    14aa:	88 f0       	brcs	.+34     	; 0x14ce <__fixunssfsi+0x28>
+    14ac:	9f 57       	subi	r25, 0x7F	; 127
+    14ae:	98 f0       	brcs	.+38     	; 0x14d6 <__fixunssfsi+0x30>
+    14b0:	b9 2f       	mov	r27, r25
+    14b2:	99 27       	eor	r25, r25
+    14b4:	b7 51       	subi	r27, 0x17	; 23
+    14b6:	b0 f0       	brcs	.+44     	; 0x14e4 <__fixunssfsi+0x3e>
+    14b8:	e1 f0       	breq	.+56     	; 0x14f2 <__fixunssfsi+0x4c>
+    14ba:	66 0f       	add	r22, r22
+    14bc:	77 1f       	adc	r23, r23
+    14be:	88 1f       	adc	r24, r24
+    14c0:	99 1f       	adc	r25, r25
+    14c2:	1a f0       	brmi	.+6      	; 0x14ca <__fixunssfsi+0x24>
+    14c4:	ba 95       	dec	r27
+    14c6:	c9 f7       	brne	.-14     	; 0x14ba <__fixunssfsi+0x14>
+    14c8:	14 c0       	rjmp	.+40     	; 0x14f2 <__fixunssfsi+0x4c>
+    14ca:	b1 30       	cpi	r27, 0x01	; 1
+    14cc:	91 f0       	breq	.+36     	; 0x14f2 <__fixunssfsi+0x4c>
+    14ce:	0e 94 09 0b 	call	0x1612	; 0x1612 <__fp_zero>
+    14d2:	b1 e0       	ldi	r27, 0x01	; 1
+    14d4:	08 95       	ret
+    14d6:	0c 94 09 0b 	jmp	0x1612	; 0x1612 <__fp_zero>
+    14da:	67 2f       	mov	r22, r23
+    14dc:	78 2f       	mov	r23, r24
+    14de:	88 27       	eor	r24, r24
+    14e0:	b8 5f       	subi	r27, 0xF8	; 248
+    14e2:	39 f0       	breq	.+14     	; 0x14f2 <__fixunssfsi+0x4c>
+    14e4:	b9 3f       	cpi	r27, 0xF9	; 249
+    14e6:	cc f3       	brlt	.-14     	; 0x14da <__fixunssfsi+0x34>
+    14e8:	86 95       	lsr	r24
+    14ea:	77 95       	ror	r23
+    14ec:	67 95       	ror	r22
+    14ee:	b3 95       	inc	r27
+    14f0:	d9 f7       	brne	.-10     	; 0x14e8 <__fixunssfsi+0x42>
+    14f2:	3e f4       	brtc	.+14     	; 0x1502 <__fixunssfsi+0x5c>
+    14f4:	90 95       	com	r25
+    14f6:	80 95       	com	r24
+    14f8:	70 95       	com	r23
+    14fa:	61 95       	neg	r22
+    14fc:	7f 4f       	sbci	r23, 0xFF	; 255
+    14fe:	8f 4f       	sbci	r24, 0xFF	; 255
+    1500:	9f 4f       	sbci	r25, 0xFF	; 255
+    1502:	08 95       	ret
+
+00001504 <__floatunsisf>:
+    1504:	e8 94       	clt
+    1506:	09 c0       	rjmp	.+18     	; 0x151a <__floatsisf+0x12>
+
+00001508 <__floatsisf>:
+    1508:	97 fb       	bst	r25, 7
+    150a:	3e f4       	brtc	.+14     	; 0x151a <__floatsisf+0x12>
+    150c:	90 95       	com	r25
+    150e:	80 95       	com	r24
+    1510:	70 95       	com	r23
+    1512:	61 95       	neg	r22
+    1514:	7f 4f       	sbci	r23, 0xFF	; 255
+    1516:	8f 4f       	sbci	r24, 0xFF	; 255
+    1518:	9f 4f       	sbci	r25, 0xFF	; 255
+    151a:	99 23       	and	r25, r25
+    151c:	a9 f0       	breq	.+42     	; 0x1548 <__floatsisf+0x40>
+    151e:	f9 2f       	mov	r31, r25
+    1520:	96 e9       	ldi	r25, 0x96	; 150
+    1522:	bb 27       	eor	r27, r27
+    1524:	93 95       	inc	r25
+    1526:	f6 95       	lsr	r31
+    1528:	87 95       	ror	r24
+    152a:	77 95       	ror	r23
+    152c:	67 95       	ror	r22
+    152e:	b7 95       	ror	r27
+    1530:	f1 11       	cpse	r31, r1
+    1532:	f8 cf       	rjmp	.-16     	; 0x1524 <__floatsisf+0x1c>
+    1534:	fa f4       	brpl	.+62     	; 0x1574 <__floatsisf+0x6c>
+    1536:	bb 0f       	add	r27, r27
+    1538:	11 f4       	brne	.+4      	; 0x153e <__floatsisf+0x36>
+    153a:	60 ff       	sbrs	r22, 0
+    153c:	1b c0       	rjmp	.+54     	; 0x1574 <__floatsisf+0x6c>
+    153e:	6f 5f       	subi	r22, 0xFF	; 255
+    1540:	7f 4f       	sbci	r23, 0xFF	; 255
+    1542:	8f 4f       	sbci	r24, 0xFF	; 255
+    1544:	9f 4f       	sbci	r25, 0xFF	; 255
+    1546:	16 c0       	rjmp	.+44     	; 0x1574 <__floatsisf+0x6c>
+    1548:	88 23       	and	r24, r24
+    154a:	11 f0       	breq	.+4      	; 0x1550 <__floatsisf+0x48>
+    154c:	96 e9       	ldi	r25, 0x96	; 150
+    154e:	11 c0       	rjmp	.+34     	; 0x1572 <__floatsisf+0x6a>
+    1550:	77 23       	and	r23, r23
+    1552:	21 f0       	breq	.+8      	; 0x155c <__floatsisf+0x54>
+    1554:	9e e8       	ldi	r25, 0x8E	; 142
+    1556:	87 2f       	mov	r24, r23
+    1558:	76 2f       	mov	r23, r22
+    155a:	05 c0       	rjmp	.+10     	; 0x1566 <__floatsisf+0x5e>
+    155c:	66 23       	and	r22, r22
+    155e:	71 f0       	breq	.+28     	; 0x157c <__floatsisf+0x74>
+    1560:	96 e8       	ldi	r25, 0x86	; 134
+    1562:	86 2f       	mov	r24, r22
+    1564:	70 e0       	ldi	r23, 0x00	; 0
+    1566:	60 e0       	ldi	r22, 0x00	; 0
+    1568:	2a f0       	brmi	.+10     	; 0x1574 <__floatsisf+0x6c>
+    156a:	9a 95       	dec	r25
+    156c:	66 0f       	add	r22, r22
+    156e:	77 1f       	adc	r23, r23
+    1570:	88 1f       	adc	r24, r24
+    1572:	da f7       	brpl	.-10     	; 0x156a <__floatsisf+0x62>
+    1574:	88 0f       	add	r24, r24
+    1576:	96 95       	lsr	r25
+    1578:	87 95       	ror	r24
+    157a:	97 f9       	bld	r25, 7
+    157c:	08 95       	ret
+
+0000157e <__fp_inf>:
+    157e:	97 f9       	bld	r25, 7
+    1580:	9f 67       	ori	r25, 0x7F	; 127
+    1582:	80 e8       	ldi	r24, 0x80	; 128
+    1584:	70 e0       	ldi	r23, 0x00	; 0
+    1586:	60 e0       	ldi	r22, 0x00	; 0
+    1588:	08 95       	ret
+
+0000158a <__fp_nan>:
+    158a:	9f ef       	ldi	r25, 0xFF	; 255
+    158c:	80 ec       	ldi	r24, 0xC0	; 192
+    158e:	08 95       	ret
+
+00001590 <__fp_pscA>:
+    1590:	00 24       	eor	r0, r0
+    1592:	0a 94       	dec	r0
+    1594:	16 16       	cp	r1, r22
+    1596:	17 06       	cpc	r1, r23
+    1598:	18 06       	cpc	r1, r24
+    159a:	09 06       	cpc	r0, r25
+    159c:	08 95       	ret
+
+0000159e <__fp_pscB>:
+    159e:	00 24       	eor	r0, r0
+    15a0:	0a 94       	dec	r0
+    15a2:	12 16       	cp	r1, r18
+    15a4:	13 06       	cpc	r1, r19
+    15a6:	14 06       	cpc	r1, r20
+    15a8:	05 06       	cpc	r0, r21
+    15aa:	08 95       	ret
+
+000015ac <__fp_round>:
+    15ac:	09 2e       	mov	r0, r25
+    15ae:	03 94       	inc	r0
+    15b0:	00 0c       	add	r0, r0
+    15b2:	11 f4       	brne	.+4      	; 0x15b8 <__fp_round+0xc>
+    15b4:	88 23       	and	r24, r24
+    15b6:	52 f0       	brmi	.+20     	; 0x15cc <__fp_round+0x20>
+    15b8:	bb 0f       	add	r27, r27
+    15ba:	40 f4       	brcc	.+16     	; 0x15cc <__fp_round+0x20>
+    15bc:	bf 2b       	or	r27, r31
+    15be:	11 f4       	brne	.+4      	; 0x15c4 <__fp_round+0x18>
+    15c0:	60 ff       	sbrs	r22, 0
+    15c2:	04 c0       	rjmp	.+8      	; 0x15cc <__fp_round+0x20>
+    15c4:	6f 5f       	subi	r22, 0xFF	; 255
+    15c6:	7f 4f       	sbci	r23, 0xFF	; 255
+    15c8:	8f 4f       	sbci	r24, 0xFF	; 255
+    15ca:	9f 4f       	sbci	r25, 0xFF	; 255
+    15cc:	08 95       	ret
+
+000015ce <__fp_split3>:
+    15ce:	57 fd       	sbrc	r21, 7
+    15d0:	90 58       	subi	r25, 0x80	; 128
+    15d2:	44 0f       	add	r20, r20
+    15d4:	55 1f       	adc	r21, r21
+    15d6:	59 f0       	breq	.+22     	; 0x15ee <__fp_splitA+0x10>
+    15d8:	5f 3f       	cpi	r21, 0xFF	; 255
+    15da:	71 f0       	breq	.+28     	; 0x15f8 <__fp_splitA+0x1a>
+    15dc:	47 95       	ror	r20
+
+000015de <__fp_splitA>:
+    15de:	88 0f       	add	r24, r24
+    15e0:	97 fb       	bst	r25, 7
+    15e2:	99 1f       	adc	r25, r25
+    15e4:	61 f0       	breq	.+24     	; 0x15fe <__fp_splitA+0x20>
+    15e6:	9f 3f       	cpi	r25, 0xFF	; 255
+    15e8:	79 f0       	breq	.+30     	; 0x1608 <__fp_splitA+0x2a>
+    15ea:	87 95       	ror	r24
+    15ec:	08 95       	ret
+    15ee:	12 16       	cp	r1, r18
+    15f0:	13 06       	cpc	r1, r19
+    15f2:	14 06       	cpc	r1, r20
+    15f4:	55 1f       	adc	r21, r21
+    15f6:	f2 cf       	rjmp	.-28     	; 0x15dc <__fp_split3+0xe>
+    15f8:	46 95       	lsr	r20
+    15fa:	f1 df       	rcall	.-30     	; 0x15de <__fp_splitA>
+    15fc:	08 c0       	rjmp	.+16     	; 0x160e <__fp_splitA+0x30>
+    15fe:	16 16       	cp	r1, r22
+    1600:	17 06       	cpc	r1, r23
+    1602:	18 06       	cpc	r1, r24
+    1604:	99 1f       	adc	r25, r25
+    1606:	f1 cf       	rjmp	.-30     	; 0x15ea <__fp_splitA+0xc>
+    1608:	86 95       	lsr	r24
+    160a:	71 05       	cpc	r23, r1
+    160c:	61 05       	cpc	r22, r1
+    160e:	08 94       	sec
+    1610:	08 95       	ret
+
+00001612 <__fp_zero>:
+    1612:	e8 94       	clt
+
+00001614 <__fp_szero>:
+    1614:	bb 27       	eor	r27, r27
+    1616:	66 27       	eor	r22, r22
+    1618:	77 27       	eor	r23, r23
+    161a:	cb 01       	movw	r24, r22
+    161c:	97 f9       	bld	r25, 7
+    161e:	08 95       	ret
+
+00001620 <__mulsf3>:
+    1620:	0e 94 23 0b 	call	0x1646	; 0x1646 <__mulsf3x>
+    1624:	0c 94 d6 0a 	jmp	0x15ac	; 0x15ac <__fp_round>
+    1628:	0e 94 c8 0a 	call	0x1590	; 0x1590 <__fp_pscA>
+    162c:	38 f0       	brcs	.+14     	; 0x163c <__mulsf3+0x1c>
+    162e:	0e 94 cf 0a 	call	0x159e	; 0x159e <__fp_pscB>
+    1632:	20 f0       	brcs	.+8      	; 0x163c <__mulsf3+0x1c>
+    1634:	95 23       	and	r25, r21
+    1636:	11 f0       	breq	.+4      	; 0x163c <__mulsf3+0x1c>
+    1638:	0c 94 bf 0a 	jmp	0x157e	; 0x157e <__fp_inf>
+    163c:	0c 94 c5 0a 	jmp	0x158a	; 0x158a <__fp_nan>
+    1640:	11 24       	eor	r1, r1
+    1642:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <__fp_szero>
+
+00001646 <__mulsf3x>:
+    1646:	0e 94 e7 0a 	call	0x15ce	; 0x15ce <__fp_split3>
+    164a:	70 f3       	brcs	.-36     	; 0x1628 <__mulsf3+0x8>
+
+0000164c <__mulsf3_pse>:
+    164c:	95 9f       	mul	r25, r21
+    164e:	c1 f3       	breq	.-16     	; 0x1640 <__mulsf3+0x20>
+    1650:	95 0f       	add	r25, r21
+    1652:	50 e0       	ldi	r21, 0x00	; 0
+    1654:	55 1f       	adc	r21, r21
+    1656:	62 9f       	mul	r22, r18
+    1658:	f0 01       	movw	r30, r0
+    165a:	72 9f       	mul	r23, r18
+    165c:	bb 27       	eor	r27, r27
+    165e:	f0 0d       	add	r31, r0
+    1660:	b1 1d       	adc	r27, r1
+    1662:	63 9f       	mul	r22, r19
+    1664:	aa 27       	eor	r26, r26
+    1666:	f0 0d       	add	r31, r0
+    1668:	b1 1d       	adc	r27, r1
+    166a:	aa 1f       	adc	r26, r26
+    166c:	64 9f       	mul	r22, r20
+    166e:	66 27       	eor	r22, r22
+    1670:	b0 0d       	add	r27, r0
+    1672:	a1 1d       	adc	r26, r1
+    1674:	66 1f       	adc	r22, r22
+    1676:	82 9f       	mul	r24, r18
+    1678:	22 27       	eor	r18, r18
+    167a:	b0 0d       	add	r27, r0
+    167c:	a1 1d       	adc	r26, r1
+    167e:	62 1f       	adc	r22, r18
+    1680:	73 9f       	mul	r23, r19
+    1682:	b0 0d       	add	r27, r0
+    1684:	a1 1d       	adc	r26, r1
+    1686:	62 1f       	adc	r22, r18
+    1688:	83 9f       	mul	r24, r19
+    168a:	a0 0d       	add	r26, r0
+    168c:	61 1d       	adc	r22, r1
+    168e:	22 1f       	adc	r18, r18
+    1690:	74 9f       	mul	r23, r20
+    1692:	33 27       	eor	r19, r19
+    1694:	a0 0d       	add	r26, r0
+    1696:	61 1d       	adc	r22, r1
+    1698:	23 1f       	adc	r18, r19
+    169a:	84 9f       	mul	r24, r20
+    169c:	60 0d       	add	r22, r0
+    169e:	21 1d       	adc	r18, r1
+    16a0:	82 2f       	mov	r24, r18
+    16a2:	76 2f       	mov	r23, r22
+    16a4:	6a 2f       	mov	r22, r26
+    16a6:	11 24       	eor	r1, r1
+    16a8:	9f 57       	subi	r25, 0x7F	; 127
+    16aa:	50 40       	sbci	r21, 0x00	; 0
+    16ac:	9a f0       	brmi	.+38     	; 0x16d4 <__mulsf3_pse+0x88>
+    16ae:	f1 f0       	breq	.+60     	; 0x16ec <__mulsf3_pse+0xa0>
+    16b0:	88 23       	and	r24, r24
+    16b2:	4a f0       	brmi	.+18     	; 0x16c6 <__mulsf3_pse+0x7a>
+    16b4:	ee 0f       	add	r30, r30
+    16b6:	ff 1f       	adc	r31, r31
+    16b8:	bb 1f       	adc	r27, r27
+    16ba:	66 1f       	adc	r22, r22
+    16bc:	77 1f       	adc	r23, r23
+    16be:	88 1f       	adc	r24, r24
+    16c0:	91 50       	subi	r25, 0x01	; 1
+    16c2:	50 40       	sbci	r21, 0x00	; 0
+    16c4:	a9 f7       	brne	.-22     	; 0x16b0 <__mulsf3_pse+0x64>
+    16c6:	9e 3f       	cpi	r25, 0xFE	; 254
+    16c8:	51 05       	cpc	r21, r1
+    16ca:	80 f0       	brcs	.+32     	; 0x16ec <__mulsf3_pse+0xa0>
+    16cc:	0c 94 bf 0a 	jmp	0x157e	; 0x157e <__fp_inf>
+    16d0:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <__fp_szero>
+    16d4:	5f 3f       	cpi	r21, 0xFF	; 255
+    16d6:	e4 f3       	brlt	.-8      	; 0x16d0 <__mulsf3_pse+0x84>
+    16d8:	98 3e       	cpi	r25, 0xE8	; 232
+    16da:	d4 f3       	brlt	.-12     	; 0x16d0 <__mulsf3_pse+0x84>
+    16dc:	86 95       	lsr	r24
+    16de:	77 95       	ror	r23
+    16e0:	67 95       	ror	r22
+    16e2:	b7 95       	ror	r27
+    16e4:	f7 95       	ror	r31
+    16e6:	e7 95       	ror	r30
+    16e8:	9f 5f       	subi	r25, 0xFF	; 255
+    16ea:	c1 f7       	brne	.-16     	; 0x16dc <__mulsf3_pse+0x90>
+    16ec:	fe 2b       	or	r31, r30
+    16ee:	88 0f       	add	r24, r24
+    16f0:	91 1d       	adc	r25, r1
+    16f2:	96 95       	lsr	r25
+    16f4:	87 95       	ror	r24
+    16f6:	97 f9       	bld	r25, 7
+    16f8:	08 95       	ret
+
+000016fa <_exit>:
+    16fa:	f8 94       	cli
+
+000016fc <__stop_program>:
+    16fc:	ff cf       	rjmp	.-2      	; 0x16fc <__stop_program>

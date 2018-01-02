@@ -1,0 +1,6 @@
+<map id="C:/Users/mnose/Documents/github/clusterwink_doxygen/faba/FABA_OS_Alpha/interrupts.c" name="C:/Users/mnose/Documents/github/clusterwink_doxygen/faba/FABA_OS_Alpha/interrupts.c">
+<area shape="rect" id="node3" href="$defines_8h.html" title="in the file defines.h core definitions are made " alt="" coords="130,109,205,136"/>
+<area shape="rect" id="node5" href="$interrupts_8h.html" title="interrupt.h is the header file of interrupts.c in which interrupts (by timer / by external interrupt)..." alt="" coords="229,109,316,136"/>
+<area shape="rect" id="node6" href="$colors_8h.html" title="colors.h is the header file of colors.c in which the colors for every pannel are calculated and alloc..." alt="" coords="340,109,408,136"/>
+<area shape="rect" id="node7" href="$spi_8h.html" title="spi.h is the header file of spi.c which is for interfacing the SPI interface " alt="" coords="433,109,483,136"/>
+</map>

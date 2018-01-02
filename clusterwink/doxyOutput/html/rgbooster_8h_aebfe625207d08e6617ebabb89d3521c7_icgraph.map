@@ -1,0 +1,5 @@
+<map id="SendBit" name="SendBit">
+<area shape="rect" id="node2" href="$rgbooster_8h.html#a4a3253bf5a08bd8baa9b2d3040f9b96d" title="Send RGB data to multiple LEDs (polling the !done/busy pin) " alt="" coords="133,5,212,32"/>
+<area shape="rect" id="node3" href="$rgbooster_8h.html#a9d07e9ea2b67f8e8455e77503a3ece3e" title="Turn off multiple LEDs (polling the !done/busy pin) " alt="" coords="121,56,224,83"/>
+<area shape="rect" id="node4" href="$main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667" title="Main function &#45; Entry point. " alt="" coords="272,56,323,83"/>
+</map>

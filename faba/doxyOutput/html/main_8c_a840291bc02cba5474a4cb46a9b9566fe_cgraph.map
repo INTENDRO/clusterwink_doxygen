@@ -1,0 +1,10 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$inits_8c.html#a970183a199184c1839ffbb25b9b89cd1" title="Initialize GPIOs (Input or Output) " alt="" coords="161,5,224,32"/>
+<area shape="rect" id="node3" href="$inits_8c.html#a31fa6a6e47b103a9ba39e4f61c863b51" title="Initialize SPI interface. " alt="" coords="143,56,242,83"/>
+<area shape="rect" id="node4" href="$inits_8c.html#a5139e9f8579c81621b9886cced6dedab" title="Initialize Interrupt. " alt="" coords="149,107,236,133"/>
+<area shape="rect" id="node5" href="$inits_8c.html#a5499adb17edb227885abaccd47631df4" title="Initialize timer (used for animations) " alt="" coords="157,157,228,184"/>
+<area shape="rect" id="node6" href="$inits_8c.html#a3f475987c0b5f6786813aa3dfb3ad606" title="Initialize uart. " alt="" coords="157,208,228,235"/>
+<area shape="rect" id="node7" href="$inits_8c.html#afe7bd2d20e804458ce7ff742f6e33378" title="Initialize color buffer (used for animations) " alt="" coords="157,259,229,285"/>
+<area shape="rect" id="node8" href="$spi_8c.html#a2755617eb345962ad6a54ed7694b2c06" title="Receives data via SPI and svea it for further usage. " alt="" coords="155,309,230,336"/>
+<area shape="rect" id="node9" href="$colors_8c.html#ac3f37e58465c99d2accbd301e0a6f4f2" title="Calculates colors for each panel for different color modes. " alt="" coords="104,360,281,387"/>
+</map>

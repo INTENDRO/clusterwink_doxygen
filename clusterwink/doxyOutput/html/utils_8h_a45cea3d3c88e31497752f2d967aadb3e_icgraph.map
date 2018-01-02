@@ -1,0 +1,6 @@
+<map id="Map" name="Map">
+<area shape="rect" id="node2" href="$utils_8h.html#a134996da7a56819203c50b7da35a0027" title="Initialize the PWM pin and setup timer1. " alt="" coords="100,5,172,32"/>
+<area shape="rect" id="node4" href="$utils_8h.html#a550c27d1a5da34b56c38bdca0eff3855" title="Set the dutycycle of the PWM output. " alt="" coords="103,56,169,83"/>
+<area shape="rect" id="node3" href="$main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667" title="Main function &#45; Entry point. " alt="" coords="220,5,271,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#af9cad97352f5ba9bbd800446131125a6" title="SPI data received. " alt="" coords="224,56,267,83"/>
+</map>

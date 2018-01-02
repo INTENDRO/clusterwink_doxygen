@@ -1,0 +1,5 @@
+<map id="RingBuffer_GetCount" name="RingBuffer_GetCount">
+<area shape="rect" id="node2" href="$main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667" title="Main function &#45; Entry point. " alt="" coords="239,5,289,32"/>
+<area shape="rect" id="node3" href="$ringbuffer_8h.html#a9e71150bca61ef1ee5dfa277c014b849" title="RingBuffer_IsFull" alt="" coords="205,56,323,83"/>
+<area shape="rect" id="node4" href="$ringbuffer_8h.html#a37dc4c79ccec9ff8f6d79be6b8b9d2ce" title="RingBuffer_IsEmpty" alt="" coords="196,107,332,133"/>
+</map>

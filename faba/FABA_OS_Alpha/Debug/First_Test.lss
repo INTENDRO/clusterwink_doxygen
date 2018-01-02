@@ -1,0 +1,1396 @@
+
+First_Test.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000093c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000008c8  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          000001ce  00800100  00800100  0000093c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000093c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000096c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000050  00000000  00000000  000009ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000921  00000000  00000000  000009fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000723  00000000  00000000  0000131d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000528  00000000  00000000  00001a40  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000f4  00000000  00000000  00001f68  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004c8  00000000  00000000  0000205c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000003e2  00000000  00000000  00002524  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000040  00000000  00000000  00002906  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 ba 02 	jmp	0x574	; 0x574 <__vector_1>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 b0 02 	jmp	0x560	; 0x560 <__vector_17>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	22 e0       	ldi	r18, 0x02	; 2
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	ae 3c       	cpi	r26, 0xCE	; 206
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 94 02 	call	0x528	; 0x528 <main>
+  88:	0c 94 62 04 	jmp	0x8c4	; 0x8c4 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <PortInit>:
+//**************************************************************************************
+
+void SPI_SlaveInit(void)
+{
+	//SPCR – SPI Control Register
+	SPCR = 0x40;		
+  90:	14 b8       	out	0x04, r1	; 4
+  92:	17 b8       	out	0x07, r1	; 7
+  94:	1a b8       	out	0x0a, r1	; 10
+  96:	08 95       	ret
+
+00000098 <FetchSpi>:
+	static uint8_t	cacheGn;
+	static uint8_t	cacheBl;
+	static uint8_t	cacheWh;
+	
+	// If available read data from SPI (Check interrupt flag)
+	if(SPSR & 0x80)
+  98:	0d b4       	in	r0, 0x2d	; 45
+  9a:	07 fe       	sbrs	r0, 7
+  9c:	c0 c0       	rjmp	.+384    	; 0x21e <FetchSpi+0x186>
+	{
+		// reset interrupt flag
+		SPSR = SPSR & 0x7F;
+  9e:	8d b5       	in	r24, 0x2d	; 45
+  a0:	8f 77       	andi	r24, 0x7F	; 127
+  a2:	8d bd       	out	0x2d, r24	; 45
+		
+		// Fetch received data byte 
+		dataByte = SPDR;
+  a4:	9e b5       	in	r25, 0x2e	; 46
+		
+		// FSM
+		switch (fsmState)
+  a6:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <fsmState>
+  aa:	82 30       	cpi	r24, 0x02	; 2
+  ac:	01 f1       	breq	.+64     	; 0xee <FetchSpi+0x56>
+  ae:	28 f4       	brcc	.+10     	; 0xba <FetchSpi+0x22>
+  b0:	88 23       	and	r24, r24
+  b2:	49 f0       	breq	.+18     	; 0xc6 <FetchSpi+0x2e>
+  b4:	81 30       	cpi	r24, 0x01	; 1
+  b6:	81 f0       	breq	.+32     	; 0xd8 <FetchSpi+0x40>
+  b8:	b0 c0       	rjmp	.+352    	; 0x21a <FetchSpi+0x182>
+  ba:	84 30       	cpi	r24, 0x04	; 4
+  bc:	71 f1       	breq	.+92     	; 0x11a <FetchSpi+0x82>
+  be:	10 f1       	brcs	.+68     	; 0x104 <FetchSpi+0x6c>
+  c0:	85 30       	cpi	r24, 0x05	; 5
+  c2:	b1 f1       	breq	.+108    	; 0x130 <FetchSpi+0x98>
+  c4:	aa c0       	rjmp	.+340    	; 0x21a <FetchSpi+0x182>
+		{
+			case STATE_IDLE:	
+				//Check if MSB is HIGH
+				if(dataByte & 0x80)
+  c6:	99 23       	and	r25, r25
+  c8:	0c f0       	brlt	.+2      	; 0xcc <FetchSpi+0x34>
+  ca:	a9 c0       	rjmp	.+338    	; 0x21e <FetchSpi+0x186>
+				{
+					cacheAddr = dataByte;
+  cc:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <cacheAddr.1624>
+					fsmState = STATE_ADDR_RECEIVED;
+  d0:	81 e0       	ldi	r24, 0x01	; 1
+  d2:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <fsmState>
+  d6:	08 95       	ret
+				}
+				break;
+			case STATE_ADDR_RECEIVED:	
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+  d8:	99 23       	and	r25, r25
+  da:	34 f0       	brlt	.+12     	; 0xe8 <FetchSpi+0x50>
+				{
+					cacheRd = dataByte;
+  dc:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <cacheRd.1625>
+					fsmState = STATE_RD_RECEIVED;
+  e0:	82 e0       	ldi	r24, 0x02	; 2
+  e2:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <fsmState>
+  e6:	08 95       	ret
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+  e8:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+  ec:	08 95       	ret
+				}
+				break;	
+			case STATE_RD_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+  ee:	99 23       	and	r25, r25
+  f0:	34 f0       	brlt	.+12     	; 0xfe <FetchSpi+0x66>
+				{
+					cacheGn = dataByte;
+  f2:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <cacheGn.1626>
+					fsmState = STATE_GN_RECEIVED;
+  f6:	83 e0       	ldi	r24, 0x03	; 3
+  f8:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <fsmState>
+  fc:	08 95       	ret
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+  fe:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+ 102:	08 95       	ret
+				}
+				break;
+			case STATE_GN_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+ 104:	99 23       	and	r25, r25
+ 106:	34 f0       	brlt	.+12     	; 0x114 <FetchSpi+0x7c>
+				{
+					cacheBl = dataByte;
+ 108:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <cacheBl.1627>
+					fsmState = STATE_BL_RECEIVED;
+ 10c:	84 e0       	ldi	r24, 0x04	; 4
+ 10e:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <fsmState>
+ 112:	08 95       	ret
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+ 114:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+ 118:	08 95       	ret
+				}
+				break;
+			case STATE_BL_RECEIVED:		
+				//Check if MSB is LOW
+				if((dataByte & 0x80) == 0)
+ 11a:	99 23       	and	r25, r25
+ 11c:	34 f0       	brlt	.+12     	; 0x12a <FetchSpi+0x92>
+				{
+					cacheWh = dataByte;
+ 11e:	90 93 00 01 	sts	0x0100, r25	; 0x800100 <_edata>
+					fsmState = STATE_WH_RECEIVED;
+ 122:	85 e0       	ldi	r24, 0x05	; 5
+ 124:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <fsmState>
+ 128:	08 95       	ret
+				}
+				else
+				{
+					fsmState = STATE_IDLE;
+ 12a:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+ 12e:	08 95       	ret
+				}
+				break;
+			case STATE_WH_RECEIVED:		
+				//Check if the four MSB are LOW
+				if((dataByte & 0xF0) == 0)
+ 130:	89 2f       	mov	r24, r25
+ 132:	80 7f       	andi	r24, 0xF0	; 240
+ 134:	09 f0       	breq	.+2      	; 0x138 <FetchSpi+0xa0>
+ 136:	6e c0       	rjmp	.+220    	; 0x214 <FetchSpi+0x17c>
+				{
+					// Save data according to address
+					// Is data for individualPanelColor?
+					if(cacheAddr < NUM_ATTACHED_MODULES)
+ 138:	20 91 04 01 	lds	r18, 0x0104	; 0x800104 <cacheAddr.1624>
+ 13c:	2a 30       	cpi	r18, 0x0A	; 10
+ 13e:	70 f5       	brcc	.+92     	; 0x19c <FetchSpi+0x104>
+					{
+						individualPanelColor[cacheAddr].rd = cacheRd | ((dataByte & 0x01) << 7);
+ 140:	30 e0       	ldi	r19, 0x00	; 0
+ 142:	22 0f       	add	r18, r18
+ 144:	33 1f       	adc	r19, r19
+ 146:	22 0f       	add	r18, r18
+ 148:	33 1f       	adc	r19, r19
+ 14a:	f9 01       	movw	r30, r18
+ 14c:	e6 56       	subi	r30, 0x66	; 102
+ 14e:	fd 4f       	sbci	r31, 0xFD	; 253
+ 150:	80 e8       	ldi	r24, 0x80	; 128
+ 152:	98 9f       	mul	r25, r24
+ 154:	90 01       	movw	r18, r0
+ 156:	11 24       	eor	r1, r1
+ 158:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <cacheRd.1625>
+ 15c:	28 2b       	or	r18, r24
+ 15e:	20 83       	st	Z, r18
+						individualPanelColor[cacheAddr].gn = cacheGn | ((dataByte & 0x02) << 6);
+ 160:	89 2f       	mov	r24, r25
+ 162:	82 70       	andi	r24, 0x02	; 2
+ 164:	82 95       	swap	r24
+ 166:	88 0f       	add	r24, r24
+ 168:	88 0f       	add	r24, r24
+ 16a:	80 7c       	andi	r24, 0xC0	; 192
+ 16c:	20 91 02 01 	lds	r18, 0x0102	; 0x800102 <cacheGn.1626>
+ 170:	82 2b       	or	r24, r18
+ 172:	81 83       	std	Z+1, r24	; 0x01
+						individualPanelColor[cacheAddr].bl = cacheBl | ((dataByte & 0x04) << 5);
+ 174:	89 2f       	mov	r24, r25
+ 176:	84 70       	andi	r24, 0x04	; 4
+ 178:	82 95       	swap	r24
+ 17a:	88 0f       	add	r24, r24
+ 17c:	80 7e       	andi	r24, 0xE0	; 224
+ 17e:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <cacheBl.1627>
+ 182:	82 2b       	or	r24, r18
+ 184:	82 83       	std	Z+2, r24	; 0x02
+						individualPanelColor[cacheAddr].wh = cacheWh | ((dataByte & 0x08) << 4);
+ 186:	98 70       	andi	r25, 0x08	; 8
+ 188:	92 95       	swap	r25
+ 18a:	90 7f       	andi	r25, 0xF0	; 240
+ 18c:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 190:	98 2b       	or	r25, r24
+ 192:	93 83       	std	Z+3, r25	; 0x03
+						flagColorChanged = 1;
+ 194:	81 e0       	ldi	r24, 0x01	; 1
+ 196:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <flagColorChanged>
+ 19a:	3c c0       	rjmp	.+120    	; 0x214 <FetchSpi+0x17c>
+					}
+					// Is data for effectColorTarget?
+					else if((99 < cacheAddr) && (cacheAddr < (100 + NUM_EFFECT_COLORS)))
+ 19c:	8c e9       	ldi	r24, 0x9C	; 156
+ 19e:	82 0f       	add	r24, r18
+ 1a0:	83 30       	cpi	r24, 0x03	; 3
+ 1a2:	80 f5       	brcc	.+96     	; 0x204 <FetchSpi+0x16c>
+					{
+						effectColorTarget[cacheAddr-100].rd = cacheRd | ((dataByte & 0x01) << 7);
+ 1a4:	e2 2f       	mov	r30, r18
+ 1a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a8:	ee 0f       	add	r30, r30
+ 1aa:	ff 1f       	adc	r31, r31
+ 1ac:	ee 0f       	add	r30, r30
+ 1ae:	ff 1f       	adc	r31, r31
+ 1b0:	ee 5c       	subi	r30, 0xCE	; 206
+ 1b2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1b4:	80 e8       	ldi	r24, 0x80	; 128
+ 1b6:	98 9f       	mul	r25, r24
+ 1b8:	90 01       	movw	r18, r0
+ 1ba:	11 24       	eor	r1, r1
+ 1bc:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <cacheRd.1625>
+ 1c0:	28 2b       	or	r18, r24
+ 1c2:	20 83       	st	Z, r18
+						effectColorTarget[cacheAddr-100].gn = cacheGn | ((dataByte & 0x02) << 6);
+ 1c4:	89 2f       	mov	r24, r25
+ 1c6:	82 70       	andi	r24, 0x02	; 2
+ 1c8:	28 2f       	mov	r18, r24
+ 1ca:	22 95       	swap	r18
+ 1cc:	22 0f       	add	r18, r18
+ 1ce:	22 0f       	add	r18, r18
+ 1d0:	20 7c       	andi	r18, 0xC0	; 192
+ 1d2:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <cacheGn.1626>
+ 1d6:	82 2b       	or	r24, r18
+ 1d8:	81 83       	std	Z+1, r24	; 0x01
+						effectColorTarget[cacheAddr-100].bl = cacheBl | ((dataByte & 0x04) << 5);
+ 1da:	89 2f       	mov	r24, r25
+ 1dc:	84 70       	andi	r24, 0x04	; 4
+ 1de:	28 2f       	mov	r18, r24
+ 1e0:	22 95       	swap	r18
+ 1e2:	22 0f       	add	r18, r18
+ 1e4:	20 7e       	andi	r18, 0xE0	; 224
+ 1e6:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <cacheBl.1627>
+ 1ea:	82 2b       	or	r24, r18
+ 1ec:	82 83       	std	Z+2, r24	; 0x02
+						effectColorTarget[cacheAddr-100].wh = cacheWh | ((dataByte & 0x08) << 4);
+ 1ee:	98 70       	andi	r25, 0x08	; 8
+ 1f0:	92 95       	swap	r25
+ 1f2:	90 7f       	andi	r25, 0xF0	; 240
+ 1f4:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1f8:	98 2b       	or	r25, r24
+ 1fa:	93 83       	std	Z+3, r25	; 0x03
+						flagColorChanged = 1;
+ 1fc:	81 e0       	ldi	r24, 0x01	; 1
+ 1fe:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <flagColorChanged>
+ 202:	08 c0       	rjmp	.+16     	; 0x214 <FetchSpi+0x17c>
+					}
+					// Is data for mode?
+					else if((119 < cacheAddr) && (cacheAddr < (120 + NUM_MODES)))
+ 204:	28 57       	subi	r18, 0x78	; 120
+ 206:	25 30       	cpi	r18, 0x05	; 5
+ 208:	28 f4       	brcc	.+10     	; 0x214 <FetchSpi+0x17c>
+					{
+						mode = cacheAddr - 120;
+ 20a:	20 93 09 01 	sts	0x0109, r18	; 0x800109 <mode>
+						flagModeChanged = 1;
+ 20e:	81 e0       	ldi	r24, 0x01	; 1
+ 210:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <flagModeChanged>
+					}
+					// If no case is true, an invalid address was sent					
+				}
+				fsmState = STATE_IDLE;
+ 214:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+				break;
+ 218:	08 95       	ret
+			default:
+				fsmState = STATE_IDLE;
+ 21a:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <fsmState>
+ 21e:	08 95       	ret
+
+00000220 <calculateColorAndFillBuffer>:
+//**************************************************************************************
+//***                  function "CalculateColorAndFillBuffer"                        ***
+//**************************************************************************************
+
+void calculateColorAndFillBuffer(void)
+{
+ 220:	4f 92       	push	r4
+ 222:	5f 92       	push	r5
+ 224:	6f 92       	push	r6
+ 226:	7f 92       	push	r7
+ 228:	8f 92       	push	r8
+ 22a:	9f 92       	push	r9
+ 22c:	af 92       	push	r10
+ 22e:	bf 92       	push	r11
+ 230:	cf 92       	push	r12
+ 232:	df 92       	push	r13
+ 234:	ef 92       	push	r14
+ 236:	ff 92       	push	r15
+ 238:	0f 93       	push	r16
+ 23a:	1f 93       	push	r17
+ 23c:	cf 93       	push	r28
+ 23e:	df 93       	push	r29
+ 240:	cd b7       	in	r28, 0x3d	; 61
+ 242:	de b7       	in	r29, 0x3e	; 62
+ 244:	2e 97       	sbiw	r28, 0x0e	; 14
+ 246:	0f b6       	in	r0, 0x3f	; 63
+ 248:	f8 94       	cli
+ 24a:	de bf       	out	0x3e, r29	; 62
+ 24c:	0f be       	out	0x3f, r0	; 63
+ 24e:	cd bf       	out	0x3d, r28	; 61
+	float redStep;
+	float greenStep;
+	float blueStep;
+	float whiteStep;
+
+	switch(mode)
+ 250:	80 91 09 01 	lds	r24, 0x0109	; 0x800109 <mode>
+ 254:	82 30       	cpi	r24, 0x02	; 2
+ 256:	99 f1       	breq	.+102    	; 0x2be <calculateColorAndFillBuffer+0x9e>
+ 258:	28 f4       	brcc	.+10     	; 0x264 <calculateColorAndFillBuffer+0x44>
+ 25a:	88 23       	and	r24, r24
+ 25c:	49 f0       	breq	.+18     	; 0x270 <calculateColorAndFillBuffer+0x50>
+ 25e:	81 30       	cpi	r24, 0x01	; 1
+ 260:	a1 f0       	breq	.+40     	; 0x28a <calculateColorAndFillBuffer+0x6a>
+ 262:	4b c1       	rjmp	.+662    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 264:	83 30       	cpi	r24, 0x03	; 3
+ 266:	f1 f1       	breq	.+124    	; 0x2e4 <calculateColorAndFillBuffer+0xc4>
+ 268:	84 30       	cpi	r24, 0x04	; 4
+ 26a:	09 f4       	brne	.+2      	; 0x26e <calculateColorAndFillBuffer+0x4e>
+ 26c:	c1 c0       	rjmp	.+386    	; 0x3f0 <calculateColorAndFillBuffer+0x1d0>
+ 26e:	45 c1       	rjmp	.+650    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 270:	ea e0       	ldi	r30, 0x0A	; 10
+ 272:	f1 e0       	ldi	r31, 0x01	; 1
+ 274:	8a e9       	ldi	r24, 0x9A	; 154
+ 276:	92 e0       	ldi	r25, 0x02	; 2
+	{
+		case MODE_OFF:
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+			{
+				//Set everything to 0
+				ringBufferColor[i].rd = 0;
+ 278:	10 82       	st	Z, r1
+				ringBufferColor[i].gn = 0;
+ 27a:	11 82       	std	Z+1, r1	; 0x01
+				ringBufferColor[i].bl = 0;
+ 27c:	12 82       	std	Z+2, r1	; 0x02
+				ringBufferColor[i].wh = 0;
+ 27e:	13 82       	std	Z+3, r1	; 0x03
+ 280:	34 96       	adiw	r30, 0x04	; 4
+	float whiteStep;
+
+	switch(mode)
+	{
+		case MODE_OFF:
+			for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+ 282:	e8 17       	cp	r30, r24
+ 284:	f9 07       	cpc	r31, r25
+ 286:	c1 f7       	brne	.-16     	; 0x278 <calculateColorAndFillBuffer+0x58>
+ 288:	38 c1       	rjmp	.+624    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 28a:	ea e9       	ldi	r30, 0x9A	; 154
+ 28c:	f2 e0       	ldi	r31, 0x02	; 2
+ 28e:	aa e0       	ldi	r26, 0x0A	; 10
+ 290:	b1 e0       	ldi	r27, 0x01	; 1
+ 292:	22 ec       	ldi	r18, 0xC2	; 194
+ 294:	32 e0       	ldi	r19, 0x02	; 2
+            
+		case MODE_INDIVIDUAL_COLOR:
+			for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+            {
+                //Fill the ringBuffer with every received color --> for each module
+                ringBufferColor[i].rd = individualPanelColor[i].rd;
+ 296:	80 81       	ld	r24, Z
+ 298:	8c 93       	st	X, r24
+                ringBufferColor[i].gn = individualPanelColor[i].gn;
+ 29a:	81 81       	ldd	r24, Z+1	; 0x01
+ 29c:	11 96       	adiw	r26, 0x01	; 1
+ 29e:	8c 93       	st	X, r24
+ 2a0:	11 97       	sbiw	r26, 0x01	; 1
+                ringBufferColor[i].bl = individualPanelColor[i].bl;
+ 2a2:	82 81       	ldd	r24, Z+2	; 0x02
+ 2a4:	12 96       	adiw	r26, 0x02	; 2
+ 2a6:	8c 93       	st	X, r24
+ 2a8:	12 97       	sbiw	r26, 0x02	; 2
+                ringBufferColor[i].wh = individualPanelColor[i].wh;
+ 2aa:	83 81       	ldd	r24, Z+3	; 0x03
+ 2ac:	13 96       	adiw	r26, 0x03	; 3
+ 2ae:	8c 93       	st	X, r24
+ 2b0:	13 97       	sbiw	r26, 0x03	; 3
+ 2b2:	34 96       	adiw	r30, 0x04	; 4
+ 2b4:	14 96       	adiw	r26, 0x04	; 4
+				ringBufferColor[i].wh = 0;
+			}
+			break;
+            
+		case MODE_INDIVIDUAL_COLOR:
+			for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+ 2b6:	e2 17       	cp	r30, r18
+ 2b8:	f3 07       	cpc	r31, r19
+ 2ba:	69 f7       	brne	.-38     	; 0x296 <calculateColorAndFillBuffer+0x76>
+ 2bc:	1e c1       	rjmp	.+572    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+            
+		case MODE_ONECOLOR:
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+            {
+                //Fill the whole ringbuffer with just one color
+                ringBufferColor[i].rd = individualPanelColor[0].rd;
+ 2be:	ea e9       	ldi	r30, 0x9A	; 154
+ 2c0:	f2 e0       	ldi	r31, 0x02	; 2
+ 2c2:	50 81       	ld	r21, Z
+                ringBufferColor[i].gn = individualPanelColor[0].gn;
+ 2c4:	41 81       	ldd	r20, Z+1	; 0x01
+                ringBufferColor[i].bl = individualPanelColor[0].bl;
+ 2c6:	32 81       	ldd	r19, Z+2	; 0x02
+                ringBufferColor[i].wh = individualPanelColor[0].wh;
+ 2c8:	23 81       	ldd	r18, Z+3	; 0x03
+ 2ca:	ea e0       	ldi	r30, 0x0A	; 10
+ 2cc:	f1 e0       	ldi	r31, 0x01	; 1
+ 2ce:	82 e3       	ldi	r24, 0x32	; 50
+ 2d0:	91 e0       	ldi	r25, 0x01	; 1
+            
+		case MODE_ONECOLOR:
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+            {
+                //Fill the whole ringbuffer with just one color
+                ringBufferColor[i].rd = individualPanelColor[0].rd;
+ 2d2:	50 83       	st	Z, r21
+                ringBufferColor[i].gn = individualPanelColor[0].gn;
+ 2d4:	41 83       	std	Z+1, r20	; 0x01
+                ringBufferColor[i].bl = individualPanelColor[0].bl;
+ 2d6:	32 83       	std	Z+2, r19	; 0x02
+                ringBufferColor[i].wh = individualPanelColor[0].wh;
+ 2d8:	23 83       	std	Z+3, r18	; 0x03
+ 2da:	34 96       	adiw	r30, 0x04	; 4
+                ringBufferColor[i].wh = individualPanelColor[i].wh;
+            }
+			break;
+            
+		case MODE_ONECOLOR:
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+ 2dc:	e8 17       	cp	r30, r24
+ 2de:	f9 07       	cpc	r31, r25
+ 2e0:	c1 f7       	brne	.-16     	; 0x2d2 <calculateColorAndFillBuffer+0xb2>
+ 2e2:	0b c1       	rjmp	.+534    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+            secondColor.rd = effectColorTarget[2].rd;
+            secondColor.gn = effectColorTarget[2].gn;
+            secondColor.bl = effectColorTarget[2].bl;
+            secondColor.wh = effectColorTarget[2].wh;
+            
+            redStep   = secondColor.rd - firstColor.rd;
+ 2e4:	80 90 c6 02 	lds	r8, 0x02C6	; 0x8002c6 <effectColorTarget+0x4>
+ 2e8:	91 2c       	mov	r9, r1
+ 2ea:	60 91 ca 02 	lds	r22, 0x02CA	; 0x8002ca <effectColorTarget+0x8>
+ 2ee:	70 e0       	ldi	r23, 0x00	; 0
+ 2f0:	68 19       	sub	r22, r8
+ 2f2:	79 09       	sbc	r23, r9
+ 2f4:	07 2e       	mov	r0, r23
+ 2f6:	00 0c       	add	r0, r0
+ 2f8:	88 0b       	sbc	r24, r24
+ 2fa:	99 0b       	sbc	r25, r25
+ 2fc:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 300:	69 83       	std	Y+1, r22	; 0x01
+ 302:	7a 83       	std	Y+2, r23	; 0x02
+ 304:	8b 83       	std	Y+3, r24	; 0x03
+ 306:	9c 83       	std	Y+4, r25	; 0x04
+            greenStep = secondColor.gn - firstColor.gn;
+ 308:	40 90 c7 02 	lds	r4, 0x02C7	; 0x8002c7 <effectColorTarget+0x5>
+            blueStep  = secondColor.bl - firstColor.bl;
+ 30c:	90 91 c8 02 	lds	r25, 0x02C8	; 0x8002c8 <effectColorTarget+0x6>
+            whiteStep = secondColor.wh - firstColor.wh;
+ 310:	80 91 c9 02 	lds	r24, 0x02C9	; 0x8002c9 <effectColorTarget+0x7>
+ 314:	2a e0       	ldi	r18, 0x0A	; 10
+ 316:	31 e0       	ldi	r19, 0x01	; 1
+ 318:	3e 87       	std	Y+14, r19	; 0x0e
+ 31a:	2d 87       	std	Y+13, r18	; 0x0d
+            
+            for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+ 31c:	00 e0       	ldi	r16, 0x00	; 0
+ 31e:	10 e0       	ldi	r17, 0x00	; 0
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(firstColor.rd + i * redStep);
+ 320:	09 2c       	mov	r0, r9
+ 322:	00 0c       	add	r0, r0
+ 324:	aa 08       	sbc	r10, r10
+ 326:	bb 08       	sbc	r11, r11
+                ringBufferColor[i].gn = (int)(firstColor.gn + i * redStep);
+ 328:	51 2c       	mov	r5, r1
+ 32a:	61 2c       	mov	r6, r1
+ 32c:	71 2c       	mov	r7, r1
+                ringBufferColor[i].bl = (int)(firstColor.bl + i * redStep);
+ 32e:	29 2f       	mov	r18, r25
+ 330:	30 e0       	ldi	r19, 0x00	; 0
+ 332:	40 e0       	ldi	r20, 0x00	; 0
+ 334:	50 e0       	ldi	r21, 0x00	; 0
+ 336:	2d 83       	std	Y+5, r18	; 0x05
+ 338:	3e 83       	std	Y+6, r19	; 0x06
+ 33a:	4f 83       	std	Y+7, r20	; 0x07
+ 33c:	58 87       	std	Y+8, r21	; 0x08
+                ringBufferColor[i].wh = (int)(firstColor.wh + i * redStep);
+ 33e:	28 2f       	mov	r18, r24
+ 340:	30 e0       	ldi	r19, 0x00	; 0
+ 342:	40 e0       	ldi	r20, 0x00	; 0
+ 344:	50 e0       	ldi	r21, 0x00	; 0
+ 346:	29 87       	std	Y+9, r18	; 0x09
+ 348:	3a 87       	std	Y+10, r19	; 0x0a
+ 34a:	4b 87       	std	Y+11, r20	; 0x0b
+ 34c:	5c 87       	std	Y+12, r21	; 0x0c
+            whiteStep = secondColor.wh - firstColor.wh;
+            
+            for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(firstColor.rd + i * redStep);
+ 34e:	b8 01       	movw	r22, r16
+ 350:	01 2e       	mov	r0, r17
+ 352:	00 0c       	add	r0, r0
+ 354:	88 0b       	sbc	r24, r24
+ 356:	99 0b       	sbc	r25, r25
+ 358:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 35c:	29 81       	ldd	r18, Y+1	; 0x01
+ 35e:	3a 81       	ldd	r19, Y+2	; 0x02
+ 360:	4b 81       	ldd	r20, Y+3	; 0x03
+ 362:	5c 81       	ldd	r21, Y+4	; 0x04
+ 364:	0e 94 f5 03 	call	0x7ea	; 0x7ea <__mulsf3>
+ 368:	6b 01       	movw	r12, r22
+ 36a:	7c 01       	movw	r14, r24
+ 36c:	c5 01       	movw	r24, r10
+ 36e:	b4 01       	movw	r22, r8
+ 370:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 374:	a7 01       	movw	r20, r14
+ 376:	96 01       	movw	r18, r12
+ 378:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 37c:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 380:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 382:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 384:	60 83       	st	Z, r22
+                ringBufferColor[i].gn = (int)(firstColor.gn + i * redStep);
+ 386:	c3 01       	movw	r24, r6
+ 388:	b2 01       	movw	r22, r4
+ 38a:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 38e:	a7 01       	movw	r20, r14
+ 390:	96 01       	movw	r18, r12
+ 392:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 396:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 39a:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 39c:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 39e:	61 83       	std	Z+1, r22	; 0x01
+                ringBufferColor[i].bl = (int)(firstColor.bl + i * redStep);
+ 3a0:	6d 81       	ldd	r22, Y+5	; 0x05
+ 3a2:	7e 81       	ldd	r23, Y+6	; 0x06
+ 3a4:	8f 81       	ldd	r24, Y+7	; 0x07
+ 3a6:	98 85       	ldd	r25, Y+8	; 0x08
+ 3a8:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 3ac:	a7 01       	movw	r20, r14
+ 3ae:	96 01       	movw	r18, r12
+ 3b0:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 3b4:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 3b8:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 3ba:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 3bc:	62 83       	std	Z+2, r22	; 0x02
+                ringBufferColor[i].wh = (int)(firstColor.wh + i * redStep);
+ 3be:	69 85       	ldd	r22, Y+9	; 0x09
+ 3c0:	7a 85       	ldd	r23, Y+10	; 0x0a
+ 3c2:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 3c4:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 3c6:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 3ca:	a7 01       	movw	r20, r14
+ 3cc:	96 01       	movw	r18, r12
+ 3ce:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 3d2:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 3d6:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 3d8:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 3da:	63 83       	std	Z+3, r22	; 0x03
+            redStep   = secondColor.rd - firstColor.rd;
+            greenStep = secondColor.gn - firstColor.gn;
+            blueStep  = secondColor.bl - firstColor.bl;
+            whiteStep = secondColor.wh - firstColor.wh;
+            
+            for(i = 0; i < NUM_COLOR_GRADIENTS; i += 1)
+ 3dc:	0f 5f       	subi	r16, 0xFF	; 255
+ 3de:	1f 4f       	sbci	r17, 0xFF	; 255
+ 3e0:	34 96       	adiw	r30, 0x04	; 4
+ 3e2:	fe 87       	std	Y+14, r31	; 0x0e
+ 3e4:	ed 87       	std	Y+13, r30	; 0x0d
+ 3e6:	04 36       	cpi	r16, 0x64	; 100
+ 3e8:	11 05       	cpc	r17, r1
+ 3ea:	09 f0       	breq	.+2      	; 0x3ee <calculateColorAndFillBuffer+0x1ce>
+ 3ec:	b0 cf       	rjmp	.-160    	; 0x34e <calculateColorAndFillBuffer+0x12e>
+ 3ee:	85 c0       	rjmp	.+266    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+            secondColor.rd = effectColorTarget[2].rd;
+            secondColor.gn = effectColorTarget[2].gn;
+            secondColor.bl = effectColorTarget[2].bl;
+            secondColor.wh = effectColorTarget[2].wh;
+            
+            redStep   = secondColor.rd - firstColor.rd;
+ 3f0:	80 90 c6 02 	lds	r8, 0x02C6	; 0x8002c6 <effectColorTarget+0x4>
+ 3f4:	91 2c       	mov	r9, r1
+ 3f6:	60 91 ca 02 	lds	r22, 0x02CA	; 0x8002ca <effectColorTarget+0x8>
+ 3fa:	70 e0       	ldi	r23, 0x00	; 0
+ 3fc:	68 19       	sub	r22, r8
+ 3fe:	79 09       	sbc	r23, r9
+ 400:	07 2e       	mov	r0, r23
+ 402:	00 0c       	add	r0, r0
+ 404:	88 0b       	sbc	r24, r24
+ 406:	99 0b       	sbc	r25, r25
+ 408:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 40c:	69 83       	std	Y+1, r22	; 0x01
+ 40e:	7a 83       	std	Y+2, r23	; 0x02
+ 410:	8b 83       	std	Y+3, r24	; 0x03
+ 412:	9c 83       	std	Y+4, r25	; 0x04
+            greenStep = secondColor.gn - firstColor.gn;
+ 414:	40 90 c7 02 	lds	r4, 0x02C7	; 0x8002c7 <effectColorTarget+0x5>
+            blueStep  = secondColor.bl - firstColor.bl;
+ 418:	90 91 c8 02 	lds	r25, 0x02C8	; 0x8002c8 <effectColorTarget+0x6>
+            whiteStep = secondColor.wh - firstColor.wh;
+ 41c:	80 91 c9 02 	lds	r24, 0x02C9	; 0x8002c9 <effectColorTarget+0x7>
+ 420:	2a e0       	ldi	r18, 0x0A	; 10
+ 422:	31 e0       	ldi	r19, 0x01	; 1
+ 424:	3e 87       	std	Y+14, r19	; 0x0e
+ 426:	2d 87       	std	Y+13, r18	; 0x0d
+            
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+ 428:	00 e0       	ldi	r16, 0x00	; 0
+ 42a:	10 e0       	ldi	r17, 0x00	; 0
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(firstColor.rd + i * redStep);
+ 42c:	09 2c       	mov	r0, r9
+ 42e:	00 0c       	add	r0, r0
+ 430:	aa 08       	sbc	r10, r10
+ 432:	bb 08       	sbc	r11, r11
+                ringBufferColor[i].gn = (int)(firstColor.gn + i * redStep);
+ 434:	51 2c       	mov	r5, r1
+ 436:	61 2c       	mov	r6, r1
+ 438:	71 2c       	mov	r7, r1
+                ringBufferColor[i].bl = (int)(firstColor.bl + i * redStep);
+ 43a:	29 2f       	mov	r18, r25
+ 43c:	30 e0       	ldi	r19, 0x00	; 0
+ 43e:	40 e0       	ldi	r20, 0x00	; 0
+ 440:	50 e0       	ldi	r21, 0x00	; 0
+ 442:	2d 83       	std	Y+5, r18	; 0x05
+ 444:	3e 83       	std	Y+6, r19	; 0x06
+ 446:	4f 83       	std	Y+7, r20	; 0x07
+ 448:	58 87       	std	Y+8, r21	; 0x08
+                ringBufferColor[i].wh = (int)(firstColor.wh + i * redStep);
+ 44a:	28 2f       	mov	r18, r24
+ 44c:	30 e0       	ldi	r19, 0x00	; 0
+ 44e:	40 e0       	ldi	r20, 0x00	; 0
+ 450:	50 e0       	ldi	r21, 0x00	; 0
+ 452:	29 87       	std	Y+9, r18	; 0x09
+ 454:	3a 87       	std	Y+10, r19	; 0x0a
+ 456:	4b 87       	std	Y+11, r20	; 0x0b
+ 458:	5c 87       	std	Y+12, r21	; 0x0c
+            whiteStep = secondColor.wh - firstColor.wh;
+            
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+            {
+                //fill the ringBuffer
+                ringBufferColor[i].rd = (int)(firstColor.rd + i * redStep);
+ 45a:	b8 01       	movw	r22, r16
+ 45c:	01 2e       	mov	r0, r17
+ 45e:	00 0c       	add	r0, r0
+ 460:	88 0b       	sbc	r24, r24
+ 462:	99 0b       	sbc	r25, r25
+ 464:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 468:	29 81       	ldd	r18, Y+1	; 0x01
+ 46a:	3a 81       	ldd	r19, Y+2	; 0x02
+ 46c:	4b 81       	ldd	r20, Y+3	; 0x03
+ 46e:	5c 81       	ldd	r21, Y+4	; 0x04
+ 470:	0e 94 f5 03 	call	0x7ea	; 0x7ea <__mulsf3>
+ 474:	6b 01       	movw	r12, r22
+ 476:	7c 01       	movw	r14, r24
+ 478:	c5 01       	movw	r24, r10
+ 47a:	b4 01       	movw	r22, r8
+ 47c:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 480:	a7 01       	movw	r20, r14
+ 482:	96 01       	movw	r18, r12
+ 484:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 488:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 48c:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 48e:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 490:	60 83       	st	Z, r22
+                ringBufferColor[i].gn = (int)(firstColor.gn + i * redStep);
+ 492:	c3 01       	movw	r24, r6
+ 494:	b2 01       	movw	r22, r4
+ 496:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 49a:	a7 01       	movw	r20, r14
+ 49c:	96 01       	movw	r18, r12
+ 49e:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 4a2:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 4a6:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 4a8:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 4aa:	61 83       	std	Z+1, r22	; 0x01
+                ringBufferColor[i].bl = (int)(firstColor.bl + i * redStep);
+ 4ac:	6d 81       	ldd	r22, Y+5	; 0x05
+ 4ae:	7e 81       	ldd	r23, Y+6	; 0x06
+ 4b0:	8f 81       	ldd	r24, Y+7	; 0x07
+ 4b2:	98 85       	ldd	r25, Y+8	; 0x08
+ 4b4:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 4b8:	a7 01       	movw	r20, r14
+ 4ba:	96 01       	movw	r18, r12
+ 4bc:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 4c0:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 4c4:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 4c6:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 4c8:	62 83       	std	Z+2, r22	; 0x02
+                ringBufferColor[i].wh = (int)(firstColor.wh + i * redStep);
+ 4ca:	69 85       	ldd	r22, Y+9	; 0x09
+ 4cc:	7a 85       	ldd	r23, Y+10	; 0x0a
+ 4ce:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 4d0:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 4d2:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__floatsisf>
+ 4d6:	a7 01       	movw	r20, r14
+ 4d8:	96 01       	movw	r18, r12
+ 4da:	0e 94 c5 02 	call	0x58a	; 0x58a <__addsf3>
+ 4de:	0e 94 31 03 	call	0x662	; 0x662 <__fixsfsi>
+ 4e2:	ed 85       	ldd	r30, Y+13	; 0x0d
+ 4e4:	fe 85       	ldd	r31, Y+14	; 0x0e
+ 4e6:	63 83       	std	Z+3, r22	; 0x03
+            redStep   = secondColor.rd - firstColor.rd;
+            greenStep = secondColor.gn - firstColor.gn;
+            blueStep  = secondColor.bl - firstColor.bl;
+            whiteStep = secondColor.wh - firstColor.wh;
+            
+            for(i = 0; i < NUM_ATTACHED_MODULES; i += 1)
+ 4e8:	0f 5f       	subi	r16, 0xFF	; 255
+ 4ea:	1f 4f       	sbci	r17, 0xFF	; 255
+ 4ec:	34 96       	adiw	r30, 0x04	; 4
+ 4ee:	fe 87       	std	Y+14, r31	; 0x0e
+ 4f0:	ed 87       	std	Y+13, r30	; 0x0d
+ 4f2:	0a 30       	cpi	r16, 0x0A	; 10
+ 4f4:	11 05       	cpc	r17, r1
+ 4f6:	09 f0       	breq	.+2      	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 4f8:	b0 cf       	rjmp	.-160    	; 0x45a <__LOCK_REGION_LENGTH__+0x5a>
+			break;
+            
+		default:
+			break;
+	}
+}
+ 4fa:	2e 96       	adiw	r28, 0x0e	; 14
+ 4fc:	0f b6       	in	r0, 0x3f	; 63
+ 4fe:	f8 94       	cli
+ 500:	de bf       	out	0x3e, r29	; 62
+ 502:	0f be       	out	0x3f, r0	; 63
+ 504:	cd bf       	out	0x3d, r28	; 61
+ 506:	df 91       	pop	r29
+ 508:	cf 91       	pop	r28
+ 50a:	1f 91       	pop	r17
+ 50c:	0f 91       	pop	r16
+ 50e:	ff 90       	pop	r15
+ 510:	ef 90       	pop	r14
+ 512:	df 90       	pop	r13
+ 514:	cf 90       	pop	r12
+ 516:	bf 90       	pop	r11
+ 518:	af 90       	pop	r10
+ 51a:	9f 90       	pop	r9
+ 51c:	8f 90       	pop	r8
+ 51e:	7f 90       	pop	r7
+ 520:	6f 90       	pop	r6
+ 522:	5f 90       	pop	r5
+ 524:	4f 90       	pop	r4
+ 526:	08 95       	ret
+
+00000528 <main>:
+{
+	// Declare and define local variables
+	uint8_t mode_shad = mode;					// Saves mode of last "loop"
+	
+    // Do initialization stuff
+	PortInit();
+ 528:	0e 94 48 00 	call	0x90	; 0x90 <PortInit>
+//**************************************************************************************
+
+void SPI_SlaveInit(void)
+{
+	//SPCR – SPI Control Register
+	SPCR = 0x40;		
+ 52c:	80 e4       	ldi	r24, 0x40	; 64
+ 52e:	8c bd       	out	0x2c, r24	; 44
+	SPI_SlaveInit();
+	
+	
+	
+	// General interrupt enable	
+	sei();
+ 530:	78 94       	sei
+	
+    while (1)
+    {
+        // This function fetches data from SPI and saves it
+        FetchSpi();
+ 532:	0e 94 4c 00 	call	0x98	; 0x98 <FetchSpi>
+        
+        // If the mode changed is is necessary to calculate a new color gradient (or save the single colors for the led in the new buffer)
+        
+        if(flagColorChanged || flagModeChanged)
+ 536:	80 91 07 01 	lds	r24, 0x0107	; 0x800107 <flagColorChanged>
+ 53a:	81 11       	cpse	r24, r1
+ 53c:	04 c0       	rjmp	.+8      	; 0x546 <main+0x1e>
+ 53e:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <flagModeChanged>
+ 542:	88 23       	and	r24, r24
+ 544:	31 f0       	breq	.+12     	; 0x552 <main+0x2a>
+        {
+     	   flagColorChanged = 0;
+ 546:	10 92 07 01 	sts	0x0107, r1	; 0x800107 <flagColorChanged>
+     	   flagModeChanged  = 0;
+ 54a:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <flagModeChanged>
+     	   calculateColorAndFillBuffer();
+ 54e:	0e 94 10 01 	call	0x220	; 0x220 <calculateColorAndFillBuffer>
+        }
+        
+        if (mode != MODE_TWOCOLOR_FADER)
+ 552:	80 91 09 01 	lds	r24, 0x0109	; 0x800109 <mode>
+ 556:	83 30       	cpi	r24, 0x03	; 3
+ 558:	61 f3       	breq	.-40     	; 0x532 <main+0xa>
+        {
+     	   bufferOffset = 0;
+ 55a:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <bufferOffset>
+ 55e:	e9 cf       	rjmp	.-46     	; 0x532 <main+0xa>
+
+00000560 <__vector_17>:
+//**************************************************************************************
+//***                                 interrupt SPI                                  ***
+//**************************************************************************************
+
+ISR(SPI_STC_vect)
+{
+ 560:	1f 92       	push	r1
+ 562:	0f 92       	push	r0
+ 564:	0f b6       	in	r0, 0x3f	; 63
+ 566:	0f 92       	push	r0
+ 568:	11 24       	eor	r1, r1
+	//Just do something
+	mode = mode;
+}
+ 56a:	0f 90       	pop	r0
+ 56c:	0f be       	out	0x3f, r0	; 63
+ 56e:	0f 90       	pop	r0
+ 570:	1f 90       	pop	r1
+ 572:	18 95       	reti
+
+00000574 <__vector_1>:
+//**************************************************************************************
+
+//******************************************** IE-Flag muss noch gestzt werden! und Inerrupt generell noch eischlaten*********************************************
+
+ISR(INT0_vect) // External Interrupt 0
+{
+ 574:	1f 92       	push	r1
+ 576:	0f 92       	push	r0
+ 578:	0f b6       	in	r0, 0x3f	; 63
+ 57a:	0f 92       	push	r0
+ 57c:	11 24       	eor	r1, r1
+			// Disable interrupt
+		}
+	}
+	//reset interruptFlags
+	*/
+ 57e:	0f 90       	pop	r0
+ 580:	0f be       	out	0x3f, r0	; 63
+ 582:	0f 90       	pop	r0
+ 584:	1f 90       	pop	r1
+ 586:	18 95       	reti
+
+00000588 <__subsf3>:
+ 588:	50 58       	subi	r21, 0x80	; 128
+
+0000058a <__addsf3>:
+ 58a:	bb 27       	eor	r27, r27
+ 58c:	aa 27       	eor	r26, r26
+ 58e:	0e 94 dc 02 	call	0x5b8	; 0x5b8 <__addsf3x>
+ 592:	0c 94 bb 03 	jmp	0x776	; 0x776 <__fp_round>
+ 596:	0e 94 ad 03 	call	0x75a	; 0x75a <__fp_pscA>
+ 59a:	38 f0       	brcs	.+14     	; 0x5aa <__addsf3+0x20>
+ 59c:	0e 94 b4 03 	call	0x768	; 0x768 <__fp_pscB>
+ 5a0:	20 f0       	brcs	.+8      	; 0x5aa <__addsf3+0x20>
+ 5a2:	39 f4       	brne	.+14     	; 0x5b2 <__addsf3+0x28>
+ 5a4:	9f 3f       	cpi	r25, 0xFF	; 255
+ 5a6:	19 f4       	brne	.+6      	; 0x5ae <__addsf3+0x24>
+ 5a8:	26 f4       	brtc	.+8      	; 0x5b2 <__addsf3+0x28>
+ 5aa:	0c 94 aa 03 	jmp	0x754	; 0x754 <__fp_nan>
+ 5ae:	0e f4       	brtc	.+2      	; 0x5b2 <__addsf3+0x28>
+ 5b0:	e0 95       	com	r30
+ 5b2:	e7 fb       	bst	r30, 7
+ 5b4:	0c 94 a4 03 	jmp	0x748	; 0x748 <__fp_inf>
+
+000005b8 <__addsf3x>:
+ 5b8:	e9 2f       	mov	r30, r25
+ 5ba:	0e 94 cc 03 	call	0x798	; 0x798 <__fp_split3>
+ 5be:	58 f3       	brcs	.-42     	; 0x596 <__addsf3+0xc>
+ 5c0:	ba 17       	cp	r27, r26
+ 5c2:	62 07       	cpc	r22, r18
+ 5c4:	73 07       	cpc	r23, r19
+ 5c6:	84 07       	cpc	r24, r20
+ 5c8:	95 07       	cpc	r25, r21
+ 5ca:	20 f0       	brcs	.+8      	; 0x5d4 <__addsf3x+0x1c>
+ 5cc:	79 f4       	brne	.+30     	; 0x5ec <__addsf3x+0x34>
+ 5ce:	a6 f5       	brtc	.+104    	; 0x638 <__addsf3x+0x80>
+ 5d0:	0c 94 ee 03 	jmp	0x7dc	; 0x7dc <__fp_zero>
+ 5d4:	0e f4       	brtc	.+2      	; 0x5d8 <__addsf3x+0x20>
+ 5d6:	e0 95       	com	r30
+ 5d8:	0b 2e       	mov	r0, r27
+ 5da:	ba 2f       	mov	r27, r26
+ 5dc:	a0 2d       	mov	r26, r0
+ 5de:	0b 01       	movw	r0, r22
+ 5e0:	b9 01       	movw	r22, r18
+ 5e2:	90 01       	movw	r18, r0
+ 5e4:	0c 01       	movw	r0, r24
+ 5e6:	ca 01       	movw	r24, r20
+ 5e8:	a0 01       	movw	r20, r0
+ 5ea:	11 24       	eor	r1, r1
+ 5ec:	ff 27       	eor	r31, r31
+ 5ee:	59 1b       	sub	r21, r25
+ 5f0:	99 f0       	breq	.+38     	; 0x618 <__addsf3x+0x60>
+ 5f2:	59 3f       	cpi	r21, 0xF9	; 249
+ 5f4:	50 f4       	brcc	.+20     	; 0x60a <__addsf3x+0x52>
+ 5f6:	50 3e       	cpi	r21, 0xE0	; 224
+ 5f8:	68 f1       	brcs	.+90     	; 0x654 <__addsf3x+0x9c>
+ 5fa:	1a 16       	cp	r1, r26
+ 5fc:	f0 40       	sbci	r31, 0x00	; 0
+ 5fe:	a2 2f       	mov	r26, r18
+ 600:	23 2f       	mov	r18, r19
+ 602:	34 2f       	mov	r19, r20
+ 604:	44 27       	eor	r20, r20
+ 606:	58 5f       	subi	r21, 0xF8	; 248
+ 608:	f3 cf       	rjmp	.-26     	; 0x5f0 <__addsf3x+0x38>
+ 60a:	46 95       	lsr	r20
+ 60c:	37 95       	ror	r19
+ 60e:	27 95       	ror	r18
+ 610:	a7 95       	ror	r26
+ 612:	f0 40       	sbci	r31, 0x00	; 0
+ 614:	53 95       	inc	r21
+ 616:	c9 f7       	brne	.-14     	; 0x60a <__addsf3x+0x52>
+ 618:	7e f4       	brtc	.+30     	; 0x638 <__addsf3x+0x80>
+ 61a:	1f 16       	cp	r1, r31
+ 61c:	ba 0b       	sbc	r27, r26
+ 61e:	62 0b       	sbc	r22, r18
+ 620:	73 0b       	sbc	r23, r19
+ 622:	84 0b       	sbc	r24, r20
+ 624:	ba f0       	brmi	.+46     	; 0x654 <__addsf3x+0x9c>
+ 626:	91 50       	subi	r25, 0x01	; 1
+ 628:	a1 f0       	breq	.+40     	; 0x652 <__addsf3x+0x9a>
+ 62a:	ff 0f       	add	r31, r31
+ 62c:	bb 1f       	adc	r27, r27
+ 62e:	66 1f       	adc	r22, r22
+ 630:	77 1f       	adc	r23, r23
+ 632:	88 1f       	adc	r24, r24
+ 634:	c2 f7       	brpl	.-16     	; 0x626 <__addsf3x+0x6e>
+ 636:	0e c0       	rjmp	.+28     	; 0x654 <__addsf3x+0x9c>
+ 638:	ba 0f       	add	r27, r26
+ 63a:	62 1f       	adc	r22, r18
+ 63c:	73 1f       	adc	r23, r19
+ 63e:	84 1f       	adc	r24, r20
+ 640:	48 f4       	brcc	.+18     	; 0x654 <__addsf3x+0x9c>
+ 642:	87 95       	ror	r24
+ 644:	77 95       	ror	r23
+ 646:	67 95       	ror	r22
+ 648:	b7 95       	ror	r27
+ 64a:	f7 95       	ror	r31
+ 64c:	9e 3f       	cpi	r25, 0xFE	; 254
+ 64e:	08 f0       	brcs	.+2      	; 0x652 <__addsf3x+0x9a>
+ 650:	b0 cf       	rjmp	.-160    	; 0x5b2 <__addsf3+0x28>
+ 652:	93 95       	inc	r25
+ 654:	88 0f       	add	r24, r24
+ 656:	08 f0       	brcs	.+2      	; 0x65a <__addsf3x+0xa2>
+ 658:	99 27       	eor	r25, r25
+ 65a:	ee 0f       	add	r30, r30
+ 65c:	97 95       	ror	r25
+ 65e:	87 95       	ror	r24
+ 660:	08 95       	ret
+
+00000662 <__fixsfsi>:
+ 662:	0e 94 38 03 	call	0x670	; 0x670 <__fixunssfsi>
+ 666:	68 94       	set
+ 668:	b1 11       	cpse	r27, r1
+ 66a:	0c 94 ef 03 	jmp	0x7de	; 0x7de <__fp_szero>
+ 66e:	08 95       	ret
+
+00000670 <__fixunssfsi>:
+ 670:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__fp_splitA>
+ 674:	88 f0       	brcs	.+34     	; 0x698 <__fixunssfsi+0x28>
+ 676:	9f 57       	subi	r25, 0x7F	; 127
+ 678:	98 f0       	brcs	.+38     	; 0x6a0 <__fixunssfsi+0x30>
+ 67a:	b9 2f       	mov	r27, r25
+ 67c:	99 27       	eor	r25, r25
+ 67e:	b7 51       	subi	r27, 0x17	; 23
+ 680:	b0 f0       	brcs	.+44     	; 0x6ae <__fixunssfsi+0x3e>
+ 682:	e1 f0       	breq	.+56     	; 0x6bc <__fixunssfsi+0x4c>
+ 684:	66 0f       	add	r22, r22
+ 686:	77 1f       	adc	r23, r23
+ 688:	88 1f       	adc	r24, r24
+ 68a:	99 1f       	adc	r25, r25
+ 68c:	1a f0       	brmi	.+6      	; 0x694 <__fixunssfsi+0x24>
+ 68e:	ba 95       	dec	r27
+ 690:	c9 f7       	brne	.-14     	; 0x684 <__fixunssfsi+0x14>
+ 692:	14 c0       	rjmp	.+40     	; 0x6bc <__fixunssfsi+0x4c>
+ 694:	b1 30       	cpi	r27, 0x01	; 1
+ 696:	91 f0       	breq	.+36     	; 0x6bc <__fixunssfsi+0x4c>
+ 698:	0e 94 ee 03 	call	0x7dc	; 0x7dc <__fp_zero>
+ 69c:	b1 e0       	ldi	r27, 0x01	; 1
+ 69e:	08 95       	ret
+ 6a0:	0c 94 ee 03 	jmp	0x7dc	; 0x7dc <__fp_zero>
+ 6a4:	67 2f       	mov	r22, r23
+ 6a6:	78 2f       	mov	r23, r24
+ 6a8:	88 27       	eor	r24, r24
+ 6aa:	b8 5f       	subi	r27, 0xF8	; 248
+ 6ac:	39 f0       	breq	.+14     	; 0x6bc <__fixunssfsi+0x4c>
+ 6ae:	b9 3f       	cpi	r27, 0xF9	; 249
+ 6b0:	cc f3       	brlt	.-14     	; 0x6a4 <__fixunssfsi+0x34>
+ 6b2:	86 95       	lsr	r24
+ 6b4:	77 95       	ror	r23
+ 6b6:	67 95       	ror	r22
+ 6b8:	b3 95       	inc	r27
+ 6ba:	d9 f7       	brne	.-10     	; 0x6b2 <__fixunssfsi+0x42>
+ 6bc:	3e f4       	brtc	.+14     	; 0x6cc <__fixunssfsi+0x5c>
+ 6be:	90 95       	com	r25
+ 6c0:	80 95       	com	r24
+ 6c2:	70 95       	com	r23
+ 6c4:	61 95       	neg	r22
+ 6c6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6c8:	8f 4f       	sbci	r24, 0xFF	; 255
+ 6ca:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6cc:	08 95       	ret
+
+000006ce <__floatunsisf>:
+ 6ce:	e8 94       	clt
+ 6d0:	09 c0       	rjmp	.+18     	; 0x6e4 <__floatsisf+0x12>
+
+000006d2 <__floatsisf>:
+ 6d2:	97 fb       	bst	r25, 7
+ 6d4:	3e f4       	brtc	.+14     	; 0x6e4 <__floatsisf+0x12>
+ 6d6:	90 95       	com	r25
+ 6d8:	80 95       	com	r24
+ 6da:	70 95       	com	r23
+ 6dc:	61 95       	neg	r22
+ 6de:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6e0:	8f 4f       	sbci	r24, 0xFF	; 255
+ 6e2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6e4:	99 23       	and	r25, r25
+ 6e6:	a9 f0       	breq	.+42     	; 0x712 <__floatsisf+0x40>
+ 6e8:	f9 2f       	mov	r31, r25
+ 6ea:	96 e9       	ldi	r25, 0x96	; 150
+ 6ec:	bb 27       	eor	r27, r27
+ 6ee:	93 95       	inc	r25
+ 6f0:	f6 95       	lsr	r31
+ 6f2:	87 95       	ror	r24
+ 6f4:	77 95       	ror	r23
+ 6f6:	67 95       	ror	r22
+ 6f8:	b7 95       	ror	r27
+ 6fa:	f1 11       	cpse	r31, r1
+ 6fc:	f8 cf       	rjmp	.-16     	; 0x6ee <__floatsisf+0x1c>
+ 6fe:	fa f4       	brpl	.+62     	; 0x73e <__floatsisf+0x6c>
+ 700:	bb 0f       	add	r27, r27
+ 702:	11 f4       	brne	.+4      	; 0x708 <__floatsisf+0x36>
+ 704:	60 ff       	sbrs	r22, 0
+ 706:	1b c0       	rjmp	.+54     	; 0x73e <__floatsisf+0x6c>
+ 708:	6f 5f       	subi	r22, 0xFF	; 255
+ 70a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 70c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 70e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 710:	16 c0       	rjmp	.+44     	; 0x73e <__floatsisf+0x6c>
+ 712:	88 23       	and	r24, r24
+ 714:	11 f0       	breq	.+4      	; 0x71a <__floatsisf+0x48>
+ 716:	96 e9       	ldi	r25, 0x96	; 150
+ 718:	11 c0       	rjmp	.+34     	; 0x73c <__floatsisf+0x6a>
+ 71a:	77 23       	and	r23, r23
+ 71c:	21 f0       	breq	.+8      	; 0x726 <__floatsisf+0x54>
+ 71e:	9e e8       	ldi	r25, 0x8E	; 142
+ 720:	87 2f       	mov	r24, r23
+ 722:	76 2f       	mov	r23, r22
+ 724:	05 c0       	rjmp	.+10     	; 0x730 <__floatsisf+0x5e>
+ 726:	66 23       	and	r22, r22
+ 728:	71 f0       	breq	.+28     	; 0x746 <__floatsisf+0x74>
+ 72a:	96 e8       	ldi	r25, 0x86	; 134
+ 72c:	86 2f       	mov	r24, r22
+ 72e:	70 e0       	ldi	r23, 0x00	; 0
+ 730:	60 e0       	ldi	r22, 0x00	; 0
+ 732:	2a f0       	brmi	.+10     	; 0x73e <__floatsisf+0x6c>
+ 734:	9a 95       	dec	r25
+ 736:	66 0f       	add	r22, r22
+ 738:	77 1f       	adc	r23, r23
+ 73a:	88 1f       	adc	r24, r24
+ 73c:	da f7       	brpl	.-10     	; 0x734 <__floatsisf+0x62>
+ 73e:	88 0f       	add	r24, r24
+ 740:	96 95       	lsr	r25
+ 742:	87 95       	ror	r24
+ 744:	97 f9       	bld	r25, 7
+ 746:	08 95       	ret
+
+00000748 <__fp_inf>:
+ 748:	97 f9       	bld	r25, 7
+ 74a:	9f 67       	ori	r25, 0x7F	; 127
+ 74c:	80 e8       	ldi	r24, 0x80	; 128
+ 74e:	70 e0       	ldi	r23, 0x00	; 0
+ 750:	60 e0       	ldi	r22, 0x00	; 0
+ 752:	08 95       	ret
+
+00000754 <__fp_nan>:
+ 754:	9f ef       	ldi	r25, 0xFF	; 255
+ 756:	80 ec       	ldi	r24, 0xC0	; 192
+ 758:	08 95       	ret
+
+0000075a <__fp_pscA>:
+ 75a:	00 24       	eor	r0, r0
+ 75c:	0a 94       	dec	r0
+ 75e:	16 16       	cp	r1, r22
+ 760:	17 06       	cpc	r1, r23
+ 762:	18 06       	cpc	r1, r24
+ 764:	09 06       	cpc	r0, r25
+ 766:	08 95       	ret
+
+00000768 <__fp_pscB>:
+ 768:	00 24       	eor	r0, r0
+ 76a:	0a 94       	dec	r0
+ 76c:	12 16       	cp	r1, r18
+ 76e:	13 06       	cpc	r1, r19
+ 770:	14 06       	cpc	r1, r20
+ 772:	05 06       	cpc	r0, r21
+ 774:	08 95       	ret
+
+00000776 <__fp_round>:
+ 776:	09 2e       	mov	r0, r25
+ 778:	03 94       	inc	r0
+ 77a:	00 0c       	add	r0, r0
+ 77c:	11 f4       	brne	.+4      	; 0x782 <__fp_round+0xc>
+ 77e:	88 23       	and	r24, r24
+ 780:	52 f0       	brmi	.+20     	; 0x796 <__fp_round+0x20>
+ 782:	bb 0f       	add	r27, r27
+ 784:	40 f4       	brcc	.+16     	; 0x796 <__fp_round+0x20>
+ 786:	bf 2b       	or	r27, r31
+ 788:	11 f4       	brne	.+4      	; 0x78e <__fp_round+0x18>
+ 78a:	60 ff       	sbrs	r22, 0
+ 78c:	04 c0       	rjmp	.+8      	; 0x796 <__fp_round+0x20>
+ 78e:	6f 5f       	subi	r22, 0xFF	; 255
+ 790:	7f 4f       	sbci	r23, 0xFF	; 255
+ 792:	8f 4f       	sbci	r24, 0xFF	; 255
+ 794:	9f 4f       	sbci	r25, 0xFF	; 255
+ 796:	08 95       	ret
+
+00000798 <__fp_split3>:
+ 798:	57 fd       	sbrc	r21, 7
+ 79a:	90 58       	subi	r25, 0x80	; 128
+ 79c:	44 0f       	add	r20, r20
+ 79e:	55 1f       	adc	r21, r21
+ 7a0:	59 f0       	breq	.+22     	; 0x7b8 <__fp_splitA+0x10>
+ 7a2:	5f 3f       	cpi	r21, 0xFF	; 255
+ 7a4:	71 f0       	breq	.+28     	; 0x7c2 <__fp_splitA+0x1a>
+ 7a6:	47 95       	ror	r20
+
+000007a8 <__fp_splitA>:
+ 7a8:	88 0f       	add	r24, r24
+ 7aa:	97 fb       	bst	r25, 7
+ 7ac:	99 1f       	adc	r25, r25
+ 7ae:	61 f0       	breq	.+24     	; 0x7c8 <__fp_splitA+0x20>
+ 7b0:	9f 3f       	cpi	r25, 0xFF	; 255
+ 7b2:	79 f0       	breq	.+30     	; 0x7d2 <__fp_splitA+0x2a>
+ 7b4:	87 95       	ror	r24
+ 7b6:	08 95       	ret
+ 7b8:	12 16       	cp	r1, r18
+ 7ba:	13 06       	cpc	r1, r19
+ 7bc:	14 06       	cpc	r1, r20
+ 7be:	55 1f       	adc	r21, r21
+ 7c0:	f2 cf       	rjmp	.-28     	; 0x7a6 <__fp_split3+0xe>
+ 7c2:	46 95       	lsr	r20
+ 7c4:	f1 df       	rcall	.-30     	; 0x7a8 <__fp_splitA>
+ 7c6:	08 c0       	rjmp	.+16     	; 0x7d8 <__fp_splitA+0x30>
+ 7c8:	16 16       	cp	r1, r22
+ 7ca:	17 06       	cpc	r1, r23
+ 7cc:	18 06       	cpc	r1, r24
+ 7ce:	99 1f       	adc	r25, r25
+ 7d0:	f1 cf       	rjmp	.-30     	; 0x7b4 <__fp_splitA+0xc>
+ 7d2:	86 95       	lsr	r24
+ 7d4:	71 05       	cpc	r23, r1
+ 7d6:	61 05       	cpc	r22, r1
+ 7d8:	08 94       	sec
+ 7da:	08 95       	ret
+
+000007dc <__fp_zero>:
+ 7dc:	e8 94       	clt
+
+000007de <__fp_szero>:
+ 7de:	bb 27       	eor	r27, r27
+ 7e0:	66 27       	eor	r22, r22
+ 7e2:	77 27       	eor	r23, r23
+ 7e4:	cb 01       	movw	r24, r22
+ 7e6:	97 f9       	bld	r25, 7
+ 7e8:	08 95       	ret
+
+000007ea <__mulsf3>:
+ 7ea:	0e 94 08 04 	call	0x810	; 0x810 <__mulsf3x>
+ 7ee:	0c 94 bb 03 	jmp	0x776	; 0x776 <__fp_round>
+ 7f2:	0e 94 ad 03 	call	0x75a	; 0x75a <__fp_pscA>
+ 7f6:	38 f0       	brcs	.+14     	; 0x806 <__mulsf3+0x1c>
+ 7f8:	0e 94 b4 03 	call	0x768	; 0x768 <__fp_pscB>
+ 7fc:	20 f0       	brcs	.+8      	; 0x806 <__mulsf3+0x1c>
+ 7fe:	95 23       	and	r25, r21
+ 800:	11 f0       	breq	.+4      	; 0x806 <__mulsf3+0x1c>
+ 802:	0c 94 a4 03 	jmp	0x748	; 0x748 <__fp_inf>
+ 806:	0c 94 aa 03 	jmp	0x754	; 0x754 <__fp_nan>
+ 80a:	11 24       	eor	r1, r1
+ 80c:	0c 94 ef 03 	jmp	0x7de	; 0x7de <__fp_szero>
+
+00000810 <__mulsf3x>:
+ 810:	0e 94 cc 03 	call	0x798	; 0x798 <__fp_split3>
+ 814:	70 f3       	brcs	.-36     	; 0x7f2 <__mulsf3+0x8>
+
+00000816 <__mulsf3_pse>:
+ 816:	95 9f       	mul	r25, r21
+ 818:	c1 f3       	breq	.-16     	; 0x80a <__mulsf3+0x20>
+ 81a:	95 0f       	add	r25, r21
+ 81c:	50 e0       	ldi	r21, 0x00	; 0
+ 81e:	55 1f       	adc	r21, r21
+ 820:	62 9f       	mul	r22, r18
+ 822:	f0 01       	movw	r30, r0
+ 824:	72 9f       	mul	r23, r18
+ 826:	bb 27       	eor	r27, r27
+ 828:	f0 0d       	add	r31, r0
+ 82a:	b1 1d       	adc	r27, r1
+ 82c:	63 9f       	mul	r22, r19
+ 82e:	aa 27       	eor	r26, r26
+ 830:	f0 0d       	add	r31, r0
+ 832:	b1 1d       	adc	r27, r1
+ 834:	aa 1f       	adc	r26, r26
+ 836:	64 9f       	mul	r22, r20
+ 838:	66 27       	eor	r22, r22
+ 83a:	b0 0d       	add	r27, r0
+ 83c:	a1 1d       	adc	r26, r1
+ 83e:	66 1f       	adc	r22, r22
+ 840:	82 9f       	mul	r24, r18
+ 842:	22 27       	eor	r18, r18
+ 844:	b0 0d       	add	r27, r0
+ 846:	a1 1d       	adc	r26, r1
+ 848:	62 1f       	adc	r22, r18
+ 84a:	73 9f       	mul	r23, r19
+ 84c:	b0 0d       	add	r27, r0
+ 84e:	a1 1d       	adc	r26, r1
+ 850:	62 1f       	adc	r22, r18
+ 852:	83 9f       	mul	r24, r19
+ 854:	a0 0d       	add	r26, r0
+ 856:	61 1d       	adc	r22, r1
+ 858:	22 1f       	adc	r18, r18
+ 85a:	74 9f       	mul	r23, r20
+ 85c:	33 27       	eor	r19, r19
+ 85e:	a0 0d       	add	r26, r0
+ 860:	61 1d       	adc	r22, r1
+ 862:	23 1f       	adc	r18, r19
+ 864:	84 9f       	mul	r24, r20
+ 866:	60 0d       	add	r22, r0
+ 868:	21 1d       	adc	r18, r1
+ 86a:	82 2f       	mov	r24, r18
+ 86c:	76 2f       	mov	r23, r22
+ 86e:	6a 2f       	mov	r22, r26
+ 870:	11 24       	eor	r1, r1
+ 872:	9f 57       	subi	r25, 0x7F	; 127
+ 874:	50 40       	sbci	r21, 0x00	; 0
+ 876:	9a f0       	brmi	.+38     	; 0x89e <__mulsf3_pse+0x88>
+ 878:	f1 f0       	breq	.+60     	; 0x8b6 <__mulsf3_pse+0xa0>
+ 87a:	88 23       	and	r24, r24
+ 87c:	4a f0       	brmi	.+18     	; 0x890 <__mulsf3_pse+0x7a>
+ 87e:	ee 0f       	add	r30, r30
+ 880:	ff 1f       	adc	r31, r31
+ 882:	bb 1f       	adc	r27, r27
+ 884:	66 1f       	adc	r22, r22
+ 886:	77 1f       	adc	r23, r23
+ 888:	88 1f       	adc	r24, r24
+ 88a:	91 50       	subi	r25, 0x01	; 1
+ 88c:	50 40       	sbci	r21, 0x00	; 0
+ 88e:	a9 f7       	brne	.-22     	; 0x87a <__mulsf3_pse+0x64>
+ 890:	9e 3f       	cpi	r25, 0xFE	; 254
+ 892:	51 05       	cpc	r21, r1
+ 894:	80 f0       	brcs	.+32     	; 0x8b6 <__mulsf3_pse+0xa0>
+ 896:	0c 94 a4 03 	jmp	0x748	; 0x748 <__fp_inf>
+ 89a:	0c 94 ef 03 	jmp	0x7de	; 0x7de <__fp_szero>
+ 89e:	5f 3f       	cpi	r21, 0xFF	; 255
+ 8a0:	e4 f3       	brlt	.-8      	; 0x89a <__mulsf3_pse+0x84>
+ 8a2:	98 3e       	cpi	r25, 0xE8	; 232
+ 8a4:	d4 f3       	brlt	.-12     	; 0x89a <__mulsf3_pse+0x84>
+ 8a6:	86 95       	lsr	r24
+ 8a8:	77 95       	ror	r23
+ 8aa:	67 95       	ror	r22
+ 8ac:	b7 95       	ror	r27
+ 8ae:	f7 95       	ror	r31
+ 8b0:	e7 95       	ror	r30
+ 8b2:	9f 5f       	subi	r25, 0xFF	; 255
+ 8b4:	c1 f7       	brne	.-16     	; 0x8a6 <__mulsf3_pse+0x90>
+ 8b6:	fe 2b       	or	r31, r30
+ 8b8:	88 0f       	add	r24, r24
+ 8ba:	91 1d       	adc	r25, r1
+ 8bc:	96 95       	lsr	r25
+ 8be:	87 95       	ror	r24
+ 8c0:	97 f9       	bld	r25, 7
+ 8c2:	08 95       	ret
+
+000008c4 <_exit>:
+ 8c4:	f8 94       	cli
+
+000008c6 <__stop_program>:
+ 8c6:	ff cf       	rjmp	.-2      	; 0x8c6 <__stop_program>

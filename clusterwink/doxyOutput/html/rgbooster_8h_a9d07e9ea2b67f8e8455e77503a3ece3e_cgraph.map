@@ -1,0 +1,3 @@
+<map id="SendStrip_Off" name="SendStrip_Off">
+<area shape="rect" id="node2" href="$rgbooster_8c.html#aebfe625207d08e6617ebabb89d3521c7" title="Send RGB data to one LED (polling the !done/busy pin) " alt="" coords="156,5,224,32"/>
+</map>

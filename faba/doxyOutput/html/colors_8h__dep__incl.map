@@ -1,0 +1,7 @@
+<map id="C:/Users/mnose/Documents/github/clusterwink_doxygen/faba/FABA_OS_Alpha/colors.h" name="C:/Users/mnose/Documents/github/clusterwink_doxygen/faba/FABA_OS_Alpha/colors.h">
+<area shape="rect" id="node2" href="$colors_8c.html" title="in the file colors.c the colors for every pannel are calculated and allocated " alt="" coords="5,109,211,165"/>
+<area shape="rect" id="node3" href="$inits_8c.html" title="inits.c Initializes the hardware/software " alt="" coords="235,109,429,165"/>
+<area shape="rect" id="node4" href="$interrupts_8c.html" title="in the file interrupts.c interrupts (by timer / by external interrupt) is handled ..." alt="" coords="453,109,677,165"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="main software file " alt="" coords="702,109,901,165"/>
+<area shape="rect" id="node6" href="$spi_8c.html" title="spi.c is for interfacing the SPI interface " alt="" coords="925,109,1112,165"/>
+</map>
