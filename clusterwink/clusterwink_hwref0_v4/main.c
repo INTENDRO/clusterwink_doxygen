@@ -48,8 +48,111 @@
  * Board: clusterwink rev0 <br>
  * Device: Atmel ATMega328
  *
+ *
+ * <h3>Software Tests</h3>
+ * Veryfing the correct implementation of the various software functions of the microcontroller board is crucial for the following development of the webserver (ETP2).
+ * Testing the different functionalities and their corresponding SPI commands will ensure correct behavior.
+ *
+ * <h4>General Tests:</h4>
+ * The ISP connection to the microcontroller does not allow debugging. Thus, we made use of the currently unused UART interface to send some debugging and test values back to the terminal (running on a PC.)
+ * <table style="width:1000px" border="2px" >
+ *   <tr>
+ *     <th>Description</th> 
+ *     <th>Expected result</th>
+ *     <th>Pass/Fail</th>
+ *   </tr>
+ *   <tr>
+ *     <td>enable/disable driver by setting GPIO (PB0)</td>
+ *     <td>PB0: high/low</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>output PWM (PB1) and change dutycycle</td>
+ *     <td>PB1: 39kHz PWM with varying dutycycle</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *	 <tr>
+ *     <td>receive any SPI data (check if ISR gets called) -> UART</td>
+ *     <td>receive UART data in PC terminal (sent from inside the SPI ISR)</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>send RGB data to RGBooster (polled function)</td>
+ *     <td>desired color appears on RGB strip</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>clear RGBs (polled function)</td>
+ *     <td>RGB strip turns off</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>call INT1 ISR and write data to RGBooster (interrupt driven mode)</td>
+ *     <td>desired color appears on RGB strip</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>measure temperature with ADC -> UART</td>
+ *     <td>receive temperature in PC terminal</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ * </table>
+ * <br>
+ *
+ * <h4>SPI Command tests:</h4>
+ * The communication protocol will be finalized during ETP2 and is therefore not part of this documentation. Additionally, we expect many changes of said protocol during the webserver development (additions, removals and changes made to existing commands) which would turn any documentation completetly useless.
+ * Hence, we only mention the function of the command and not the command code itself.
+ * <table style="width:1000px" border="2px" >
+ *   <tr>
+ *     <th>Command Description</th> 
+ *     <th>Expected result</th>
+ *     <th>Pass/Fail</th>
+ *   </tr>
+ *   <tr>
+ *     <td>enable PLED</td>
+ *     <td>PLED turns on</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>disable PLED</td>
+ *     <td>PLED turns off</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *	 <tr>
+ *     <td>set PLED dutycycle</td>
+ *     <td>PLED brightness changes</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>clear RGBs</td>
+ *     <td>RGB strip turns off</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>set RGBs to a single color</td>
+ *     <td>RGB strip displays desired color</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>read dutycycle</td>
+ *     <td>SPI master receives current PLED dutycycle</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>read temperature</td>
+ *     <td>SPI master receives current temperature</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ *   <tr>
+ *     <td>read status</td>
+ *     <td>SPI master receives current system status</td> 
+ *     <td>Pass</td> 
+ *   </tr>
+ * </table>
+ *
+ *
  * @author lopeslen, nosedmar
- * @date 29.12.2017
+ * @date 05.01.2018
  *****************************************************************************/
  
  

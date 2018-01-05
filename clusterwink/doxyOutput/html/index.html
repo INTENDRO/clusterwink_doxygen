@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Clusterwink: Clusterwink wake-up light</title>
+<title>Clusterwink: Project Clusterwink - Wake Up Light on Steroids</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,12 +20,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="clusterwink_logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="clstrwnk_logo.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Clusterwink
-   &#160;<span id="projectnumber">0.4</span>
+   &#160;<span id="projectnumber">hw: rev0 | sw: ref4</span>
    </div>
-   <div id="projectbrief">wake-up light ON STERIODS (lit fam)</div>
+   <div id="projectbrief">wake-up light</div>
   </td>
  </tr>
  </tbody>
@@ -65,13 +65,104 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Clusterwink wake-up light </div>  </div>
+<div class="title">Project Clusterwink - Wake Up Light on Steroids </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>main description</p>
-<p>software tests</p>
+<div class="textblock"><p><b>"Project Clusterwink"</b> was developed during the "Electronics Project 1 (ETP1)" module at the Zurich University of Applied Sciences. It is part of the <b>second year of the electronics engineering curriculum</b> starting with fall term 2017. <br />
+ The original task encompassed developing hard- and software for an RGB mood light. "Project Clusterwink" expanded on this task and incorporates a high power led and driver circuit. These are intended to be used as a "wake up light" which gently wakes you by simulating a sunrise. This will help wake you up as naturally as possible and therefore prevent irritation and sleepiness during the day. The mood light functionality is retained thanks to the integrated RGB-LEDs, which can produce a wide variety of colors. <br />
+</p>
+<p>Process of ETP1: </p><ol>
+<li>
+Defining Goals </li>
+<li>
+Creating the Schematic </li>
+<li>
+Creating the Layout </li>
+<li>
+External manufacturing of PCB </li>
+<li>
+Assembling the PCB </li>
+<li>
+Writing the Software </li>
+<li>
+Testing </li>
+<li>
+Designing a Enclosure </li>
+<li>
+Lasercutting of Enclosure </li>
+</ol>
+<div class="image">
+<img src="../../doxyScratch/img/cw-front-1.jpg" height="450"/>
+</div>
+<p> <br />
+ </p><h3>ETP2</h3>
+<p>The goal of next Semesters Electronics Project (ETP2) will be to develop a web-application so that the user can interact with the alarm clock. This will allow setting of different alarm times and durations, selecting colors or color progressions and open many possibilities for further applications. This will be achieved by running a webserver on the Raspberry Pi, on which the application will run. All settings can be accessed there. The users inputs will be processed by the Raspberry Pi and the approptiate data is sent to the Clusterwinks Microcontroller. This approach has a few benefits over a similiar Android Application. In this specific instance, the ability to access the web application from any device is key. This means that the User Interface can not only be accessed with android devices, but any device capable of connecting to the internet. <br />
+ The final assembly of "project clusterwink" will include the following: </p><ul>
+<li>
+clusterwink pcb </li>
+<li>
+rgbooster (TM) </li>
+<li>
+raspberry pi </li>
+<li>
+power led and temperature sensor </li>
+<li>
+lasercut enclosure </li>
+<li>
+external 24V power adapter </li>
+</ul>
+<p><br />
+ </p><div class="image">
+<img src="../../doxyScratch/img/cw-case-3.jpg" height="450"/>
+</div>
+<p> Board: clusterwink rev0 <br />
+ Device: Atmel ATMega328</p>
+<h3>Software Tests</h3>
+<p>Veryfing the correct implementation of the various software functions of the microcontroller board is crucial for the following development of the webserver (ETP2). Testing the different functionalities and their corresponding SPI commands will ensure correct behavior.</p>
+<h4>General Tests:</h4>
+<p>The ISP connection to the microcontroller does not allow debugging. Thus, we made use of the currently unused UART interface to send some debugging and test values back to the terminal (running on a PC.) </p><table style="width:1000px" border="2px">
+<tr>
+<th>Description </th><th>Expected result </th><th>Pass/Fail  </th></tr>
+<tr>
+<td>enable/disable driver by setting GPIO (PB0) </td><td>PB0: high/low </td><td>Pass  </td></tr>
+<tr>
+<td>output PWM (PB1) and change dutycycle </td><td>PB1: 39kHz PWM with varying dutycycle </td><td>Pass  </td></tr>
+<tr>
+<td>receive any SPI data (check if ISR gets called) -&gt; UART </td><td>receive UART data in PC terminal (sent from inside the SPI ISR) </td><td>Pass  </td></tr>
+<tr>
+<td>send RGB data to RGBooster (polled function) </td><td>desired color appears on RGB strip </td><td>Pass  </td></tr>
+<tr>
+<td>clear RGBs (polled function) </td><td>RGB strip turns off </td><td>Pass  </td></tr>
+<tr>
+<td>call INT1 ISR and write data to RGBooster (interrupt driven mode) </td><td>desired color appears on RGB strip </td><td>Pass  </td></tr>
+<tr>
+<td>measure temperature with ADC -&gt; UART </td><td>receive temperature in PC terminal </td><td>Pass  </td></tr>
+</table>
+<p><br />
+</p>
+<h4>SPI Command tests:</h4>
+<p>The communication protocol will be finalized during ETP2 and is therefore not part of this documentation. Additionally, we expect many changes of said protocol during the webserver development (additions, removals and changes made to existing commands) which would turn any documentation completetly useless. Hence, we only mention the function of the command and not the command code itself. </p><table style="width:1000px" border="2px">
+<tr>
+<th>Command Description </th><th>Expected result </th><th>Pass/Fail  </th></tr>
+<tr>
+<td>enable PLED </td><td>PLED turns on </td><td>Pass  </td></tr>
+<tr>
+<td>disable PLED </td><td>PLED turns off </td><td>Pass  </td></tr>
+<tr>
+<td>set PLED dutycycle </td><td>PLED brightness changes </td><td>Pass  </td></tr>
+<tr>
+<td>clear RGBs </td><td>RGB strip turns off </td><td>Pass  </td></tr>
+<tr>
+<td>set RGBs to a single color </td><td>RGB strip displays desired color </td><td>Pass  </td></tr>
+<tr>
+<td>read dutycycle </td><td>SPI master receives current PLED dutycycle </td><td>Pass  </td></tr>
+<tr>
+<td>read temperature </td><td>SPI master receives current temperature </td><td>Pass  </td></tr>
+<tr>
+<td>read status </td><td>SPI master receives current system status </td><td>Pass  </td></tr>
+</table>
 <dl class="section author"><dt>Author</dt><dd>lopeslen, nosedmar </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>29.12.2017 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>05.01.2018 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

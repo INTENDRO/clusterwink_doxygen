@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['project_20clusterwink_20_2d_20wake_20up_20light_20on_20steroids',['Project Clusterwink - Wake Up Light on Steroids',['../index.html',1,'']]],
   ['pin_5fcontrol',['PIN_CONTROL',['../rgbooster_8h.html#af599ceb0750761766eb8f1a6901df2bf',1,'rgbooster.h']]],
   ['pin_5fdata_5fhigh',['PIN_DATA_HIGH',['../rgbooster_8h.html#a95f20078f450b6b5c13bf98213bc6b28',1,'rgbooster.h']]],
   ['pin_5fdata_5flow',['PIN_DATA_LOW',['../rgbooster_8h.html#a1397004f541b0e0e1aae9507f98e5df8',1,'rgbooster.h']]],
