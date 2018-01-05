@@ -37,7 +37,7 @@
  * The final assembly of "project clusterwink" will include the following:
  * <ul>
  * 	<li>clusterwink pcb</li>
- * 	<li>rgbooster (TM)</li>
+ * 	<li>RGBooster</li>
  * 	<li>raspberry pi</li>
  * 	<li>power led and temperature sensor</li>
  * 	<li>lasercut enclosure</li>
@@ -150,6 +150,26 @@
  *   </tr>
  * </table>
  *
+ *
+ * <h3>Coding guidelines</h3>
+ * Software coding conventions help to improve the readability and maintainability of source code. This applies not just for other developers reading your code, but also for the creator of the software (e.g. revisitting old code). <br>
+ * Some keypoints are:
+ * - Use a data type prefix to decrease the possibility of an unwanted overflow (unsigned char -> ucVar)
+ * - Unlike C code for a windows machine, this code is stronly hardware dependent and cannot be run on a different system by accident (or even coice!).
+ *   Usually, distinct data types should be used (uint8_t, etc.). Using typedefs like "unsigned char" and others is conceivably more readable
+ *   and will be used in this application since the GCC compiler for this controller strictly defines the sizes of these data types.
+ * - Constant names are all caps
+ * - Struct names are all caps (no prefix)
+ * - Do not use any one letter variable names. Only exception: for loop iteration variable
+ * - Global variables should not be used if possible. (ISRs will still need global variables though). Make use of data encapsulation as much as possible.
+ * - Do not use any control structures (if, while, for, ...) without bracket. Even if the body is only one line long. Less problems with adding additional statements.
+ * - Use the Allman bracket style. Even though the K&R style is also widespread, we settled on using Allman. Having the bracket on the same level makes it very easy to see the body of the structure.
+ *   and selecting the body of a structure does not need any left and right movement on a single line (e.g. K&R: selecting the bracket but not the condition on the same line)
+ * - Use parantheses even if the operator precedence would not require them (readability)
+ * - Always explicitly cast variables even if the implicit cast would also work.
+ * <br><br>
+ * <h4>Example code:</h4>
+ * <img src="../../doxyScratch/img/codeguidelines.png" height="450">
  *
  * @author lopeslen, nosedmar
  * @date 05.01.2018
