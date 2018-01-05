@@ -36,12 +36,12 @@
  * <br>
  * The final assembly of "project clusterwink" will include the following:
  * <ul>
- * 	<li>clusterwink pcb</li>
+ * 	<li>Clusterwink PCB</li>
  * 	<li>RGBooster</li>
- * 	<li>raspberry pi</li>
- * 	<li>power led and temperature sensor</li>
- * 	<li>lasercut enclosure</li>
- * 	<li>external 24V power adapter</li>
+ * 	<li>Raspberry Pi</li>
+ * 	<li>Power LED and temperature sensor</li>
+ * 	<li>Lasercut enclosure</li>
+ * 	<li>External 24V power adapter</li>
  * </ul>
  * <br>
  * <img src="../../doxyScratch/img/cw-case-3.jpg" height="450">
@@ -152,7 +152,7 @@
  *
  *
  * <h3>Coding guidelines</h3>
- * Software coding conventions help to improve the readability and maintainability of source code. This applies not just for other developers reading your code, but also for the creator of the software (e.g. revisitting old code). <br>
+ * Software coding conventions help to improve the readability and maintainability of source code. This applies not just for other developers reading your code, but also for the creator of the software (e.g. revisiting old code). <br>
  * Some keypoints are:
  * - Use a data type prefix to decrease the possibility of an unwanted overflow (unsigned char -> ucVar)
  * - Unlike C code for a windows machine, this code is stronly hardware dependent and cannot be run on a different system by accident (or even coice!).

@@ -29,7 +29,7 @@
 */
 
 /** \file
- *
+ *	\brief Ringbuffer implementation. Created by Dean Camera. Additional functions have been added
  *  Ultra lightweight ring buffer, for fast insertion/deletion. This uses inlined functions
  *  for maximum speed. All buffers created with this library must be of the same size, however
  *  multiple independant buffers can be created.

@@ -99,17 +99,17 @@ Lasercutting of Enclosure </li>
 <p>The goal of next Semesters Electronics Project (ETP2) will be to develop a web-application so that the user can interact with the alarm clock. This will allow setting of different alarm times and durations, selecting colors or color progressions and open many possibilities for further applications. This will be achieved by running a webserver on the Raspberry Pi, on which the application will run. All settings can be accessed there. The users inputs will be processed by the Raspberry Pi and the approptiate data is sent to the Clusterwinks Microcontroller. This approach has a few benefits over a similiar Android Application. In this specific instance, the ability to access the web application from any device is key. This means that the User Interface can not only be accessed with android devices, but any device capable of connecting to the internet. <br />
  The final assembly of "project clusterwink" will include the following: </p><ul>
 <li>
-clusterwink pcb </li>
+Clusterwink PCB </li>
 <li>
 RGBooster </li>
 <li>
-raspberry pi </li>
+Raspberry Pi </li>
 <li>
-power led and temperature sensor </li>
+Power LED and temperature sensor </li>
 <li>
-lasercut enclosure </li>
+Lasercut enclosure </li>
 <li>
-external 24V power adapter </li>
+External 24V power adapter </li>
 </ul>
 <p><br />
  </p><div class="image">
@@ -162,7 +162,7 @@ external 24V power adapter </li>
 <td>read status </td><td>SPI master receives current system status </td><td>Pass  </td></tr>
 </table>
 <h3>Coding guidelines</h3>
-<p>Software coding conventions help to improve the readability and maintainability of source code. This applies not just for other developers reading your code, but also for the creator of the software (e.g. revisitting old code). <br />
+<p>Software coding conventions help to improve the readability and maintainability of source code. This applies not just for other developers reading your code, but also for the creator of the software (e.g. revisiting old code). <br />
  Some keypoints are:</p><ul>
 <li>Use a data type prefix to decrease the possibility of an unwanted overflow (unsigned char -&gt; ucVar)</li>
 <li>Unlike C code for a windows machine, this code is stronly hardware dependent and cannot be run on a different system by accident (or even coice!). Usually, distinct data types should be used (uint8_t, etc.). Using typedefs like "unsigned char" and others is conceivably more readable and will be used in this application since the GCC compiler for this controller strictly defines the sizes of these data types.</li>

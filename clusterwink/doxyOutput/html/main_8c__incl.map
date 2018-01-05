@@ -2,6 +2,6 @@
 <area shape="rect" id="node4" href="$utils_8h.html" title="Standard utilities for uC internals (timer,adc,gpio,...) " alt="" coords="216,124,273,151"/>
 <area shape="rect" id="node5" href="$spi_8h.html" title="Initializing the SPI slave interface. " alt="" coords="298,124,349,151"/>
 <area shape="rect" id="node6" href="$usart_8h.html" title="Initializing the USART master interface. " alt="" coords="373,124,436,151"/>
-<area shape="rect" id="node7" href="$ringbuffer_8h.html" title="ringbuffer.h" alt="" coords="461,124,546,151"/>
+<area shape="rect" id="node7" href="$ringbuffer_8h.html" title="Ringbuffer implementation. Created by Dean Camera. Additional functions have been added Ultra lightwe..." alt="" coords="461,124,546,151"/>
 <area shape="rect" id="node11" href="$rgbooster_8h.html" title="Software layer to interface the RGBooster hardware. " alt="" coords="571,124,657,151"/>
 </map>
