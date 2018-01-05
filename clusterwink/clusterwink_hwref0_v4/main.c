@@ -1,5 +1,5 @@
 /*************************************************************************//**
- * @mainpage Clusterwink wake-up light
+ * @mainpage Project Clusterwink - Wake Up Light on Steroids
  *
  * <strong>"Project Clusterwink"</strong> was developed during the "Electronics Project 1 (ETP1)" 
  * module at the Zurich University of Applied Sciences. 
@@ -7,8 +7,8 @@
  * <br>
  * The original task encompassed developing hard- and software for an RGB mood light. 
  * "Project Clusterwink" expanded on this task and incorporates a high power led and driver circuit. 
- * Those are intended to be used as a "sunrise alarm clock" which gently wakes you by simulating a sunrise. 
- * Doing so will prevent you being awoken during a deep sleep phase, which causes irritation and sleepiness during the day. 
+ * These are intended to be used as a "wake up light" which gently wakes you by simulating a sunrise. 
+ * This will help wake you up as naturally as possible and therefore prevent irritation and sleepiness during the day. 
  * The mood light functionality is retained thanks to the integrated RGB-LEDs, which can produce a wide variety of colors.
  * <br>
  * 
@@ -24,7 +24,7 @@
  * 	<li>Designing a Enclosure</li>
  * 	<li>Lasercutting of Enclosure</li>
  * </ol>
- * <img src="img/cw1.jpg" height="450">
+ * <img src="../../doxyScratch/img/cw-front-1.jpg" height="450">
  * <br>
  * <h3>ETP2</h3>
  * The goal of next Semesters Electronics Project (ETP2) will be to develop a web-application 
@@ -44,7 +44,7 @@
  * 	<li>external 24V power adapter</li>
  * </ul>
  * <br>
- * <img src="img/case1.jpg" height="450"><br>
+ * <img src="../../doxyScratch/img/cw-case-3.jpg" height="450">
  * Board: clusterwink rev0 <br>
  * Device: Atmel ATMega328
  *
