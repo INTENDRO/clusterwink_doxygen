@@ -1,9 +1,52 @@
 /*************************************************************************//**
  * @mainpage Clusterwink wake-up light
  *
- * main description
+ * <strong>"Project Clusterwink"</strong> was developed during the "Electronics Project 1 (ETP1)" 
+ * module at the Zurich University of Applied Sciences. 
+ * It is part of the <strong>second year of the electronics engineering curriculum</strong> starting with fall term 2017.
+ * <br>
+ * The original task encompassed developing hard- and software for an RGB mood light. 
+ * "Project Clusterwink" expanded on this task and incorporates a high power led and driver circuit. 
+ * Those are intended to be used as a "sunrise alarm clock" which gently wakes you by simulating a sunrise. 
+ * Doing so will prevent you being awoken during a deep sleep phase, which causes irritation and sleepiness during the day. 
+ * The mood light functionality is retained thanks to the integrated RGB-LEDs, which can produce a wide variety of colors.
+ * <br>
  * 
- * software tests
+ * Process of ETP1:
+ * <ol>
+ * 	<li>Defining Goals</li>
+ * 	<li>Creating the Schematic</li>
+ * 	<li>Creating the Layout</li>
+ * 	<li>External manufacturing of PCB</li>
+ * 	<li>Assembling the PCB</li>
+ * 	<li>Writing the Software</li>
+ * 	<li>Testing</li>
+ * 	<li>Designing a Enclosure</li>
+ * 	<li>Lasercutting of Enclosure</li>
+ * </ol>
+ * <img src="img/cw1.jpg" height="450">
+ * <br>
+ * <h3>ETP2</h3>
+ * The goal of next Semesters Electronics Project (ETP2) will be to develop a web-application 
+ * so that the user can interact with the alarm clock. 
+ * This will allow setting of different alarm times and durations, selecting colors or color progressions 
+ * and open many possibilities for further applications. This will be achieved by running a webserver on the Raspberry Pi, on which the application will run. 
+ * All settings can be accessed there. The users inputs will be processed by the Raspberry Pi and the approptiate data is sent to the Clusterwinks Microcontroller.
+ * This approach has a few benefits over a similiar Android Application. In this specific instance, the ability to access the web application from any device is key. This means that the User Interface can not only be accessed with android devices, but any device capable of connecting to the internet.
+ * <br>
+ * The final assembly of "project clusterwink" will include the following:
+ * <ul>
+ * 	<li>clusterwink pcb</li>
+ * 	<li>rgbooster (TM)</li>
+ * 	<li>raspberry pi</li>
+ * 	<li>power led and temperature sensor</li>
+ * 	<li>lasercut enclosure</li>
+ * 	<li>external 24V power adapter</li>
+ * </ul>
+ * <br>
+ * <img src="img/case1.jpg" height="450"><br>
+ * Board: clusterwink rev0 <br>
+ * Device: Atmel ATMega328
  *
  * @author lopeslen, nosedmar
  * @date 29.12.2017
